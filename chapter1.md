@@ -20,3 +20,4 @@ module.exports與exports用來輸出
 3.程式碼內容 https://github.com/EasonWang01/Node.js-tutorial/tree/master/1.module.export 
 
 
+> 你可能會看到其他的模組化方式，例如import，此為ES6的範疇，將在後續章節提到
