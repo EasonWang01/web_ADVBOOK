@@ -4,4 +4,5 @@
 * [require 、 module.exports](chapter1.md)
 * [fs\(文件操作\)](fs文件操作.md)
 * [EventEmitter\(事件觸發\)](eventemitter事件觸發.md)
+* [util\(工具類\)](util工具類.md)
 
