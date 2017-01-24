@@ -6,3 +6,15 @@
 一開始我們先開期terminal，然後輸入node，進入nodejs命令列
 
 之後輸入`.help`
+
+1.試著輸入`.editor`
+
+然後貼上如下程式
+
+```
+function welcome() {
+  return `Hello!`;
+}
+
+welcome();
+```
