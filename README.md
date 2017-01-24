@@ -56,20 +56,6 @@ hello();
 然後輸入npm install
 
 
-#其他指令
-
-```
-npm install --save
-npm install --save-dev //記得save跟dev要用-連再一起
-npm install -g
-npm uninstall
-npm search
-npm ls -g
-npm ls -gl
-npm ls -l
-npm update -g
-npm update
-```
 
 npm install  -g (使用後可在cmd的任何路徑輸入package名稱執行，但如果是想在js檔內直接使用require的話，要再把環境變數加上才行)(如此即可不用在每個專案資料夾個別安裝package))
 (記得名稱要是NODE_PATH)
@@ -96,6 +82,20 @@ npm install --production
 >當npm install出現一些版本錯誤，而無法安裝，這是記得先更新本地端`npm install -g`(更新global的package)
 更多可參考
 https://docs.npmjs.com/
+
+
+#其他指令
+
+```
+npm uninstall
+npm search
+npm ls -g
+npm ls -gl
+npm ls -l
+npm update -g
+npm update
+```
+
 
 
 #package.json教學
