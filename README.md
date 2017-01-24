@@ -72,6 +72,12 @@ npm install  -g (使用後可在cmd的任何路徑輸入package名稱執行，�
 
 一個是`C:\Users\Jason\AppData\Roaming\npm`給在cmd直接輸入module名稱用
 
+>Mac 使用 require global package 可用
+export NODE_PATH=/usr/local/lib/node_modules
+
+
+
+
 
 ##為了避免部屬後環境module過大，可不必安裝dev用的module
 一開始開發時將套件安裝到devDependencies
