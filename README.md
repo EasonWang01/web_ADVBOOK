@@ -45,7 +45,7 @@ hello();
 
 6.試著安裝一個套件 npm install express -g
 
-7.package.json
+7.輸入npm init 並查看package.json
 
 8.有了package.json後輸入npm install 會自動安裝上面所寫出的套件
 

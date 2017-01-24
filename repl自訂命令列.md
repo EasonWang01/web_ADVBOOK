@@ -31,5 +31,7 @@ welcome();
 
 4.點選鍵盤左上的`tab`按鈕可列出所有變數
 
+5.試著輸入`fs.createReadStream('./test2.js');`
+
 
 最後輸入兩次ctrl + C 即可退出nodejs命令列
