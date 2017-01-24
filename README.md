@@ -37,6 +37,9 @@ hello();
 
 2.他是一個套件管理工具，類似一個倉庫，我們可以從裡面去下載東西出來用
 
+>有兩種scope範圍，也就是套件可以安裝在全域，也可以安裝在特定資料夾
+
+
 3.而你也可以把你自己的套件打包好放到NPM上讓其他人下載
 
 4.搜尋別人寫的package https://www.npmjs.com/package/react
@@ -89,12 +92,11 @@ https://docs.npmjs.com/
 ```
 npm uninstall  //解除安裝套件，例如：npm uninstall express -g
 npm search   //搜尋套件 例如：npm uninstall express -g
-
 npm ls -g  //列出所有全局套件
-npm ls -gl
-npm ls -l
-npm update -g
-npm update
+npm ls -gl  //列出全域套件詳細資訊
+npm ls -l  //列出專案裡的套件詳細資訊
+npm update -g  //更新全域套件
+npm update  //更新專案裡的套件
 ```
 
 
