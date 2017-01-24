@@ -9,7 +9,7 @@
 
 1.試著輸入`.editor`
 
-然後貼上如下程式
+然後打上如下程式
 
 ```
 function welcome() {
@@ -18,3 +18,8 @@ function welcome() {
 
 welcome();
 ```
+接著按下鍵盤的ctrl + D
+
+即可看到Hello出現在terminal上
+
+2.接著看到範例程式部分
