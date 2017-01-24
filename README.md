@@ -48,6 +48,13 @@ hello();
 7.試著安裝一個套件 npm install express --save
 
 8.有了package.json後輸入npm install 會自動安裝上面所寫出的套件
+```
+試著在package.json中加入如下
+
+"prore": "^1.1.0",
+```
+然後輸入npm install
+
 
 其他指令
 
