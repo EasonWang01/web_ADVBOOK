@@ -53,7 +53,7 @@ hello();
 
 ```
 npm install --save
-npm install --save-dev
+npm install --save-dev //記得save跟dev要用-連再一起
 npm install -g
 npm uninstall
 npm search
