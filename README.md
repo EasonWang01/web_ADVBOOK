@@ -100,7 +100,7 @@ https://docs.npmjs.com/
 
 ```
 npm uninstall  //解除安裝套件，例如：npm uninstall express -g
-npm search   //搜尋套件 例如：npm uninstall express -g
+npm search   //搜尋套件
 npm ls -g  //列出所有全局套件
 npm ls -gl  //列出全域套件詳細資訊
 npm ls -l  //列出專案裡的套件詳細資訊
