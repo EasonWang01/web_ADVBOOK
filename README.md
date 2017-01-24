@@ -56,7 +56,7 @@ hello();
 然後輸入npm install
 
 
-其他指令
+#其他指令
 
 ```
 npm install --save
@@ -87,7 +87,7 @@ npm install  -g (使用後可在cmd的任何路徑輸入package名稱執行，�
 npm install --save-dev //記得save跟dev要用-連再一起
 
 ```
-部屬時安裝
+部屬時不安裝devDependencies的模組則輸入
 ```
 npm install --production
 ```
