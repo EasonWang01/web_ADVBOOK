@@ -22,6 +22,12 @@ welcome();
 
 即可看到Hello出現在terminal上
 
-再來輸入兩次ctrl + C 即可退出nodejs命令列
+2.試著輸入 `.save ./test2.js`
 
-2.接著看到範例程式部分
+發現剛才的程式備存成檔案了
+
+3.再來可輸入  `.load ./test2.js`
+可用來讀取並執行一個js檔案
+
+
+最後輸入兩次ctrl + C 即可退出nodejs命令列
