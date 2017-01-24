@@ -22,4 +22,6 @@ welcome();
 
 即可看到Hello出現在terminal上
 
+再來輸入兩次ctrl + C 即可退出nodejs命令列
+
 2.接著看到範例程式部分
