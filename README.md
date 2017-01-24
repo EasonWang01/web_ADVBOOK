@@ -87,9 +87,10 @@ https://docs.npmjs.com/
 #其他指令
 
 ```
-npm uninstall
-npm search
-npm ls -g
+npm uninstall  //解除安裝套件，例如：npm uninstall express -g
+npm search   //搜尋套件 例如：npm uninstall express -g
+
+npm ls -g  //列出所有全局套件
 npm ls -gl
 npm ls -l
 npm update -g
