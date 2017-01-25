@@ -57,3 +57,18 @@ client.on('close', function() {
     console.log('Connection closed');
 });
 ```
+
+#Node.js中的UDP
+
+主要使用名為`dgram`的核心模組
+
+全名為`UDP / Datagram Sockets`
+
+####實作
+
+1.進入資料夾第10章中的UDP資料夾，執行test1.js來執行UDP server
+
+2.開啟另一個terminal，一樣進入資料夾第10章中的UDP資料夾，執行test2.js
+
+
+
