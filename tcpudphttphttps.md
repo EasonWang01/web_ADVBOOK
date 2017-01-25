@@ -76,6 +76,7 @@ UDP具有TCP所沒擁有的技能(廣播封包)，可以把封包廣播給區網
 
 使用廣播封包時，LAN 上面的每台電腦都會被迫處理這類封包
 
+####UDP廣播
 接收方(所有區網上其他電腦所架設的UDP server)
 ```
 var udp = require("dgram");
@@ -85,7 +86,7 @@ var socket = udp.createSocket('udp4',function(msg){
 socket.bind(8080);
 
 ```
-廣播方
+廣播方client
 ```
 var udp = require("dgram");
 var client = udp.createSocket("udp4",function(){});
@@ -99,4 +100,59 @@ process.stdin.on("data",function(data){
 ```
 
 
-但IPv6 不支援廣播，只支援群播（multicasting），所以可將程式碼改為如下
+####但IPv6 不支援廣播，只支援群播（multicasting），所以可將程式碼改為如下
+
+
+server
+
+```
+var news = [
+   "hello",
+   "this is multicasting",
+];
+
+var dgram = require('dgram'); 
+var server = dgram.createSocket("udp4"); 
+server.bind();
+server.setBroadcast(true)
+server.setMulticastTTL(128); //有關TTL 可參考https://nodejs.org/api/dgram.html#dgram_socket_addmembership_multicastaddress_multicastinterface
+server.addMembership('230.185.192.108'); 
+//可參考如下
+//https://nodejs.org/api/dgram.html#dgram_socket_addmembership_multicastaddress_multicastinterface
+//https://en.wikipedia.org/wiki/Multicast_address
+
+setInterval(broadcastNew, 3000);
+
+function broadcastNew() {
+    var message = new Buffer(news[Math.floor(Math.random()*news.length)]);
+    server.send(message, 0, message.length, 8088, "230.185.192.108");     
+    console.log("Sent " + message + " to the wire...");
+    //server.close();
+}
+```
+client
+```
+var PORT = 8088;
+var HOST = '192.168.0.102';
+var dgram = require('dgram');
+var client = dgram.createSocket('udp4');
+
+client.on('listening', function () {
+    var address = client.address();
+    console.log('UDP Client listening on ' + address.address + ":" + address.port);
+    client.setBroadcast(true)
+    client.setMulticastTTL(128); 
+    client.addMembership('230.185.192.108');
+});
+
+client.on('message', function (message, remote) {   
+    console.log('A: Epic Command Received. Preparing Relay.');
+    console.log('B: From: ' + remote.address + ':' + remote.port +' - ' + message);
+});
+
+client.bind(PORT, HOST);
+```
+以上參考至http://stackoverflow.com/questions/14130560/nodejs-udp-multicast-how-to
+
+
+可參考一篇不錯的文章:http://beej-zhtw.netdpi.net/07-advanced-technology/7-6-broadcast-packet-hello-world
