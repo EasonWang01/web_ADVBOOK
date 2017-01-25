@@ -38,3 +38,7 @@ https://http2.github.io/faq/
 3.Binary的封包結構
 4.伺服器主動推送資源
 ```
+
+#HTTP實作
+
+參考程式碼HTTP與HTTPS資料夾
