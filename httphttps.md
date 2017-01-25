@@ -20,4 +20,4 @@ DELETE：請求伺服器刪除Request-URI所標識的資源。
 你可能聽過一個詞 `Restful api`，其中包含對資源的操作包括獲取、創建、修改和刪除資源，這些操作正好對應HTTP協議提供的GET、POST、PUT和DELETE方法。
 可參考:https://zh.wikipedia.org/wiki/REST
 
-而傳輸封包中的格式可以是XML或是JSON或是年代算比較新的protocol buffer
+而傳輸封包中的資料格式可以是XML或是JSON或是年代算比較新的protocol buffer
