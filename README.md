@@ -31,7 +31,7 @@ hello();
 
 輸入node class
 
-# #2.使用NPM
+# #3.使用NPM
 
 1.安裝Node.js時自動會安裝NPM
 
