@@ -70,5 +70,33 @@ client.on('close', function() {
 
 2.開啟另一個terminal，一樣進入資料夾第10章中的UDP資料夾，執行test2.js
 
+3.實作UDP廣播機制
+
+UDP具有TCP所沒擁有的技能(廣播封包)，可以把封包廣播給區網內的每一台電腦
+
+使用廣播封包時，LAN 上面的每台電腦都會被迫處理這類封包
+
+接收方(所有區網上其他電腦所架設的UDP server)
+```
+var udp = require("dgram");
+var socket = udp.createSocket('udp4',function(msg){
+   console.log(msg.toString())
+});
+socket.bind(8080);
+
+```
+廣播方
+```
+var udp = require("dgram");
+var client = udp.createSocket("udp4",function(){});
+client.on("listening",function(){
+    client.setBroadcast(true);
+})
+process.stdin.on("data",function(data){
+    client.send(data,0,data.length,8080,"255.255.255.255");
+});
+
+```
 
 
+但IPv6 不支援廣播，只支援群播（multicasting），所以可將程式碼改為如下
