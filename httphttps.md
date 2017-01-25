@@ -21,3 +21,6 @@ DELETE：請求伺服器刪除Request-URI所標識的資源。
 可參考:https://zh.wikipedia.org/wiki/REST
 
 而傳輸封包中的資料格式可以是XML或是JSON或是年代算比較新的protocol buffer
+
+你可能也聽過HTTP2一詞，可參考https://ye11ow.gitbooks.io/http2-explained/content/part11.html
+
