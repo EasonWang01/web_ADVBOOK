@@ -13,3 +13,13 @@ TCP的特色在於傳輸資料時，會有握手的過程，以確保雙方身�
 #Node.js中的TCP
 
 在node.js主要使用`net`這個核心模組來提供TCP的相關功能，
+
+一般主要是在做與硬體溝通時會使用到
+
+具有TCP中的TCP server與 TCP client的兩種類型
+
+####實作
+
+1.進入資料夾第10章中的TCP資料夾，執行test1.js來執行TCP server
+
+2.開啟另一個terminal，一樣進入資料夾第10章中的TCP資料夾，執行test2.js
