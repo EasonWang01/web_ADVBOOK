@@ -16,6 +16,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMASc
 
 全名為`ECMAScript 7.0`或稱`ECMAScript 2016`
 
+#### #Generator
+
 
 #ES8
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_Next_support_in_Mozilla
@@ -28,6 +30,24 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMASc
 #### #Async與Await
 
 
+#### #padEnd
+功能：將字串補足位數至與第一個參數相同
+
+```
+'abc'.padEnd(10);         // "abc       "
+'abc'.padEnd(10, "foo");  // "abcfoofoof"
+'abc'.padEnd(6,"123456"); // "abc123"
+```
+
+#### #padStart
+功能：將字串補足位數至與第一個參數相同，但方向為從頭開始
+
+
+```
+'abc'.padStart(10);         // "       abc"
+'abc'.padStart(10, "foo");  // "foofoofabc"
+'abc'.padStart(6,"123465"); // "123abc"
+```
 
 
 
