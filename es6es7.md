@@ -64,7 +64,8 @@ promise
 #### #Promise.all
 把許多promise的函式組成一個Array放入Promise.all內，當裡面每個都`resolve`或其中一個被`reject`時才會執行後面的then方法
 ```
-Promise.all([promises...]).then(function (posts) {
+Promise.all([promises...])
+.then(function (posts) {
   // ...
 }).catch(function(reason){
   // ...
