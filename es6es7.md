@@ -19,6 +19,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMASc
 #### #Generator
 
 
+#### #Array.includes
+功能: 取得Array中是否包含某一個元素
+```
+var a = [1, 2, 3];
+a.includes(2); // true 
+a.includes(4); // false
+```
+
+
+
 #ES8
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_Next_support_in_Mozilla
 
