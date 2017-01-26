@@ -49,6 +49,28 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMASc
 'abc'.padStart(6,"123465"); // "123abc"
 ```
 
+#### #Object.values
+功能:取得所有物件中的值，以Array表示
+```
+var obj = { foo: "bar", baz: 42 };
+console.log(Object.values(obj)); // ['bar', 42]
+
+// array like object
+var obj = { 0: 'a', 1: 'b', 2: 'c' };
+console.log(Object.values(obj)); // ['a', 'b', 'c']
+```
+
+#### #Object.entries
+功能:把物件中的key和value每組分別組成一個Array
+```
+var obj = { foo: "bar", baz: 42 };
+console.log(Object.entries(obj)); // [ ['foo', 'bar'], ['baz', 42] ]
+
+// array like object
+var obj = { 0: 'a', 1: 'b', 2: 'c' };
+console.log(Object.entries(obj)); // [ ['0', 'a'], ['1', 'b'], ['2', 'c'] ]
+
+```
 
 
 
