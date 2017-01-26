@@ -84,7 +84,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMASc
 
 #### #Generator
 
+功能:也是用來處理異步函式，讓他順序執行
+不一樣的地方在於function後的星號，和`yield`
 
+1.
 ```
 function* Fruit() {
   yield 'apple';
@@ -102,6 +105,8 @@ var a = Fruit();
 Fruit().next()
 ```
 發現如直接對函式下next指令會無法往下遍歷
+
+2.
 
 
 
