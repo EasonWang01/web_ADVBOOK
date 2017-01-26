@@ -44,6 +44,19 @@ var args = [0, 1, 2];
 myFunction(...args); //相同於myFunction(1,2,3)
 ```
 
+#### #Rest parameters
+
+功能:動態指定參數個數
+```
+function fun1(...theArgs) {
+  console.log(theArgs.length);
+}
+
+fun1();  // 0
+fun1(5); // 1
+fun1(5, 6, 7); // 3
+```
+
 #### #Destructuring assignment
 
 功能:對應兩個Array或Object並把同名的值附上
