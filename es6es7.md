@@ -35,7 +35,16 @@ function letTest() {
 ```
 let的作用範圍會被侷限在if內，而不會改到外面的同名變數
 
-####Promise
+#### #spread syntax
+功能:把Array，以逗點分隔當成多個值
+
+```
+function myFunction(x, y, z) { console.log(x) }
+var args = [0, 1, 2];
+myFunction(...args); //相同於myFunction(1,2,3)
+```
+
+#### #Promise
 
 1.new Promise傳入一個函數，該函數擁有兩個參數
 
