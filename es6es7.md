@@ -1,8 +1,8 @@
-這邊我們使用jsfiddle來進行測試，因有些功能目前一些瀏覽器還不支援
-https://jsfiddle.net/
-開啟之後打開devtool
+以下因Node.js版本不一定支援，所以可下載chrome canary並打開devtool輸入程式碼
 
+許多比較新的js功能會在Chrome Canary開放 
 
+載點:https://www.google.com.tw/chrome/browser/canary.html
 #ES6
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla
@@ -74,12 +74,18 @@ Promise.all([promises...])
 
 
 
+
+
+
 #ES7
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_Next_support_in_Mozilla
 
 全名為`ECMAScript 7.0`或稱`ECMAScript 2016`
 
 #### #Generator
+
+
+
 
 
 #### #Array.includes
