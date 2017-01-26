@@ -5,6 +5,34 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMASc
 全名為`ECMAScript 6.0`或稱`ECMAScript 2015`
 
 
+####Promise
+
+1.new Promise傳入一個函數，該函數擁有兩個參數
+
+2.這兩個參數均為函數，分別為resolve()和reject()
+
+```
+var promise = new Promise(function(resolve, reject) {
+  //first execute 
+
+  if (/* 如first execute成功 */){
+    resolve(value);//發出resolve
+  } else {
+    reject(error);發出reject
+  }
+});
+```
+4.使用resolve()代表成功，使用reject()代表first execute 
+部分沒成功，是否成功是由我們自己去判定寫邏輯
+
+5.promise生成後可用then，執行成功或失敗鎖要執行的東西
+```
+promise.then(function(value) {
+  // success//接收到resolve後會執行
+}, function(value) {
+  // failure //接收到reject後會執行
+});
+```
 
 
 
