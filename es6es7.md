@@ -108,6 +108,25 @@ Fruit().next()
 
 2.
 
+如沒加上yield，只有星號，則無作用
+```
+function* f() {
+  console.log('執行！');
+  console.log('執行！');
+  console.log('執行！');
+}
+
+var a = f()
+```
+執行
+```
+a.next()
+```
+發現函式一次執行完畢
+
+
+3.
+
 
 
 
