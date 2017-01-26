@@ -16,3 +16,6 @@ Koa2:主要使用`async/await`
 ```
 
 這裡我們使用Koa2為教學
+
+中文翻譯的官方文件可參考
+https://github.com/guo-yu/koa-guide
