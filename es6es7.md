@@ -77,6 +77,17 @@ console.log(a); // 1
 console.log(b); // 2
 ```
 
+#### #Arrow function
+功能:簡化匿名function寫法，但會失去this屬性
+
+
+```
+//以前寫法
+setTimeout(function(){ console.log('okok'),500});
+//箭頭寫法
+setTimeout(() => console.log('okok'),500);
+```
+
 #### #Promise
 
 1.new Promise傳入一個函數，該函數擁有兩個參數
