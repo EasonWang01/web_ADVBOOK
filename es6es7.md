@@ -44,6 +44,26 @@ var args = [0, 1, 2];
 myFunction(...args); //相同於myFunction(1,2,3)
 ```
 
+#### #Destructuring assignment
+
+功能:對應兩個Array或Object並把同名的值附上
+
+```
+var o = {p: 42, q: true};
+var {p: foo, q: bar} = o;
+ 
+console.log(foo); // 42 
+console.log(bar); // true  
+```
+
+```
+var a, b;
+
+[a, b] = [1, 2];
+console.log(a); // 1
+console.log(b); // 2
+```
+
 #### #Promise
 
 1.new Promise傳入一個函數，該函數擁有兩個參數
