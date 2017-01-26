@@ -44,20 +44,8 @@ var args = [0, 1, 2];
 myFunction(...args); //相同於myFunction(1,2,3)
 ```
 
-#### #Rest parameters
 
-功能:動態指定參數個數
-```
-function fun1(...theArgs) {
-  console.log(theArgs.length);
-}
-
-fun1();  // 0
-fun1(5); // 1
-fun1(5, 6, 7); // 3
-```
-
-#### #Destructuring assignment
+#### #Destructuring assignment(解構賦值)
 
 功能:對應兩個Array或Object並把同名的值附上
 
@@ -67,6 +55,9 @@ var {p: foo, q: bar} = o;
  
 console.log(foo); // 42 
 console.log(bar); // true  
+```
+```
+let obj = {x: 1, y: 2}; let {x, y} = obj; // x = 1, y = 2
 ```
 
 ```
@@ -171,14 +162,6 @@ for (let value of iterable) {
 }
 ```
 
-
-
-
-#ES7
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_Next_support_in_Mozilla
-
-全名為`ECMAScript 7.0`或稱`ECMAScript 2016`
-
 #### #Generator
 
 功能:也是用來處理異步函式，讓他順序執行
@@ -196,6 +179,29 @@ var a = Fruit();
 
 ```
 之後輸入a.next();
+
+
+
+
+
+
+
+#ES7
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_Next_support_in_Mozilla
+
+全名為`ECMAScript 7.0`或稱`ECMAScript 2016`
+
+#### #Rest parameters destructuring
+功能:動態指定參數個數
+```
+function fun1(...theArgs) {
+console.log(theArgs.length);
+}
+
+fun1(); // 0
+fun1(5); // 1
+fun1(5, 6, 7); // 3
+```
 
 
 
