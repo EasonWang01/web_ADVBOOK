@@ -1,3 +1,8 @@
+這邊我們使用jsfiddle來進行測試，因有些功能目前一些瀏覽器還不支援
+https://jsfiddle.net/
+開啟之後打開devtool
+
+
 #ES6
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla
@@ -34,7 +39,28 @@ promise.then(function(value) {
 });
 ```
 
+範例：
 
+貼上以下範例，之後把改變`value = 1+2`即可看到console的改變
+```
+var promise = new Promise(function(resolve, reject) {
+//first execute
+var value = 1+1;
+if (value === 2){
+  resolve(value);//發出resolve
+} else {
+  reject(error);發出reject
+}
+});
+
+promise
+.then(function(value) {
+  console.log('function被resolve了!')
+})
+.catch(function(err) {
+  console.log(err)
+})
+```
 
 
 
