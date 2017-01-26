@@ -10,6 +10,30 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMASc
 全名為`ECMAScript 6.0`或稱`ECMAScript 2015`
 
 
+#### #const
+用來定義常數，定義後不可更改
+```
+const a = 12;
+
+然後輸入
+a = 13;
+將會產生錯誤
+```
+
+#### #let
+
+```
+function letTest() {
+  let x = 1;
+  if (true) {
+    let x = 2;  // different variable
+    console.log(x);  // 2
+  }
+  console.log(x);  // 1
+}
+```
+let的作用範圍會被侷限在if內，而不會改到外面的同名變數
+
 ####Promise
 
 1.new Promise傳入一個函數，該函數擁有兩個參數
@@ -72,7 +96,17 @@ Promise.all([promises...])
 });
 ```
 
+#### #for of
 
+
+```
+let iterable = [10, 20, 30];
+
+for (let value of iterable) {
+  value += 1;
+  console.log(value);
+}
+```
 
 
 
@@ -99,33 +133,6 @@ var a = Fruit();
 
 ```
 之後輸入a.next();
-
-另外試試
-```
-Fruit().next()
-```
-發現如直接對函式下next指令會無法往下遍歷
-
-2.
-
-如沒加上yield，只有星號，則無作用
-```
-function* f() {
-  console.log('執行！');
-  console.log('執行！');
-  console.log('執行！');
-}
-
-var a = f()
-```
-執行
-```
-a.next()
-```
-發現函式一次執行完畢
-
-
-3.
 
 
 
