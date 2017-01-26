@@ -88,6 +88,15 @@ setTimeout(function(){ console.log('okok'),500});
 setTimeout(() => console.log('okok'),500);
 ```
 
+#### #Object.assign()
+功能:結合兩個物件
+
+```
+var obj = { a: 1 };
+var copy = Object.assign({b: 12}, obj);
+console.log(copy); 
+```
+
 #### #Promise
 
 1.new Promise傳入一個函數，該函數擁有兩個參數
