@@ -85,6 +85,24 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMASc
 #### #Generator
 
 
+```
+function* Fruit() {
+  yield 'apple';
+  yield 'banana';
+  return 'ending';
+}
+
+var a = Fruit();
+
+```
+之後輸入a.next();
+
+另外試試
+```
+Fruit().next()
+```
+發現如直接對函式下next指令會無法往下遍歷
+
 
 
 
