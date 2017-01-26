@@ -22,6 +22,7 @@ a = 13;
 
 #### #let
 
+一般變數的作用域是以function來區分，在同層function的同名變數如果重複給值，則會覆蓋前項，包含在if內，但如果if的同名變數是用let宣告，則不會影響到if外的變數
 ```
 function letTest() {
   let x = 1;
