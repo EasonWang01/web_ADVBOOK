@@ -3,6 +3,8 @@
 許多比較新的js功能會在Chrome Canary開放 
 
 載點:https://www.google.com.tw/chrome/browser/canary.html
+
+以下將會介紹比較常用到的幾種方法
 #ES6
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla
