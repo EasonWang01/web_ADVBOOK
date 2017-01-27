@@ -145,7 +145,7 @@ connection.query("ALTER table apple add column (code varchar(255))" ,function(er
 ## Read data
 
 ```
-connection.query('SELECT * FROM Food',function(err,rows){
+connection.query('SELECT * FROM articles',function(err,rows){
   if(err) throw err;
 
   console.log(rows);
