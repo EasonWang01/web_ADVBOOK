@@ -137,14 +137,6 @@ connection.query("INSERT INTO Food SET ?",{Food_id:01,Food_name:'Noodle',Food_pr
 
 另一種方式
 
-    //留著當Schema
-    var a = (`CREATE TABLE articles (
-      id     INT PRIMARY KEY AUTO_INCREMENT,
-      author VARCHAR(100) NOT NULL,
-      title  VARCHAR(100) NOT NULL,
-      body   TEXT         NOT NULL
-    )`);
-
 
     var article = {
       author: 'eason',
