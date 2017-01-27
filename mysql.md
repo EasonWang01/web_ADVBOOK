@@ -215,6 +215,8 @@ connection.query("UPDATE ?? SET title = ? WHERE id = ?",["articles","Hell",1]
 
 # 使用escape，防止injection
 
+https://www.wikiwand.com/zh-tw/SQL%E8%B3%87%E6%96%99%E9%9A%B1%E7%A2%BC%E6%94%BB%E6%93%8A
+
 可達到的效果
 
 ```
