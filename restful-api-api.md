@@ -7,7 +7,7 @@ consumes:
   - application/x-www-form-urlencoded
 
 ```
-檔案
+或是
 ```
 consumes:
   - multipart/form-data
