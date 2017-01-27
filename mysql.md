@@ -1,11 +1,29 @@
 # 使用MySQL
 
-臨時免費信箱:[http://www.yopmail.com/zh/](http://www.yopmail.com/zh/)
+#安裝
 
-測試用免費MySQL:https://www.freemysqlhosting.net/
-\(預設一個資料庫，不可再增加或修改\)
+####Windows
 
-1.申請好mysql hosting後使用npm安裝mysql
+https://dev.mysql.com/downloads/installer/ 
+
+啟動相關命令:https://dev.mysql.com/doc/refman/5.7/en/windows-start-command-line.html
+
+####Mac
+
+安裝:brew install mysql
+
+啟動相關命令
+```
+/usr/local/bin/mysql.server start
+
+/usr/local/bin/mysql.server restart
+
+/usr/local/bin/mysql.server stop
+```
+
+#與Node.js連線
+
+1.使用npm安裝mysql
 
 ```
 npm install mysql --save
@@ -43,9 +61,6 @@ app.use(express.static(__dirname + '/public'));/* 將預設路徑設在public*/
 
 app.listen(8080);
 ```
-
-3.成功連線後可插入資料或到下面網址管理資料庫  
-[https://www.db4free.net/phpMyAdmin](https://www.db4free.net/phpMyAdmin)
 
 # 操控資料庫
 
