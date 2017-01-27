@@ -1,6 +1,14 @@
 # 使用MySQL
 
-#安裝
+#使用線上服務
+臨時免費信箱:http://www.yopmail.com/zh/
+
+測試用免費mysql:https://www.freemysqlhosting.net/
+(預設一個資料庫，不可再增加或修改)
+
+>記得，如果請申請過freemysqlhosting後，想再申請一個帳號記得先把網站的cookie刪除，因目前沒刪除直接重新註冊會產生收不到密碼信件的Bug
+
+#在本地安裝
 
 ####Windows
 
