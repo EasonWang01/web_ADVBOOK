@@ -42,14 +42,14 @@ npm install mysql --save
 ```
 var express = require('express');
 
-////
+
 var mysql      = require('mysql');
 
 var connection = mysql.createConnection({
-  host     : 'db4free.net',
-  user     : 'forclass',
-  password : 'test123',
-  database : 'fruit'
+  host     : 'sql6.freemysqlhosting.net',
+  user     : 'sql6155801',
+  password : 'QxLLYKLuPt',
+  database : 'sql6155801'
 });
 connection.connect(function(err) {
   if (err) {
@@ -59,7 +59,7 @@ connection.connect(function(err) {
 
   console.log('connected as id ' + connection.threadId);
 });
-////
+
 var app = express();
 
 app.use(express.static(__dirname + '/public'));/* 將預設路徑設在public*/
