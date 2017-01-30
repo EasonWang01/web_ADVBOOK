@@ -1,4 +1,7 @@
 # #Restful簡介
+
+
+一種設計API的風格，而非標準
 https://zh.wikipedia.org/wiki/REST
 
 # \#swagger簡介
