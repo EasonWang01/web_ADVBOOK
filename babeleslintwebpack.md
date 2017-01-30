@@ -1,4 +1,4 @@
-#使用Babel,ESLint與Webpack
+#使用Babel,ESLint
 
 # #Babel
 https://babeljs.io/
