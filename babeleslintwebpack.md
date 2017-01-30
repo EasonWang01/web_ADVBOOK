@@ -91,3 +91,6 @@ class Dog extends Animal {
 `
 即會產生一個轉碼後的檔案test2.js
 
+Babel還包含其他相關工具，這裡簡略介紹大概概念，其他可參考其官網https://babeljs.io/docs/setup/
+
+#### #ESLint
