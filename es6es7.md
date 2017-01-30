@@ -183,7 +183,38 @@ var a = Fruit();
 之後輸入a.next();
 
 
+#### #class
 
+說明:即為一般物件導向程式的class寫法，以前是用prototype的方法來寫繼承，有class後即可使用extend
+
+1.類別如果有值或是其他建構時即擁有的屬性可寫在constructor
+
+2.類別function 可直接寫出名字即可`speak() {}`
+
+3.class繼承用extend
+
+4.繼承後的子代必須先在constructor內寫`super()`之後才可用`this`
+
+5.使用super存取父帶方法`super.IamParentMethod()`
+
+```
+class Cat { 
+  constructor(name) { 
+    this.name = name;
+  }
+  
+  speak() {
+    console.log(this.name + ' makes a noise.');
+  }
+}
+
+class Lion extends Cat {
+  speak() {
+    super.speak();
+    console.log(this.name + ' roars.');
+  }
+}
+```
 
 
 
