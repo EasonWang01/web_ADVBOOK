@@ -15,3 +15,7 @@ items.map(function (item) {
   return item + 1;
 });
 ```
+
+稍後會講到的ESLint與webpack和現在講到的babel一樣都有一個配置文件，
+
+類似一個菜單，寫好後交給程式，之後程式即可知道我們想要他的哪些功能，哪些是不需要的
