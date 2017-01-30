@@ -422,7 +422,7 @@ eslint 檔案名稱.js
 }  
 ```
 #記得安裝編輯器的插件
-
+在插件搜尋eslint即可
 ###使用sublime+ESLint
 進入sublime的package manage(需先安裝)
 
