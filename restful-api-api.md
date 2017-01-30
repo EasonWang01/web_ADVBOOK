@@ -1,4 +1,6 @@
-# \#簡介
+# \#swagger簡介
+
+一個把API說明清楚的方式
 
 swagger有三個服務，editor,codegen,swagger ui
 
