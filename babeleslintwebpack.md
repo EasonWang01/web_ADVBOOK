@@ -10,7 +10,7 @@ https://babeljs.io/
 ```
 items.map(item => item + 1);
 
-// 转码后
+// babel compile過後
 items.map(function (item) {
   return item + 1;
 });
