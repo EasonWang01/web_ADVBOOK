@@ -21,6 +21,19 @@ https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebre
 
 再開一個terminal 輸入`redis-cli`可產生client端
 
+###3.Redis儲存類型
+
+```
+Redis 鍵(key)
+Redis 字串(String)
+Redis 哈希(Hash)
+Redis 列表(List)
+Redis 集合(Set)
+Redis 有序集合(sorted set)
+Redis 發布與訂閱(Pub Sub)
+
+```
+
 試著在client端輸入 `set food noodle`後`get food`
 
 
