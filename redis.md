@@ -32,14 +32,14 @@ Redis 有序集合(sorted set)
 Redis 發布與訂閱(Pub Sub)
 
 ```
-1.Redis 字串(String)
+####1.Redis 字串(String)
 (簡單的設定key與value)
 
 ```
 試著在client端輸入 `set food noodle`後`get food`
 ```
 
-2.Redis 哈希(Hash)
+####2.Redis 哈希(Hash)
 (類似於javascript的object)
 
 設定
@@ -55,7 +55,7 @@ HGET website google
 HGET website yahoo
 ```
 
-3.Redis 列表(List)
+####3.Redis 列表(List)
 (類似於Array)
 
 設定
@@ -66,6 +66,7 @@ LPUSH fruits apple
 LPUSH fruits banana
 ```
 
+
 取得
 
 0 -1 代表從哪個位置取到哪個位置(-1 代表最尾端)
@@ -73,6 +74,43 @@ LPUSH fruits banana
 LRANGE fruits 0 -1
 ```
 
+(LPUSH代表從左端推入也可用RPUSH從右端推入)
+(另外也有POP方法可推出元素)
+
+####4.Redis 集合(Set)
+
+常用來計算交集，聯集與差集
+
+1.新增
+
+```
+SADD class1 "Eason" "Tim" "Jack"
+
+SADD class2 "Eason" "John" "Peter"
+```
+
+2.計算交集
+
+```
+SINTER class1 class2
+```
+
+3.計算聯集
+
+```
+SUNION class1 class2
+
+```
+
+4.計算差集
+
+```
+SDIFF class1 class2
+
+```
+
+
+https://redis.readthedocs.io/en/2.4/list.html
 
 # #使用Node.js溝通
 
