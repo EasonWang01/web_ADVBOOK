@@ -33,13 +33,14 @@ Redis 發布與訂閱(Pub Sub)
 
 ```
 1.Redis 字串(String)
-
+(簡單的設定key與value)
 
 ```
 試著在client端輸入 `set food noodle`後`get food`
 ```
 
 2.Redis 哈希(Hash)
+(類似於javascript的object)
 
 設定
 ```
@@ -52,6 +53,24 @@ HMSET website google www.google.com yahoo www.yahoo.com
 HGET website google
 
 HGET website yahoo
+```
+
+3.Redis 列表(List)
+(類似於Array)
+
+設定
+
+```
+LPUSH fruits apple
+
+LPUSH fruits banana
+```
+
+取得
+
+0 -1 代表從哪個位置取到哪個位置(-1 代表最尾端)
+```
+LRANGE fruits 0 -1
 ```
 
 
