@@ -31,4 +31,4 @@ import RaisedButton from 'material-ui/RaisedButton';
 先到如下網址下載
 https://bitbucket.org/Easonwang01/node.js-with-react.js_/downloads
 
-這是我們後端的部分
+這是我們後端與Redux的部分
