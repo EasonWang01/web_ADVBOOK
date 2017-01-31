@@ -1,5 +1,6 @@
 # Redis
-1.
+
+#### 1.下載
 
 windows下載
 https://github.com/dmajkic/redis/downloads
@@ -14,15 +15,15 @@ Mac using homebrew
 https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298#.su9r2yd8u
 
 
-2.
+###2.使用
 
-cd到目錄後執行` redis-server.exe`
+輸入`redis-server`啟動redis
 
-3.再開一個terminal一樣cd 到redis路徑
-輸入`redis-cli`可產生client端
+再開一個terminal 輸入`redis-cli`可產生client端
 
-4.
 試著在client端輸入 `set food noodle`後`get food`
+
+
 
 # #使用Node.js溝通
 
