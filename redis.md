@@ -24,7 +24,6 @@ https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebre
 ###3.Redis儲存類型
 
 ```
-Redis 鍵(key)
 Redis 字串(String)
 Redis 哈希(Hash)
 Redis 列表(List)
@@ -33,9 +32,27 @@ Redis 有序集合(sorted set)
 Redis 發布與訂閱(Pub Sub)
 
 ```
+1.Redis 字串(String)
 
+
+```
 試著在client端輸入 `set food noodle`後`get food`
+```
 
+2.Redis 哈希(Hash)
+
+設定
+```
+HMSET website google www.google.com yahoo www.yahoo.com
+```
+
+取得
+
+```
+HGET website google
+
+HGET website yahoo
+```
 
 
 # #使用Node.js溝通
