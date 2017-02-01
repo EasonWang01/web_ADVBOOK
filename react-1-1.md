@@ -1,5 +1,7 @@
 # 開始使用React 搭配 Webpack
 
+前一章我們使用codepen與babel的cdn來幫我們compile我們寫的ES6與React的JSX語法，但我們開發時通常會使用webpack結合babel與一些plugin來幫我們做compile
+
 ## 建立環境
 
 `npm install webpack -g`
@@ -132,7 +134,7 @@ ReactDOM.render(
 
 `<App/>`即為我們的react元件
 
-6.在component資料夾中新增App.js
+6.在components資料夾中新增App.js
 
 此即為我們第一個react元件
 
@@ -148,8 +150,8 @@ class App extends Component {
 export default App
 ```
 
-輸入`webpack --config webpack.config.js`
-會自動產生dist資料夾，裡面包含bundle.js檔案
+之後輸入`webpack --config webpack.config.js`
+會自動產生dist資料夾，裡面包含bundle.js檔案，此為webpack打包後的東西
 
 之後即可重新啟動伺服器，並觀看改變
 `npm run serve`\(寫在package.json中的scripts內\)
