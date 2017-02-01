@@ -90,130 +90,17 @@ views點擊=>action => reducer => store =>回傳state給views
 
 #使用React連結Redux
 
-1.
+到19章先輸入`npm install`安裝package.json寫的模組
 
-package.json
+
+這章的幾個資料夾是延續我們上一張React的結構
+
+之後安裝使用redux所需要的模組
 ```
-{
-  "name": "react-todo-list",
-  "version": "1.0.0",
-  "description": "A simple todo list app built with React, Redux and Webpack",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon server/server.js --ignore components"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "babel-core": "*",
-    "babel-loader": "*",
-    "babel-preset-es2015": "*",
-    "babel-preset-react": "*",
-    "babel-preset-react-hmre": "*",
-    "express": "*",
-    "react": "*",
-    "react-dom": "*",
-    "redux-logger": "*",
-    "webpack": "*",
-    "webpack-dev-middleware": "*",
-    "webpack-hot-middleware": "*"
-  }
-}
-
+npm install --save redux react-redux react-router-redux
 ```
-新增後輸入`npm install`
 
-2.
-
-webpack.config.js
-```
-var webpack = require('webpack');
-
-module.exports = {
-  devtool: 'inline-source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    './client/client.js'
-  ],
-  output: {
-    path: require("path").resolve("./dist"),
-    filename: 'bundle.js',
-    publicPath: '/'
-  },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['react', 'es2015', 'react-hmre']
-        }
-      }
-    ]
-  }
-}
-
-```
-3.
-
-新增server 資料夾，裡面放入server.js
-```
-var express = require('express');
-var path = require('path');
-var config = require('../webpack.config.js');
-var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-
-var app = express();
-
-var compiler = webpack(config);
-
-app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}));
-app.use(webpackHotMiddleware(compiler));
-
-app.use(express.static('./dist'));
-
-app.use('/', function (req, res) {
-    res.sendFile(path.resolve('client/index.html'));
-});
-
-var port = 3000;
-
-app.listen(port, function(error) {
-  if (error) throw error;
-  console.log("Express server listening on port", port);
-});
-
-```
-4.
-  
-新client資料夾，裡面放入index.html
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>React Todo List</title>
-</head>
-<body>
-  <div id="app"></div>
-  <script src="bundle.js"></script>
-</body>
-</html>
-
-```
-以及，client.js
+client.js
 ```
 import React from 'react'
 import { render } from 'react-dom'
