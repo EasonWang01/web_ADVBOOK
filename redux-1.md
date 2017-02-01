@@ -104,23 +104,23 @@ package.json
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kweiberth/react-todo-list.git"
+    "url": ""
   },
-  "author": "Kurt Weiberth",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-core": "^6.4.5",
-    "babel-loader": "^6.2.2",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
-    "babel-preset-react-hmre": "^1.1.0",
-    "express": "^4.13.4",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-    "redux-logger": "^2.6.1",
-    "webpack": "^1.12.13",
-    "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.6.4"
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-react-hmre": "*",
+    "express": "*",
+    "react": "*",
+    "react-dom": "*",
+    "redux-logger": "*",
+    "webpack": "*",
+    "webpack-dev-middleware": "*",
+    "webpack-hot-middleware": "*"
   }
 }
 
