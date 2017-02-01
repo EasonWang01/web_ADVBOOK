@@ -105,25 +105,25 @@ client.js
 import React from 'react'
 import { render } from 'react-dom'
 import App from '../components/App'
-import configureStore from '../redux/store'
+import Proptest from '../components/Proptest'
+import TextDisplay from '../components/TextDisplay'
+import Repo from '../components/Repo'
+import { Router, Route, browserHistory } from 'react-router'
+/*Redux 部分 */
 import {Provider} from 'react-redux'
+import {configureStore} from '../redux/store'
 
-let initialState = {
-	todos:[{
-		id:0,
-		completed: false,
-		text:'initial for demo'
-
-	}]
-}
-let store = configureStore(initialState);
-
-render(
-  <Provider store={store} >
-  <App/>
-  </Provider>,
-  document.getElementById('app')
-)
+render(( /*在router外包一層Provider */
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/" component={App}>
+                <Route path="/Proptest" component={Proptest}/>
+                <Route path="/TextDisplay" component={TextDisplay}/>
+                <Route path="/repo/:userName/:repoName" component={Repo}/>
+            </Route>
+        </Router> 
+    </Provider>
+  ),document.getElementById('app'))
 
 ```
 Provider用來連結react即redux的store
@@ -145,12 +145,11 @@ import reducer from './reducer'
 import logger from 'redux-logger'
 
 let finalCreateStore = compose(
-	applyMiddleware(logger())
-	)(createStore)
+  applyMiddleware(logger())
+)(createStore);
 
-export default function configureStore(initialState = { todos:[]}){
-	return finalCreateStore(reducer,initialState)
-
+export default function configureStore(initialState = { todos:[] }) {
+  return finalCreateStore(reducer,initialState)
 }
 ```
 這裡我們加入了中間件logger
@@ -159,12 +158,12 @@ export default function configureStore(initialState = { todos:[]}){
 
 action.js
 ```
-let  actions ={ 
-	addTodo:(text)=>{
-		return ({
-	type:'ADD_TODO',
-	text:text})
-}
+let actions ={
+  addTodo:(text)=>{
+    return ({
+      type:'ADD_TODO',
+      text:text })
+    }
 }
 
 
@@ -174,24 +173,20 @@ reducer.js
 ```
 let getId = 1 ;
 
-export default function reducer(state,action){
-	switch(action.type){
-		case 'ADD_TODO':
-			
-			return(	Object.assign({},state,{
-				todos:[{
-				  text:action.text,
-				  completed:false,
-				  id:getId++
-
-				},...state.todos]
-			})
-			)
-		default:
-			return state;
-
-	}
-
+export default function reducer(state, action){
+  switch(action.type){
+    case 'ADD_TODO':
+      return(	Object.assign({}, state, {
+        todos:[{
+          text:action.text,
+          completed:false,
+          id:getId++
+          }, ...state.todos]
+        })
+      )
+    default:
+      return state;
+  }
 }
 ```
 最後建立component資料夾
