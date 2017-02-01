@@ -225,7 +225,7 @@ class TextDisplay extends Component {
   constructor() {
     super()
     this.state = {
-      inputText: ' sdsxt'
+      inputText: 'sdsxt'
     }
   }
 
