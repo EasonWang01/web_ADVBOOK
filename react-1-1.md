@@ -91,25 +91,25 @@ app.listen(port, function(error) {
 
 ```
 module.exports = {
-devtool: 'inline-source-map',
-entry: ['./client/client.js'],
-output: {
-path: './dist',
-filename: 'bundle.js',
-publicPath: '/'
-},
-module: {
-loaders: [
-{
-test: /\.js$/,
-loader: 'babel-loader',
-exclude: /node_modules/,
-query: {
-presets: ['react', 'es2015']
-}
-}
-]
-}
+  devtool: 'inline-source-map',
+  entry: ['./client/client.js'],
+  output: {
+    path: './dist',
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['react', 'es2015']
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -121,19 +121,18 @@ presets: ['react', 'es2015']
 5.在client資料夾中新增client.js
 
 ```
-import React from 'react'
-import { render } from 'react-dom'
-import App from '../components/App'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from '../components/App';
 
-render(
-<App/>,
-document.getElementById('app')
+ReactDOM.render(
+<App/>,document.getElementById('app')
 )
 ```
 
 `<App/>`即為我們的react元件
 
-6.在components資料夾中新增App.js
+6.在component資料夾中新增App.js
 
 此即為我們第一個react元件
 
@@ -141,11 +140,9 @@ document.getElementById('app')
 import React, { Component } from 'react'
 
 class App extends Component {
-
-render() {
-return <div>I'm Banana!</div>
-}
-
+  render() {
+    return <div>I'm Banana!</div>
+  }
 }
 
 export default App
