@@ -210,74 +210,7 @@ handleSubmit() {
 
 參考:[http://egorsmirnov.me/2015/08/16/react-and-es6-part3.html](http://egorsmirnov.me/2015/08/16/react-and-es6-part3.html)
 
-#### !每次改動constructor記得都要重新整理，就算有用Hot reload
-
-完整範例：
-
-`注意其中的onclick 與 從子元件傳上來的 onclick`
-
-container
-
-```
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import actions from '../redux/actions/todoActions.js'
-import { bindActionCreators } from 'redux'
-import List from '../components/List.js'
-
-class TodoList extends Component {
-send = () => {
-let text = this.inputFiled.value;
-this.props.addTodo1(text);
-}
-itemClick = (e,id) => {
-console.log(e)
-console.log(id)
-}
-render() {
-return (
-<div>
-<input ref={(c) => this.inputFiled = c} />
-<button onClick={()=>this.send()}></button>
-<List list={this.props} itemClick={(e,id)=>this.itemClick(e,id)}>
-</List>
-</div>
-)
-}
-
-}
-function mapStateToProp(state){
-return state
-}
-
-function mapDispatchToProps(dispatch) {
-return bindActionCreators({
-addTodo1:actions.addTodo
-},dispatch);
-}
-
-export default connect(mapStateToProp,mapDispatchToProps)(TodoList)
-```
-
-component
-
-```
-import React from 'react'
-const List = (props) => {
-let todos = Array.from(props.list.todos);
-return (
-<div>
-{todos.map( i =>
-<p key={i.id} onClick={(e)=>props.itemClick(e,i.id)}>{i.text}</p>
-)}
-</div>
-)
-}
-
-export default List;
-```
-
-# 2.在class內所有的this都是指到那個class
+#在class內所有的this都是指到那個class
 
 所以要取得onchange時input內的value必須用e.target
 ，因為這裡不是DOM
@@ -285,33 +218,34 @@ export default List;
 ```
 import React, { Component } from 'react'
 
+class TextDisplay extends Component {
 
-class TextInput extends Component {
+  constructor() {
+    super()
+    this.state = {
+      inputText: ' sdsxt'
+    }
+  }
 
-constructor() {
-super()
-this.state = {
-inputText: ' sdst'
+  handleChange(e) {
+    this.setState({inputText: 'hello'})
+    console.log(this);
+    console.log(e.target);
+  }
+
+  render() {
+    return (
+      <div>
+      <input
+        type="text"
+        placeholder="This is going to be text"
+        value={this.state.inputText}
+        onChange={(e) => this.handleChange(e)} />
+      </div>
+    )
+  }
 }
-this.handleChange = this.handleChange.bind(this);
-}
 
-handleChange(e){
-console.log(e.target.value);
-console.log(this);
-//this.setState({inputText:12});
-}
+export default TextDisplay
 
-render() {
-return (
-<div>
-
-<input onChange={this.handleChange} />
-</div>
-)
-}
-
-}
-
-export default TextInput
 ```
