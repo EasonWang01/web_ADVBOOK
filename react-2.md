@@ -90,66 +90,60 @@ export default TextDisplay
 
 # 在元件內使用條件判斷
 
+Proptest.js
+
 ```
 import React, { Component } from 'react'
-import Proptest from "./Proptest"
 
-
-
-class TextInput extends Component {
-
-constructor() {
-super()
-this.state = {
-inputText: ' sdst'
+class Proptest extends Component {
+  render(){
+    return (
+      <div>
+        <p>點擊按鈕後我會消失</p>
+      </div>  
+    )
+  }
 }
-this.handleChange = this.handleChange.bind(this);
-this.deleteLetter = this.deleteLetter.bind(this);
-}
+export default Proptest
+```
+TextDisplay.js
 
-handleChange(e){
-console.log(e.target.value);
+```
+import React, { Component } from 'react'
+import Proptest from './Proptest.js';
 
-this.setState({inputText:e.target.value});
-}
-deleteLetter(){
-this.setState({
-inputText:this.state.inputText.substring(0,this.state.inputText.length-1)
-});
-}
+class TextDisplay extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      show: true
+    }
+  }
 
+  handleChange() {
+    if(this.state.show) {
+      this.setState({show: false});
+    } else {
+      this.setState({show: true});
+    }
+  }
 
-
-
-
-render() {
-var checkFalse = true;
-if(checkFalse){
-checkFalse = <Proptest text={this.state.inputText} deleteLetter={this.deleteLetter}/>;
-}else{
-checkFalse = <p>This is false</p>
-}
-
-
-
-return (
-<div>
-
-<input value={this.state.inputText} onChange={this.handleChange} />
-
-{checkFalse}
-
-</div>
-)
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.handleChange()} />
+        { this.state.show ? <Proptest /> : '' }
+      </div>
+    )
+  }
 }
 
-}
-
-export default TextInput
+export default TextDisplay
 ```
 
-使用AJAX
+
+#使用AJAX
 
 1.先在server.js加上app.post的路徑
 
