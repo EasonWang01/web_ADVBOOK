@@ -198,6 +198,35 @@ ReactDOM.render(
 
 而設定state可用`setState()`
 
+把codepen改為如下，點擊按鈕改變state
+
+```
+class CommentBox extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: 'hello'
+    };
+  }
+  clickBtn = () => {
+    this.setState({data: 'okok'})
+  };
+  render() {
+    return (
+      <div className="commentBox">
+        <h1>{this.state.data}</h1>
+        <button onClick={() => this.clickBtn()} />
+      </div>
+   );
+  }
+};
+
+ReactDOM.render(
+  <CommentBox />,
+  document.getElementById('root')
+);
+```
+
 下面介紹`componentDidMount`方法，用途為在元件載入到頁面後所要執行的函式，類似於jquery中的`$( document ).ready()`方法
 ```
 componentDidMount: function() {
