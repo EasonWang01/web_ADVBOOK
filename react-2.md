@@ -145,89 +145,74 @@ export default TextDisplay
 
 #使用AJAX
 
-1.先在server.js加上app.post的路徑
+1.先在server.js加上app.get的路徑
 
 ```
-app.post('/hi',function(req,res){
-res.end("hi");
+var express = require('express');
+var path = require('path');
+var config = require('../webpack.config.js');
+var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+
+var app = express();
+
+var compiler = webpack(config);
+
+app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}));
+app.use(webpackHotMiddleware(compiler));
+
+app.use(express.static('./dist'));
+
+app.get('/hi',function(req,res){
+  console.log(req);
+  res.end("Hello Hello hi hi hi");
+});
+
+app.use('/', function (req, res) {
+  res.sendFile(path.resolve('client/index.html'));
+});
+
+
+var port = 3000;
+
+app.listen(port, function(error) {
+  if (error) throw error;
+  console.log("Express server listening on port", port);
 });
 ```
 
-2.
+2.TextDisplay.js
 
 ```
 import React, { Component } from 'react'
-import Proptest from "./Proptest"
+import Proptest from './Proptest.js';
+import axios from 'axios';
 
+class TextDisplay extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      data: ''
+    }
+  }
+  componentWillMount() {
+    axios.get('http://localhost:3000/hi')
+    .then((res) => {
+      console.log(res.data);
+      this.setState({data: res.data});
+    })
+  }
 
-class TextInput extends Component {
-
-constructor() {
-super()
-this.state = {
-inputText: ' sdst'
-}
-this.handleChange = this.handleChange.bind(this);
-this.deleteLetter = this.deleteLetter.bind(this);
-}
-
-
-
-
-
-
-handleChange(e){
-console.log(e.target.value);
-
-this.setState({inputText:e.target.value});
-}
-deleteLetter(){
-$.ajax({
-type:"POST",
-url: "/hi",
-dataType: 'text',
-success: function(data) {
-console.log(data);
-}.bind(this),
-error: function(xhr, status, err) {
-console.error("error");
-}.bind(this)
-});
-
-
-this.setState({
-inputText:this.state.inputText.substring(0,this.state.inputText.length-1)
-});
+  render() {
+    return (
+      <div>
+        {this.state.data}
+      </div>
+    )
+  }
 }
 
-
-
-
-
-
-render() {
-var checkFalse = true;
-if(checkFalse){
-checkFalse = <Proptest text={this.state.inputText} deleteLetter={this.deleteLetter}/>;
-}else{
-checkFalse = <p>This is false</p>
-}
-
-
-
-return (
-<div>
-
-<input value={this.state.inputText} onChange={this.handleChange} />
-
-{checkFalse}
-
-</div>
-)
-}
-
-}
-
-export default TextInput
+export default TextDisplay
 ```
