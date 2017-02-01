@@ -128,12 +128,11 @@ class App extends Component {
   render() {
     return (
     <div>
-     <ul role="nav">
+        <ul role="nav">
           <li><Link to="/TextDisplay">TextDisplay</Link></li>
           <li><Link to="/Proptest">Proptest</Link></li>
         </ul>
          {this.props.children}
-    
     </div>
   )}
 
@@ -148,6 +147,7 @@ export default App
 ##4.
 幫link 加上active時的style
 
+App.js
 ```
 import React, { Component } from 'react'
 import TextDisplay from './TextDisplay'
