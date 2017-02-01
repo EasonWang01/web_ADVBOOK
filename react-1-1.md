@@ -18,7 +18,7 @@
     "description": "A simple app",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "serve": "nodemon server/server.js"
+        "serve": "nodemon server/server.js --ignore ./components"
     },
     "repository": {
         "type": "git",
