@@ -1,43 +1,4 @@
-webpack.config.js
 
-```
-var webpack = require('webpack');
-
-module.exports = {
-devtool: 'inline-source-map',
-entry: [
-'webpack-hot-middleware/client',
-'./client/client.js'
-],
-output: {
-path: require("path").resolve("./dist"),
-filename: 'bundle.js',
-publicPath: '/'
-},
-plugins: [
-new webpack.optimize.OccurrenceOrderPlugin(),
-new webpack.HotModuleReplacementPlugin(),
-new webpack.NoErrorsPlugin()
-],
-module: {
-loaders: [
-{
-test: /\.js$/,
-loader: 'babel-loader',
-exclude: /node_modules/,
-query: {
-presets: ['react', 'es2015', 'react-hmre']
-}
-}
-]
-}
-}
-```
-
-現在執行
-`npm run serve`
-
-再去更改app.js內的字，可以看到不用重新啟動伺服器，也不用按網頁的重新整理，即可更新
 
 ## 第二階段
 
