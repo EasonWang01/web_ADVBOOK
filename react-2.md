@@ -216,3 +216,49 @@ class TextDisplay extends Component {
 
 export default TextDisplay
 ```
+
+#Stateless component
+
+之前我們寫元件都是使用class寫法
+React.js官方說明使用以下方式將比使用class寫法具有更好的效能
+
+Proptest.js
+```
+import React, { Component } from 'react'
+
+const Proptest = ({name}) => (
+  <div>{name}</div>
+);
+
+export default Proptest
+```
+
+TextDisplay.js
+
+```
+import React, { Component } from 'react'
+import Proptest from './Proptest.js';
+import axios from 'axios';
+
+class TextDisplay extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      data: ''
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Proptest name="HIHI,this is stateless component" />
+      </div>
+    )
+  }
+}
+
+export default TextDisplay
+```
+
+其為一個簡單的function具有參數，而在父元件寫入的同名props及危急
