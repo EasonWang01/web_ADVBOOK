@@ -13,6 +13,9 @@ views點擊=>action => reducer => store =>回傳state給views
 2.使用store.getState
 ```
 
+新增test1.html
+
+在terminal輸入`open test1.html`
 #簡單範例
 ```
 <!DOCTYPE html>
@@ -34,6 +37,7 @@ views點擊=>action => reducer => store =>回傳state給views
      </body>
 </html>
 ```
+再來加上
 ```
  <script>
     
@@ -45,7 +49,7 @@ views點擊=>action => reducer => store =>回傳state給views
       render()
       store.subscribe(render)
      
-    </script>
+</script>
 ```
 Reducer
 ```
