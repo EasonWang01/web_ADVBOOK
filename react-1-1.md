@@ -11,29 +11,29 @@
 
 ```
 {
-"name": "react-learning",
-"version": "1.0.0",
-"description": "A simple app",
-"scripts": {
-"test": "echo \"Error: no test specified\" && exit 1",
-"serve": "nodemon server/server.js"
-},
-"repository": {
-"type": "git",
-"url": ""
-},
-"author": "",
-"license": "ISC",
-"dependencies": {
-"babel-core": "*",
-"babel-loader": "*",
-"babel-preset-es2015": "*",
-"babel-preset-react": "*",
-"express": "*",
-"react": "*",
-"react-dom": "*",
-"webpack": "*"
-}
+    "name": "react-learning",
+    "version": "1.0.0",
+    "description": "A simple app",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "serve": "nodemon server/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "babel-core": "*",
+        "babel-loader": "*",
+        "babel-preset-es2015": "*",
+        "babel-preset-react": "*",
+        "express": "*",
+        "react": "*",
+        "react-dom": "*",
+        "webpack": "*"
+    }
 }
 ```
 
@@ -42,10 +42,9 @@
 在根目錄下新建三個目錄
 
 ```
-forclass
---client
---components
---server
+  --client
+  --components
+  --server
 package.json
 ```
 
@@ -60,14 +59,14 @@ var app = express();
 app.use(express.static('./dist'));
 
 app.use('/', function (req, res) {
-res.sendFile(path.resolve('client/index.html'));
+  res.sendFile(path.resolve('client/index.html'));
 });
 
 var port = 3000;
 
 app.listen(port, function(error) {
-if (error) throw error;
-console.log("Express server listening on port", port);
+  if (error) throw error;
+  console.log("Express server listening on port", port);
 });
 ```
 
@@ -75,16 +74,16 @@ console.log("Express server listening on port", port);
 
 ```
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>React Todo List</title>
-</head>
-<body>
-<h1>This is not a React app yet!</h1>
-<div id="app"></div>
-<script src="bundle.js"></script>
-</body>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+    <title>React example</title>
+    </head>
+    <body>
+      <h1>hihi !</h1>
+      <div id="app"></div>
+      <script src="bundle.js"></script>
+    </body>
 </html>
 ```
 
