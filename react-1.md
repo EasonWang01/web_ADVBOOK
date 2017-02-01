@@ -225,3 +225,108 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+
+
+下面介紹React.js兩個常用的生命週期方法
+
+1.`componentDidMount`方法，用途為在元件載入到頁面後所要執行的函式，類似於jquery中的`$( document ).ready()`方法
+
+2.`componentWillMount`方法，會在元件渲染到頁面前執行 
+
+```
+class CommentBox extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: ''
+    };
+  }
+  componentWillMount() {
+    console.log('渲染到畫面前')
+  }
+  componentDidMount() {
+    console.log('Mounted')
+  }
+  render() {
+    return (
+      <div className="commentBox">
+        <h1>{this.state.data}</h1>
+      </div>
+   );
+  }
+};
+
+ReactDOM.render(
+  <CommentBox />,
+  document.getElementById('root')
+);
+```
+
+其他生命週期方法還包含
+
+```
+componentWillReceiveProps()
+shouldComponentUpdate()
+componentWillUpdate()
+componentDidUpdate()
+componentWillUnmount()
+```
+
+
+
+
+####PropTypes 
+
+功能:用來檢查型別
+
+貼上下面程式碼，然後開啟console，之後把`title="123"` 刪除
+```
+class Header extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+        return (
+            <h1>{this.props.title}</h1>
+        );
+    }
+}
+
+
+Header.propTypes = {
+  title: React.PropTypes.string.isRequired
+}
+
+ReactDOM.render(
+  <Header title="123" />,
+  document.getElementById('root')
+);
+
+```
+
+
+####Refs
+
+功能：用來取得DOM並且進行操作
+
+```
+class Header extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    componentDidMount() {
+      console.log(ReactDOM.findDOMNode(this.refs.chart))
+    }
+    render() {
+        return (
+            <h1 ref="chart">{this.props.title}</h1>
+        );
+    }
+}
+
+ReactDOM.render(
+  <Header title="123" />,
+  document.getElementById('root')
+);
+
+```
