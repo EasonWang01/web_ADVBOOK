@@ -219,7 +219,7 @@ render((
 
 App.js
 ```
-import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import { Router, Route, browserHistory  } from 'react-router'
 
 ```
 ```
