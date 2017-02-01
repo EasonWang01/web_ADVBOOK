@@ -210,59 +210,9 @@ render((
 之後在url輸入http://localhost:3000/#/repo/this/is
 即可
 
-#PS:巢狀route，當url是子代時，會把所有的父代component都render出
+>PS:巢狀route，當url是子代時，會把所有的父代component都render出
 
----
-##6.給route 一個預設的頁面
-
-建立home component
-
-Home.js
-```
-import React, { Component } from 'react'
-
-
-export default class extends Component {
-	  render() {
-    return ( 
-    	<div>Home</div>
-  )}
-}
-```
-App.js
-```
-import React, { Component } from 'react'
-import TextDisplay from './TextDisplay'
-import Home from './Home'
-import { Link } from 'react-router'
-
-class App extends Component {
-
-  render() {
-    return (
-    <div>
-     <ul role="nav">
-          <li><Link to="/TextDisplay" activeStyle={{ color: 'orange' }}>TextDisplay</Link></li>
-          <li><Link to="/Proptest" activeStyle={{ color: 'red' }}>Proptest</Link></li>
-        </ul>
-        <div>
-         
-          {this.props.children || <Home/>}
-        </div>
-    </div>
-  )}
-
-}
-export default App
-
-
-```
-(not understand now)另一個標籤(IndexRoute)
-
-https://github.com/reactjs/react-router-tutorial/tree/master/lessons/08-index-routes
-
-https://github.com/reactjs/react-router/blob/master/docs/guides/IndexRoutes.md
-
+ 
 #7.消除原本在url上的`#`
 
 將hash history改為browser history
