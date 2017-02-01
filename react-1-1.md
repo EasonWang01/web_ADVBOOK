@@ -2,10 +2,10 @@
 
 ## 建立環境
 
-npm install webpack -g
+`npm install webpack -g`
 
-npm install nodemon -g
-\(在更改程式時自動執行server，而forever為遇到錯誤也不會停止\)
+`npm install nodemon -g`
+\(在更改程式時自動執行server，與forever類似，但forever遇到錯誤也不會停止\)
 
 1.裡面放入package.json
 
@@ -37,7 +37,7 @@ npm install nodemon -g
 }
 ```
 
-之後輸入npm install
+之後輸入`npm install`
 
 在根目錄下新建三個目錄
 
