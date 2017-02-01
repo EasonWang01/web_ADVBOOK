@@ -88,14 +88,4 @@ views點擊=>action => reducer => store =>回傳state給views
 </html>
 ```
 
-#使用React連結Redux
 
-到19章先輸入`npm install`安裝package.json寫的模組
-
-
-這章的幾個資料夾是延續我們上一張React的結構
-
-之後安裝使用redux所需要的模組
-```
-npm install --save redux react-redux react-router-redux redux-logger
-```
