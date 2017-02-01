@@ -226,7 +226,7 @@ Proptest.js
 ```
 import React, { Component } from 'react'
 
-const Proptest = ({props}) => (
+const Proptest = (props) => (
   <div>{props.name}</div>
 );
 
