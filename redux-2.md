@@ -12,6 +12,9 @@ npm install --save redux react-redux react-router-redux redux-logger
 
 之後我們執行，然後看著程式碼進行講解
 
+
+2.
+
 #操作非同步動作(Async)
 例如:
 >我們今天有一個按鈕，點擊後發出action去跟server要資料，回傳資料後再觸發一個action去更新state
