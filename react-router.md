@@ -173,23 +173,19 @@ export default App
 
 ```
 
-或是像原本一樣寫`active`時的css也可以
+>或是像原本一樣寫`active`時的css也可以
 
 ##5.像Express 使用參數url
 
 新增一個元件`Repo.js`
 ```
-import React from 'react'
+import React, { Component } from 'react'
 
-export default React.createClass({
-  render() {
-    return (
-      <div>
-        <h2>{this.props.params.repoName}</h2>
-      </div>
-    )
-  }
-})
+const Repo = (props) => (
+  <div>{props.params.repoName}</div>
+);
+
+export default Repo
 ```
 更改Client.js
 ```
@@ -202,16 +198,14 @@ import Repo from '../components/Repo'
 import { Router, Route, hashHistory } from 'react-router'
 
 render(( 
-	<Router history={hashHistory}>
-		<Route path="/" component={App}>
-		<Route path="/repo/:userName/:repoName" component={Repo}/>
-		     <Route path="/Proptest" component={Proptest}/>
-		     <Route path="/TextDisplay" component={TextDisplay}/>
-	    </Route>
+    <Router history={hashHistory}>
+        <Route path="/" component={App}>
+             <Route path="/Proptest" component={Proptest}/>
+             <Route path="/TextDisplay" component={TextDisplay}/>
+             <Route path="/repo/:userName/:repoName" component={Repo}/>
+        </Route>
     </Router> 
   ),document.getElementById('app'))
-
-
 ```
 之後在url輸入http://localhost:3000/#/repo/this/is
 即可
