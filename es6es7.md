@@ -216,6 +216,95 @@ class Lion extends Cat {
 }
 ```
 
+####export
+
+我們在寫Node.js時使用的require是屬於CommonJS體系
+
+但在ES6我們不使用require而使用import
+
+\(兩者亦可混合使用，參照webpack章節\)
+
+## 下面先介紹export用法
+
+export用來輸出單個變數或function
+
+```
+export var fruit = 'apple';
+export var person = 'John';
+
+export function multiply (x, y) {
+  return x * y;
+};
+```
+
+也可寫成如下
+
+```
+var fruit = 'apple';
+var person = 'John';
+
+export {fruit,person,multiply};
+```
+
+可用as改變import時的名字
+
+```
+export {fruit as f,person as p,multiply as m};
+```
+
+最後
+
+注意:export要放在function外不然會出錯
+
+## 再來講import
+
+```
+import {fruit, person, multiply} from './list.js';
+```
+
+也可用as改變引入後的名稱
+
+```
+import {fruit as f, person as p, multiply as m} from './list.js';
+```
+
+也可一次載入
+
+```
+import * as list from './list.js';
+```
+
+## export default
+
+上面的export方法在import時需要知道該變數名稱才可引用，為了解決，我們可使用export default
+
+a.js
+
+```
+export default function () {
+  console.log('I'm banana');
+}
+```
+
+b.js
+
+```
+import customName from './a.js';//可自行指定名稱
+customName(); // 'I'm banana'
+```
+
+我們在React通常會如下寫
+
+```
+// Component1.js
+export default class { ... }
+
+// main.js
+import Component1 from './Component1.js'
+```
+
+
+
 
 
 
