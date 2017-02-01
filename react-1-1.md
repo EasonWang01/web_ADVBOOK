@@ -153,8 +153,15 @@ export default App
 之後輸入`webpack --config webpack.config.js`
 會自動產生dist資料夾，裡面包含bundle.js檔案，此為webpack打包後的東西
 
-之後即可重新啟動伺服器，並觀看改變
-`npm run serve`\(寫在package.json中的scripts內\)
+之後於terminal輸入，`npm run serve`\(寫在package.json中的scripts內\)
+
+執行伺服器，並打開瀏覽器輸入開啟`localhost:3000`
+
+
+####下載React devtool
+https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
+
+之後chrome devtool的tab會多一個`React`
 
 ## 讓我們不用重新整理網頁
 
@@ -164,55 +171,29 @@ export default App
 \(讓我們不用使用webpack-dev-server也有-hot的指令\)
 
 ```
-"webpack-hot-middleware": "^2.6.4"
+"webpack-hot-middleware": "*"
 ```
 
 2.讓hot middleware知道react的class
 
 ```
-"babel-preset-react-hmre": "^1.1.0",
+"babel-preset-react-hmre": "*",
 ```
 
-以及上webpack跑在我們架設的express server上
+以及讓webpack跑在我們架設的express server上
 
 ```
-"webpack-dev-middleware": "^1.5.1"
+"webpack-dev-middleware": "*"
 ```
 
-完整版
+使用指令 
 
 ```
-{
-"name": "react-todo-list",
-"version": "1.0.0",
-"description": "A simple todo list app built with React, Redux and Webpack",
-"scripts": {
-"test": "echo \"Error: no test specified\" && exit 1",
-"serve": "nodemon server/server.js --ignore components"
-},
-"repository": {
-"type": "git",
-"url": "https://github.com/kweiberth/react-todo-list.git"
-},
-"author": "Kurt Weiberth",
-"license": "ISC",
-"dependencies": {
-"babel-core": "^6.4.5",
-"babel-loader": "^6.2.2",
-"babel-preset-es2015": "^6.3.13",
-"babel-preset-react": "^6.3.13",
-"babel-preset-react-hmre": "^1.1.0",
-"express": "^4.13.4",
-"react": "^0.14.7",
-"react-dom": "^0.14.7",
-"webpack": "^1.12.13",
-"webpack-dev-middleware": "^1.5.1",
-"webpack-hot-middleware": "^2.6.4"
-}
-}
+npm install --save webpack-hot-middleware babel-preset-react-hmre webpack-dev-middleware
 ```
 
-npm install後
+來安裝以上三個package
+
 
 接著更改剛才server資料夾下的 server.js
 
