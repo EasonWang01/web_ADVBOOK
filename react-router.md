@@ -172,9 +172,8 @@ export default App
 
 
 ```
-另一種方式是幫他寫上class
-`activeClassName="active"`
-然後即可加入css檔案 和正常的class一樣
+
+或是像原本一樣寫`active`時的css也可以
 
 ##5.像Express 使用參數url
 
