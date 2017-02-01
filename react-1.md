@@ -46,47 +46,46 @@ class baseComponent extends React.Component{
 
 HTML
 ```html
-<!-- compare this two-->
 <div class="banana" style="border: 1px solid red">
-<label for="name">Enter your name: </label>
-<input type="text" id="name" />
+  <label for="name">Enter your name: </label>
+  <input type="text" id="name" />
 </div>
 <p>Enter your HTML here</p>
 ```
-JSX
-```
-var NewComponent = React.createClass({
-render: function() {
-return (
-<div>
-{/* compare this two*/}
-<div className="banana" style={{border: '1px solid red'}}>
-<label htmlFor="name">Enter your name: </label>
-<input type="text" id="name" />
-</div>
-<p>Enter your HTML here</p>
-</div>
-);
-}
+
+```javascript
+class baseComponent extends Component{
+
+  render() {
+    return (
+    <div>
+      <div className="banana" style={{border: '1px solid red'}}>
+        <label htmlFor="name">Enter your name: </label>
+        <input type="text" id="name" />
+      </div>
+      <p>Enter your HTML here</p>
+    </div>
+  );
+ }
 });
 ```
 
 1. style改為物件的寫法
 2. class改為className
 3. React的component名字字母須大寫(與一般HTML tag區別)
-
+4. function直接寫 `functionName() { }`  即可
 
 ####3.Component內傳遞data方式
 
 一個component指的是一個class，下面為最基本的ES6 React component構造
 ```javascript
 class TodoInput extends Component{
-render(){
-return(
-<div>
-</div>
-)
-}
+  render(){
+    return(
+      <div>
+      </div>
+    )
+  }
 }
 ```
 而傳遞方式在我們使用Redux等框架前，主要使用state和prop傳遞
@@ -100,55 +99,95 @@ return(
 
 一個名為 Comment 的component
 ```
-class Comment extends Component{
-render() {
-return (
-<div className="comment">
-<h2 className="commentAuthor">
-{this.props.author}
-</h2>
-{this.props.children}
-</div>
-);
-}
+class Comment extends React.Component{
+  render() {
+    return (
+      <div className="comment">
+        <h1 className="commentAuthor">
+          {this.props.author}
+        </h1>
+          {this.props.children}
+      </div>
+    );
+  }
 };
 ```
 在父component呼叫
 ```
-class CommentList extends Component{
-render() {
-return (
-<div >
-<Comment author="yicheng">Just do it</Comment>
-</div>
-);
-}
-});
+class CommentList extends React.Component{
+  render() {
+    return (
+    <div >
+      <Comment author="yicheng">Just do it</Comment>
+    </div>
+    );
+  }
+};
+```
+
+試著把剛才codepen改為如下
+
+```
+class Comment extends React.Component{
+  render() {
+    return (
+      <div className="comment">
+      <h1 className="commentAuthor">
+      {this.props.author}
+      </h1>
+      {this.props.children}
+      </div>
+    );
+  }
+};
+
+class CommentList extends React.Component{
+  render() {
+    return (
+    <div >
+      <Comment author="hihi">Just do it</Comment>
+    </div>
+    );
+  }
+};
+
+ReactDOM.render(<CommentList />, document.getElementById('root'));
 ```
 
 而最後會產生如下
 ```
 <div className="comment">
-<h2 className="commentAuthor">
-yicheng
-</h2>
-Just do it
+  <h2 className="commentAuthor">
+  yicheng
+  </h2>
+  Just do it
 </div>
 ```
 ####State範例
+
+接著把codepen改為
+
 ```
-class CommentBox extends Component{
-state = {
-data:hello
+class CommentBox extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: 'hello'
+    };
+  }
+  render() {
+    return (
+      <div className="commentBox">
+        <h1>{this.state.data}</h1>
+      </div>
+   );
+  }
 };
-render() {
-return (
-<div className="commentBox">
-<h1>{this.state.data}</h1>
-</div>
+
+ReactDOM.render(
+  <CommentBox />,
+  document.getElementById('root')
 );
-}
-});
 ```
 將產生如下
 ```
