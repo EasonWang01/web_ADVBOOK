@@ -11,7 +11,7 @@ return <div>Hello {this.props.name}</div>;
 }
 });
 
-ReactDOM.render(<HelloMessage name="John" />, mountNode);
+ReactDOM.render(<HelloMessage name="hihi" />, document.getElementById('root'));
 ```
 
 也可以試著把script的內容改為（使用ES6）
@@ -23,7 +23,8 @@ return <div>Hello {this.props.name}</div>;
 }
 }
 
-ReactDOM.render(<HelloMessage name="Sebastian"/>, mountNode);
+ReactDOM.render(<HelloMessage name="Sebastian"/>, document.getElementById('root'));
+);
 ```
 
 其他方法之簡單整理
