@@ -26,8 +26,8 @@
 * [React 基本概念1-1\(搭配webpack\)](react-1-1.md)
 * [React基本概念1-2\(新增元件\)](react1-2.md)
 * [React 基本概念2](react-2.md)
+* react-router
 * [Redux 基本概念1](redux-1.md)
 * Redux 基本概念2
-* react-router
 * [結合Node.js與React.js搭建論壇網站1](node.jsreact.js1.md)
 
