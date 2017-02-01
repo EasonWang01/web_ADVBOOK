@@ -1,0 +1,732 @@
+基礎
+
+先打開index.html
+加入如下
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script src="https://fb.me/react-15.0.0.js"></script>
+<script src="https://fb.me/react-dom-15.0.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-
+core/5.8.34/browser.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+ReactDOM.render(
+<h1>Hello, world!</h1>,
+document.getElementById('example')
+);
+</script>
+
+</body>
+</html>
+```
+
+試著把script的內容改為
+```
+var HelloMessage = React.createClass({
+render: function() {
+return <div>Hello {this.props.name}</div>;
+}
+});
+
+ReactDOM.render(<HelloMessage name="John" />, mountNode);
+```
+
+也可以試著把script的內容改為（使用ES6）
+
+```
+class HelloMessage extends React.Component {
+render() {
+return <div>Hello {this.props.name}</div>;
+}
+}
+
+ReactDOM.render(<HelloMessage name="Sebastian"/>, mountNode);
+```
+
+其他方法之簡單整理
+
+```
+class baseComponent extends React.Component{
+// 建構子
+constructor(props){
+super(props);
+}
+
+}
+//定義另一類別，繼承baseComponent
+class App extends baseComponent{
+// 建構子
+constructor(props){
+super(props);
+}
+// 初始化state,替代原getInitialState, 注意前面
+沒有static
+state = {
+showMenu:false
+};
+// 替代原propTypes 属性,注意前面有static,屬於靜態方法.
+static propTypes = {
+autoPlay: React.PropTypes.bool.isRequired
+}
+// 默認defaultProps,替代原getDefaultProps方法, 注意前面
+有static
+static defaultProps = {
+loading:false
+};
+// 這以用箭頭函數箭頭函數不會改變this的指向,否則函數內,
+this指的就不是當前對象了
+// React.CreatClass方式React會自動綁定this,ES6寫法不會.
+handleClick = (e)=>{
+this.setState();//
+};
+componentDidMount() {
+// React内置的周期 ,這裡要顯示所繼承父類的相同function,
+// 否則一旦父類中有封裝,子類會把和父類相同的function覆蓋,
+不會執行父類的function.
+// 但...父類如果本身沒有寫出componentDidMount,在子類
+寫出的話就會錯誤,
+
+if (super.componentDidMount) {
+super.componentDidMount();
+}
+// do something yourself...
+}
+}
+```
+
+更多有關ES5 react to ES6 or ES7
+[http://cheng.logdown.com/posts/2015/09/29/converting-es5-react-to-es6](http://cheng.logdown.com/posts/2015/09/29/converting-es5-react-to-es6)
+
+[http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8](http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8)
+
+有關class用法
+[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+[http://es6.ruanyifeng.com/\#docs/class](http://es6.ruanyifeng.com/#docs/class)
+
+[https://gist.github.com/sebmarkbage/d7bce729f38730399d28](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
+
+# 開始使用React
+
+## 建立環境
+
+npm install webpack -g
+
+npm install nodemon -g
+\(在更改程式時自動執行server，而forever為遇到錯誤也不會停止\)
+
+1.裡面放入package.json
+
+```
+{
+"name": "react-learning",
+"version": "1.0.0",
+"description": "A simple app",
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1",
+"serve": "nodemon server/server.js"
+},
+"repository": {
+"type": "git",
+"url": ""
+},
+"author": "",
+"license": "ISC",
+"dependencies": {
+"babel-core": "*",
+"babel-loader": "*",
+"babel-preset-es2015": "*",
+"babel-preset-react": "*",
+"express": "*",
+"react": "*",
+"react-dom": "*",
+"webpack": "*"
+}
+}
+```
+
+之後輸入npm install
+
+在根目錄下新建三個目錄
+
+```
+forclass
+--client
+--components
+--server
+package.json
+```
+
+2.接著在server目錄下新增server.js
+
+```
+var express = require('express');
+var path = require('path');
+
+var app = express();
+
+app.use(express.static('./dist'));
+
+app.use('/', function (req, res) {
+res.sendFile(path.resolve('client/index.html'));
+});
+
+var port = 3000;
+
+app.listen(port, function(error) {
+if (error) throw error;
+console.log("Express server listening on port", port);
+});
+```
+
+3.在client資料夾內加入index.html
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>React Todo List</title>
+</head>
+<body>
+<h1>This is not a React app yet!</h1>
+<div id="app"></div>
+<script src="bundle.js"></script>
+</body>
+</html>
+```
+
+4.新增webpack 配置文件webpack.config.js
+
+```
+module.exports = {
+devtool: 'inline-source-map',
+entry: ['./client/client.js'],
+output: {
+path: './dist',
+filename: 'bundle.js',
+publicPath: '/'
+},
+module: {
+loaders: [
+{
+test: /\.js$/,
+loader: 'babel-loader',
+exclude: /node_modules/,
+query: {
+presets: ['react', 'es2015']
+}
+}
+]
+}
+}
+```
+
+什麼是source map
+
+可以看chrome dev tool 裡的setting即有此選項
+[http://www.ruanyifeng.com/blog/2013/01/javascript\_source\_map.html](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
+
+5.在client資料夾中新增client.js
+
+```
+import React from 'react'
+import { render } from 'react-dom'
+import App from '../components/App'
+
+render(
+<App/>,
+document.getElementById('app')
+)
+```
+
+`<App/>`即為我們的react元件
+
+6.在components資料夾中新增App.js
+
+此即為我們第一個react元件
+
+```
+import React, { Component } from 'react'
+
+class App extends Component {
+
+render() {
+return <div>I'm Banana!</div>
+}
+
+}
+
+export default App
+```
+
+輸入`webpack --config webpack.config.js`
+會自動產生dist資料夾，裡面包含bundle.js檔案
+
+之後即可重新啟動伺服器，並觀看改變
+`npm run serve`\(寫在package.json中的scripts內\)
+
+## 讓我們不用重新整理網頁
+
+在package.json內加入
+
+1.不用重新整理網頁
+\(讓我們不用使用webpack-dev-server也有-hot的指令\)
+
+```
+"webpack-hot-middleware": "^2.6.4"
+```
+
+2.讓hot middleware知道react的class
+
+```
+"babel-preset-react-hmre": "^1.1.0",
+```
+
+以及上webpack跑在我們架設的express server上
+
+```
+"webpack-dev-middleware": "^1.5.1"
+```
+
+完整版
+
+```
+{
+"name": "react-todo-list",
+"version": "1.0.0",
+"description": "A simple todo list app built with React, Redux and Webpack",
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1",
+"serve": "nodemon server/server.js --ignore components"
+},
+"repository": {
+"type": "git",
+"url": "https://github.com/kweiberth/react-todo-list.git"
+},
+"author": "Kurt Weiberth",
+"license": "ISC",
+"dependencies": {
+"babel-core": "^6.4.5",
+"babel-loader": "^6.2.2",
+"babel-preset-es2015": "^6.3.13",
+"babel-preset-react": "^6.3.13",
+"babel-preset-react-hmre": "^1.1.0",
+"express": "^4.13.4",
+"react": "^0.14.7",
+"react-dom": "^0.14.7",
+"webpack": "^1.12.13",
+"webpack-dev-middleware": "^1.5.1",
+"webpack-hot-middleware": "^2.6.4"
+}
+}
+```
+
+npm install後
+
+接著更改剛才server資料夾下的 server.js
+
+```
+var express = require('express');
+var path = require('path');
+var config = require('../webpack.config.js');
+var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+
+var app = express();
+
+var compiler = webpack(config);
+
+app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}));
+app.use(webpackHotMiddleware(compiler));
+
+app.use(express.static('./dist'));
+
+app.use('/', function (req, res) {
+res.sendFile(path.resolve('client/index.html'));
+});
+
+var port = 3000;
+
+app.listen(port, function(error) {
+if (error) throw error;
+console.log("Express server listening on port", port);
+});
+```
+
+現在我們可以直接用server.js去compile 我們的webpack config檔案，不用再輸入指令compile
+
+最後因為我們剛才有用hot middle所以我們可以使用--hot去讓他自動reload網頁，但我們不想在指令輸入，所以可以把他加在webpack config內
+
+webpack.config.js
+
+```
+var webpack = require('webpack');
+
+module.exports = {
+devtool: 'inline-source-map',
+entry: [
+'webpack-hot-middleware/client',
+'./client/client.js'
+],
+output: {
+path: require("path").resolve("./dist"),
+filename: 'bundle.js',
+publicPath: '/'
+},
+plugins: [
+new webpack.optimize.OccurrenceOrderPlugin(),
+new webpack.HotModuleReplacementPlugin(),
+new webpack.NoErrorsPlugin()
+],
+module: {
+loaders: [
+{
+test: /\.js$/,
+loader: 'babel-loader',
+exclude: /node_modules/,
+query: {
+presets: ['react', 'es2015', 'react-hmre']
+}
+}
+]
+}
+}
+```
+
+現在執行
+`npm run serve`
+
+再去更改app.js內的字，可以看到不用重新啟動伺服器，也不用按網頁的重新整理，即可更新
+
+## 第二階段
+
+開始新增其他react元件
+
+在components下，新增一個檔案
+`TextDisplay.js`
+
+```
+import React, {Component} from 'react'
+
+class TextDisplay extend Component{
+
+}
+
+export default TextDisplay
+```
+
+上面是引用react後建造一個空的class後將他輸出
+
+接著我們要在class內寫入東西
+
+```
+import React, {Component} from 'react'
+//JSX要看到import了React 才可以編譯
+class TextDisplay extends Component{
+
+render() {
+return (
+<div>
+<div> THis is text display</div>
+<div> if we have two div we need to wrap it.</div>
+</div>
+
+)};
+
+}
+
+export default TextDisplay
+```
+
+使著將最外層的div刪掉，會出現錯誤，因為一個元件要有東西包住最外層。
+
+之後讓原來的App.js引用他
+
+```
+import React, { Component } from 'react'
+
+class App extends Component {
+
+render() {
+return (
+<div>
+<div>This is definitely a React app now!</div>
+<TextDisplay/>
+</div>
+)}
+
+}
+export default App
+```
+
+使用state
+
+TextDisplay.js
+
+```
+import React, { Component } from 'react'
+
+
+class TextInput extends Component {
+
+constructor() {
+super()
+this.state = {
+inputText: ' sdxt'
+}
+}
+
+
+
+render() {
+return (
+<div>
+<input
+type="text"
+placeholder="This is going to be text"
+value={this.state.inputText}
+
+/>
+
+</div>
+)
+}
+
+}
+
+export default TextInput
+```
+
+#### !!記得重新整理網頁，才會作用\(因為這裡是constructor\)
+
+# 為元件加入方法
+
+```
+import React, { Component } from 'react'
+
+
+class TextInput extends Component {
+
+constructor() {
+super()
+this.state = {
+inputText: ' sdsxt'
+}
+}
+
+handleChange(){
+console.log("ch")
+}
+
+render() {
+return (
+<div>
+<input
+type="text"
+placeholder="This is going to be text"
+value={this.state.inputText}
+onChange={this.handleChange}
+/>
+
+</div>
+)
+}
+
+}
+
+export default TextInput
+```
+
+## 在class中的方法如果有this的話他會不知道this是什麼，所以要在class 的constructor中把該方法綁進來
+
+1.
+
+```
+import React, { Component } from 'react'
+
+
+class TextInput extends Component {
+
+constructor() {
+super()
+this.state = {
+inputText: ' sdsxt'
+}
+this.handleChange = this.handleChange.bind(this);
+}
+
+handleChange(){
+this.setState({inputText:12});
+}
+
+render() {
+return (
+<div>
+<input
+type="text"
+placeholder="This is going to be text"
+value={this.state.inputText}
+onChange={this.handleChange}
+/>
+
+</div>
+)
+}
+
+}
+
+export default TextInput
+```
+
+但後來發現如果想傳入參數還是要在html tag中寫bind才會傳入
+
+2.所以另一種寫法，是直接在DOM 的onchange中綁，但官方推薦綁在constructor
+
+```
+onChange={this.handleChange.bind(this)}
+```
+
+接著在render上面寫
+
+```
+handleChange(){
+...
+}
+```
+
+3.第三種寫法\(ES6的箭頭函數，最方便，因為會直接幫你綁定\)
+
+```
+send = () => {
+console.log(this.inputFiled.value)
+let text = this.inputFiled.value;
+this.props.addTodo1(text);
+}
+
+
+<button onClick={()=>this.handleSubmit()}>Submit</button>
+```
+
+如要傳入事件，記得兩邊\(\)都要傳入
+
+```
+<form onSubmit={(e)=>this.handleSubmit(e)}>
+```
+
+好處是不用再用bind
+
+參考:[http://egorsmirnov.me/2015/08/16/react-and-es6-part3.html](http://egorsmirnov.me/2015/08/16/react-and-es6-part3.html)
+
+#### !每次改動constructor記得都要重新整理，就算有用Hot reload
+
+完整範例：
+
+`注意其中的onclick 與 從子元件傳上來的 onclick`
+
+container
+
+```
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import actions from '../redux/actions/todoActions.js'
+import { bindActionCreators } from 'redux'
+import List from '../components/List.js'
+
+class TodoList extends Component {
+send = () => {
+let text = this.inputFiled.value;
+this.props.addTodo1(text);
+}
+itemClick = (e,id) => {
+console.log(e)
+console.log(id)
+}
+render() {
+return (
+<div>
+<input ref={(c) => this.inputFiled = c} />
+<button onClick={()=>this.send()}></button>
+<List list={this.props} itemClick={(e,id)=>this.itemClick(e,id)}>
+</List>
+</div>
+)
+}
+
+}
+function mapStateToProp(state){
+return state
+}
+
+function mapDispatchToProps(dispatch) {
+return bindActionCreators({
+addTodo1:actions.addTodo
+},dispatch);
+}
+
+export default connect(mapStateToProp,mapDispatchToProps)(TodoList)
+```
+
+component
+
+```
+import React from 'react'
+const List = (props) => {
+let todos = Array.from(props.list.todos);
+return (
+<div>
+{todos.map( i =>
+<p key={i.id} onClick={(e)=>props.itemClick(e,i.id)}>{i.text}</p>
+)}
+</div>
+)
+}
+
+export default List;
+```
+
+# 2.在class內所有的this都是指到那個class
+
+所以要取得onchange時input內的value必須用e.target
+，因為這裡不是DOM
+
+```
+import React, { Component } from 'react'
+
+
+class TextInput extends Component {
+
+constructor() {
+super()
+this.state = {
+inputText: ' sdst'
+}
+this.handleChange = this.handleChange.bind(this);
+}
+
+handleChange(e){
+console.log(e.target.value);
+console.log(this);
+//this.setState({inputText:12});
+}
+
+render() {
+return (
+<div>
+
+<input onChange={this.handleChange} />
+</div>
+)
+}
+
+}
+
+export default TextInput
+```
