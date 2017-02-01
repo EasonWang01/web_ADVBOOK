@@ -34,42 +34,37 @@ views點擊=>action => reducer => store =>回傳state給views
         <button id="incrementAsync">Increment async</button>
       </p>
     </div>
-     </body>
-</html>
-```
-再來加上
-```
- <script>
-    
-      var store = Redux.createStore(counter)
-      var valueEl = document.getElementById('value')
-      function render() {
-        valueEl.innerHTML = store.getState().toString()
-      }
-      render()
-      store.subscribe(render)
-     
-</script>
-```
-Reducer
-```
+  </body>
+  <script>
 
-  function counter(state, action) {
-        if (typeof state === 'undefined') {
-          return 0
-        }
-        switch (action.type) {
-          case 'INCREMENT':
-            return state + 1
-          case 'DECREMENT':
-            return state - 1
-          default:
-            return state
-        }
+    //初始化store
+    var store = Redux.createStore(counter);
+
+    //每當store更新時執行render function
+    var valueEl = document.getElementById('value')
+    function render() {
+      valueEl.innerHTML = store.getState().toString()
+    }
+    render()
+    store.subscribe(render);
+
+    /*以下為Reducer  */
+    function counter(state, action) {
+      if (typeof state === 'undefined') {//初始狀態
+        return 0
       }
-```
-```
- document.getElementById('increment')
+        switch (action.type) {
+        case 'INCREMENT':
+          return state + 1
+        case 'DECREMENT':
+          return state - 1
+        default:
+          return state
+      }
+    }
+
+    /*以下為action*/
+    document.getElementById('increment')
         .addEventListener('click', function () {
           store.dispatch({ type: 'INCREMENT' })
         })
@@ -88,7 +83,9 @@ Reducer
           setTimeout(function () {
             store.dispatch({ type: 'INCREMENT' })
           }, 1000)
-        })
+      })
+  </script>
+</html>
 ```
 
 #使用React連結Redux
