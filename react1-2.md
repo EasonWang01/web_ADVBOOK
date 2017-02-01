@@ -215,6 +215,8 @@ handleSubmit() {
 所以要取得onchange時input內的value必須用e.target
 ，因為這裡不是DOM
 
+貼上下面程式碼後，在輸入框中輸入，之後觀察console
+
 ```
 import React, { Component } from 'react'
 
