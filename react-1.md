@@ -1,30 +1,7 @@
 基礎
 
-先打開index.html
-加入如下
-```javascript
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-
-    core/5.8.34/browser.min.js"></script>
-</head>
-<body>
-<div id="example"></div>
-<script type="text/babel">
-ReactDOM.render(
-<h1>Hello, world!</h1>,
-document.getElementById('example')
-);
-</script>
-
-</body>
-</html>
-```
+打開如下網址
+http://codepen.io/gaearon/pen/ZpvBNJ
 
 試著把script的內容改為
 ```
