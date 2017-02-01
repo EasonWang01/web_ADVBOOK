@@ -226,8 +226,8 @@ Proptest.js
 ```
 import React, { Component } from 'react'
 
-const Proptest = ({name}) => (
-  <div>{name}</div>
+const Proptest = ({props}) => (
+  <div>{props.name}</div>
 );
 
 export default Proptest
@@ -261,6 +261,6 @@ class TextDisplay extends Component {
 export default TextDisplay
 ```
 
-其為一個簡單的function具有參數，而在父元件寫入的同名props就是他的參數名稱
+其為一個簡單的function具有參數，而在父元件寫入的同名props使用`props.名字`存取
 
 >但stateless component不能使用生命週期以及ref
