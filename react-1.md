@@ -28,7 +28,7 @@ ReactDOM.render(<HelloMessage name="apple"/>, document.getElementById('root'));
 ```
 
 
-基本React 元件構造介紹
+基本React 元件構造
 
 ```
 class baseComponent extends React.Component{
