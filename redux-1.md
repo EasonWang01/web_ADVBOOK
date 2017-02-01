@@ -1,0 +1,848 @@
+# Redux
+source code
+https://cdnjs.cloudflare.com/ajax/libs/redux/3.3.1/redux.js
+#概念
+views點擊=>action => reducer => store =>回傳state給views
+
+1.state統一由store保存，任何更新state都要告知store
+
+2.讓views得到store中state的方法
+```
+1.使用connect讓最上層元件取得Provider中的store，再用props傳下去
+
+2.使用store.getState
+```
+
+#簡單範例
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+    <script src="https://npmcdn.com/redux@latest/dist/redux.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>
+        Clicked: <span id="value">0</span> times
+        <button id="increment">+</button>
+        <button id="decrement">-</button>
+        <button id="incrementIfOdd">Increment if odd</button>
+        <button id="incrementAsync">Increment async</button>
+      </p>
+    </div>
+     </body>
+</html>
+```
+```
+ <script>
+    
+      var store = Redux.createStore(counter)
+      var valueEl = document.getElementById('value')
+      function render() {
+        valueEl.innerHTML = store.getState().toString()
+      }
+      render()
+      store.subscribe(render)
+     
+    </script>
+```
+Reducer
+```
+
+  function counter(state, action) {
+        if (typeof state === 'undefined') {
+          return 0
+        }
+        switch (action.type) {
+          case 'INCREMENT':
+            return state + 1
+          case 'DECREMENT':
+            return state - 1
+          default:
+            return state
+        }
+      }
+```
+```
+ document.getElementById('increment')
+        .addEventListener('click', function () {
+          store.dispatch({ type: 'INCREMENT' })
+        })
+      document.getElementById('decrement')
+        .addEventListener('click', function () {
+          store.dispatch({ type: 'DECREMENT' })
+        })
+      document.getElementById('incrementIfOdd')
+        .addEventListener('click', function () {
+          if (store.getState() % 2 !== 0) {
+            store.dispatch({ type: 'INCREMENT' })
+          }
+        })
+      document.getElementById('incrementAsync')
+        .addEventListener('click', function () {
+          setTimeout(function () {
+            store.dispatch({ type: 'INCREMENT' })
+          }, 1000)
+        })
+```
+
+#使用React連結Redux
+https://github.com/reactjs/redux/tree/master/examples/counter
+
+建立counter的元件(原本的HTML)
+```
+import React, { Component, PropTypes } from 'react'
+
+class Counter extends Component {
+  constructor(props) {
+    super(props)
+    this.incrementAsync = this.incrementAsync.bind(this)
+    this.incrementIfOdd = this.incrementIfOdd.bind(this)
+  }
+
+  incrementIfOdd() {
+    if (this.props.value % 2 !== 0) {
+      this.props.onIncrement()
+    }
+  }
+
+  incrementAsync() {
+    setTimeout(this.props.onIncrement, 1000)
+  }
+
+  render() {
+    const { value, onIncrement, onDecrement } = this.props
+    return (
+      <p>
+        Clicked: {value} times
+        {' '}
+        <button onClick={onIncrement}>
+          +
+        </button>
+        {' '}
+        <button onClick={onDecrement}>
+          -
+        </button>
+        {' '}
+        <button onClick={this.incrementIfOdd}>
+          Increment if odd
+        </button>
+        {' '}
+        <button onClick={this.incrementAsync}>
+          Increment async
+        </button>
+      </p>
+    )
+  }
+}
+
+Counter.propTypes = {
+  value: PropTypes.number.isRequired,
+  onIncrement: PropTypes.func.isRequired,
+  onDecrement: PropTypes.func.isRequired
+}
+
+export default Counter
+```
+render到html
+```
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import Counter from './components/Counter'
+import counter from './reducers'
+
+const store = createStore(counter)
+const rootEl = document.getElementById('root')
+
+function render() {
+  ReactDOM.render(
+    <Counter
+      value={store.getState()}
+      onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+      onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+    />,
+    rootEl  
+  )
+}
+
+render()
+store.subscribe(render)
+```
+最後定義reducer
+```
+export default function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return state - 1
+    default:
+      return state
+  }
+}
+```
+完成
+
+----
+上例我們沒有直接去定義action.js而是直接指定action的type
+
+我們可改寫成
+```
+      onIncrement={() => store.dispatch(increment(text))}
+      onDecrement={() => store.dispatch(decrement(text))}
+```
+action.js
+```
+function increment(text) {
+  return {
+    type: INCREMENT,
+    //text
+  };
+}
+function decrement(text) {
+  return {
+    type: DECREMENT,
+    //text
+  };
+}
+```
+#另一個稍為更詳細的範例
+
+###流程:
+
+```
+1.定義一個action物件
+
+
+2.定義reducer(對應不同action型態做不同處理)
+
+
+3.綁定reducer給createStore
+
+
+4.view發出dispatch(action) 傳給reducer再更新store
+
+
+5.Store傳回給view
+```
+##實做:
+1.
+
+package.json
+```
+{
+  "name": "react-todo-list",
+  "version": "1.0.0",
+  "description": "A simple todo list app built with React, Redux and Webpack",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon server/server.js --ignore components"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kweiberth/react-todo-list.git"
+  },
+  "author": "Kurt Weiberth",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.1.0",
+    "express": "^4.13.4",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "redux-logger": "^2.6.1",
+    "webpack": "^1.12.13",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-hot-middleware": "^2.6.4"
+  }
+}
+
+```
+新增後輸入`npm install`
+
+2.
+
+webpack.config.js
+```
+var webpack = require('webpack');
+
+module.exports = {
+  devtool: 'inline-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './client/client.js'
+  ],
+  output: {
+    path: require("path").resolve("./dist"),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['react', 'es2015', 'react-hmre']
+        }
+      }
+    ]
+  }
+}
+
+```
+3.
+
+新增server 資料夾，裡面放入server.js
+```
+var express = require('express');
+var path = require('path');
+var config = require('../webpack.config.js');
+var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+
+var app = express();
+
+var compiler = webpack(config);
+
+app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}));
+app.use(webpackHotMiddleware(compiler));
+
+app.use(express.static('./dist'));
+
+app.use('/', function (req, res) {
+    res.sendFile(path.resolve('client/index.html'));
+});
+
+var port = 3000;
+
+app.listen(port, function(error) {
+  if (error) throw error;
+  console.log("Express server listening on port", port);
+});
+
+```
+4.
+  
+新client資料夾，裡面放入index.html
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React Todo List</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="bundle.js"></script>
+</body>
+</html>
+
+```
+以及，client.js
+```
+import React from 'react'
+import { render } from 'react-dom'
+import App from '../components/App'
+import configureStore from '../redux/store'
+import {Provider} from 'react-redux'
+
+let initialState = {
+	todos:[{
+		id:0,
+		completed: false,
+		text:'initial for demo'
+
+	}]
+}
+let store = configureStore(initialState);
+
+render(
+  <Provider store={store} >
+  <App/>
+  </Provider>,
+  document.getElementById('app')
+)
+
+```
+Provider用來連結react即redux的store
+
+
+5.
+
+新增redux資料夾
+
+裡面放入三個檔案
+
+`store.js`  `action.js`  `reducer.js`
+
+store.js
+
+```
+import {applyMiddleware,compose,createStore} from "redux"
+import reducer from './reducer'
+import logger from 'redux-logger'
+
+let finalCreateStore = compose(
+	applyMiddleware(logger())
+	)(createStore)
+
+export default function configureStore(initialState = { todos:[]}){
+	return finalCreateStore(reducer,initialState)
+
+}
+```
+這裡我們加入了中間件logger
+
+而store的必要參數為reducer，我們用`import reducer from './reducer'`傳入
+
+action.js
+```
+let  actions ={ 
+	addTodo:(text)=>{
+		return ({
+	type:'ADD_TODO',
+	text:text})
+}
+}
+
+
+export default actions
+```
+reducer.js
+```
+let getId = 1 ;
+
+export default function reducer(state,action){
+	switch(action.type){
+		case 'ADD_TODO':
+			
+			return(	Object.assign({},state,{
+				todos:[{
+				  text:action.text,
+				  completed:false,
+				  id:getId++
+
+				},...state.todos]
+			})
+			)
+		default:
+			return state;
+
+	}
+
+}
+```
+最後建立component資料夾
+
+裡面放入`App.js` `TodoInput.js`  `TodoList.js`
+
+App.js
+```
+import React, { Component } from 'react'
+import TodoInput from './TodoInput.js'
+import TodoList from './TodoList.js'
+import {connect} from 'react-redux'
+class App extends Component {
+
+  render() {
+    return (
+      <div>
+        <h1>Todo list</h1>
+        <TodoInput dispatch={this.props.dispatch}/>
+        <TodoList dispatch={this.props.dispatch} todos={this.props.todos}/>
+      </div>
+    )
+  }
+
+}
+function  mapStateToProps(state){
+
+	return state
+}
+
+
+export default connect(mapStateToProps)(App)
+
+```
+從chrome React dev tool可以看到如果使用connect
+
+App元件可以接到從store來的state且轉成他的props
+
+TodoInput.js
+```
+import React, { Component } from 'react'
+import action from '../redux/actions.js'
+class TodoInput extends Component {
+
+  constructor(props, context) {
+    super(props, context)
+ 
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+ 
+  handleSubmit(){
+    event.preventDefault()
+    //this.props.dispatch()
+    console.log(this._input.value);
+    this.props.dispatch(action.addTodo(this._input.value));
+  }
+
+
+
+
+  render() {
+    return (
+      <div>
+        <input
+          type="text"
+
+          placeholder="Type in your tode"
+     
+          ref={(c) => this._input = c}
+        />
+        <button onClick={this.handleSubmit}>Submit</button>
+      </div>
+    )
+  }
+
+}
+
+export default TodoInput
+
+```
+TodoList.js
+```
+import React, { Component } from 'react'
+
+class TodoList extends Component {
+
+  render() {
+    return (
+      <ul>
+        {
+          this.props.todos.map((todo)=>{
+            return <li key={todo.id}> {todo.text}  </li>
+          })
+        }
+
+      </ul>
+    )
+  }
+
+}
+
+export default TodoList
+
+```
+完整版:(於master branch)
+
+https://github.com/EasonWang01/Redux-tutorial 
+
+#接著幫他加上toggle
+使點選後判斷完成了沒，來讓事項有一橫線
+
+1.先在action.js
+```
+let  actions ={ 
+	addTodo:(text)=>{
+		return ({
+	type:'ADD_TODO',
+	text:text})
+},
+	toggleTodo:(id)=>{
+		return({
+	type:'TOGGLE_TODO',
+	id:id,
+	})
+
+	}
+}
+
+
+export default actions
+```
+2.reducer.js
+
+```
+let getId = 1 ;
+
+export default function reducer(state,action){
+	switch(action.type){
+		case 'ADD_TODO':
+			
+			return(	Object.assign({},state,{
+				todos:[{
+				  text:action.text,
+				  completed:false,
+				  id:getId++
+
+				},...state.todos]
+			})
+			)
+		case 'TOGGLE_TODO':
+
+      return Object.assign({},state,{todos:state.todos.map(function(state){
+                if(state.id!==action.id){
+                return  state
+                };
+
+                return {...state,completed:!state.completed}
+           
+			}) }
+      )
+
+
+	
+
+				
+
+		default:
+			return state;
+
+	}
+
+}
+```
+最後在TodoList.js
+```
+import React, { Component } from 'react'
+import action from '../redux/actions.js'
+import store from '../redux/store'
+class TodoList extends Component {
+
+   constructor(props, context) {
+    super(props, context)
+ 
+  }
+
+
+
+
+
+  liClick(a){
+   
+      store.dispatch(action.toggleTodo(a.id));
+
+  }
+
+
+
+
+  render() {
+    return (
+      <ul>
+        {
+          this.props.todos.map((todo)=>{
+            return <li 
+            key={todo.id} 
+            onClick={()=>this.liClick(todo)} 
+            style= {{textDecoration:todo.completed?'line-through':'none'}}  
+            >
+             {todo.text}  
+
+             </li>
+          })
+        }
+
+      </ul>
+    )
+  }
+
+}
+
+export default TodoList
+
+```
+完整版在 branch toggle
+
+#接著加入三個選項，分別顯示all,active,completed
+
+1.新增FilterLink.js
+```
+import React, { Component } from 'react'
+import action from '../redux/actions.js'
+import store from '../redux/store'
+class FliterLink extends Component {
+
+	render(){
+
+
+	return	<a  href='#'
+			onClick={e=>{
+				e.preventDefault();
+				//console.log(this.props.filter)
+				store.dispatch(action.FilterTodo(this.props.filter))
+										
+			}}
+					
+		>
+			{this.props.children}
+		</a>
+	}
+
+
+
+}
+
+export default FliterLink
+```
+2.將他加入TodoList.js
+
+```
+import React, { Component } from 'react'
+import action from '../redux/actions.js'
+import store from '../redux/store'
+import FilterLink from './FilterLink.js'
+
+class TodoList extends Component {
+
+   constructor(props, context) {
+    super(props, context)
+ 
+  }
+
+
+
+
+
+  liClick(a){
+   
+      store.dispatch(action.toggleTodo(a.id));
+
+  }
+
+
+
+
+  render() {
+    return (
+      <div>
+      <ul>
+        {
+          this.props.todos.map((todo)=>{
+            return <li 
+            key={todo.id} 
+            onClick={()=>this.liClick(todo)} 
+            style= {{textDecoration:todo.completed?'line-through':'none'}}  
+            >
+             {todo.text}  
+
+             </li>
+          })
+        }
+
+      </ul>
+      <p>
+          {"Show: "}
+          
+          <FilterLink filter="SHOW_ALL">
+         All
+          </FilterLink>
+          {"  ,  "}
+          <FilterLink filter="SHOW_ACTIVE">
+         Active
+          </FilterLink>
+          {"  ,  "}
+          <FilterLink filter="SHOW_COMPLETED">
+         Completed
+          </FilterLink>
+
+      </p>
+      </div>
+    )
+  }
+
+}
+
+export default TodoList
+
+
+```
+更改action.js
+```
+let  actions ={ 
+	addTodo:(text)=>{
+		return ({
+	type:'ADD_TODO',
+	text:text})
+},
+	toggleTodo:(id)=>{
+		return({
+	type:'TOGGLE_TODO',
+	id:id,
+	})
+
+	},
+	FilterTodo:(filter)=>{
+		return({
+	type:'SET_VISBILITY_FILTER',
+	filter:filter		
+
+		})
+	}
+}
+
+
+export default actions
+```
+以及reducer.js
+```
+let getId = 1 ;
+
+export default function reducer(state,action){
+	switch(action.type){
+		case 'ADD_TODO':
+			
+			return(	Object.assign({},state,{
+				todos:[{
+				  text:action.text,
+				  completed:false,
+				  id:getId++
+
+				},...state.todos]
+			})
+			)
+		case 'TOGGLE_TODO':
+
+      return Object.assign({},state,{todos:state.todos.map(function(state){
+                if(state.id!==action.id){
+                return  state
+                };
+
+                return {...state,completed:!state.completed}
+           
+			}) }
+      )
+
+      	case 'SET_VISBILITY_FILTER':
+
+      	return state
+	
+
+				
+
+		default:
+			return state;
+
+	}
+
+}
+```
+
+(此時多了三個選項，且點擊會發出action)
+
