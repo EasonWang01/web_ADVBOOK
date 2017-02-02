@@ -148,7 +148,7 @@ var final = Object.assign({}, state, {
         todos: [
           ...state.todos,
           {
-            text: 'yaya',
+            text: 'yes',
             completed: false
           }
         ]
