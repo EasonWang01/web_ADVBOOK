@@ -11,6 +11,21 @@
 >注意:mocha要安裝在 global
 
 ```
-npm install mocha -g            
+npm install mocha -g             
+npm install mocha --save-dev     
 npm install should --save-dev
 ```
+
+should的API可參考
+http://shouldjs.github.io/#assertion-above
+
+我們新增一個index.js
+
+```
+exports.test1 = (num) => {
+  return 10 + num;
+}
+```
+
+之後新增test資料夾
+
