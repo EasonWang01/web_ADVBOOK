@@ -79,4 +79,20 @@ branches:
   - master
 ```
 
-#
+2.之後把project上傳到github上
+
+新增`.gitignore`
+
+```
+node_modules
+```
+
+讓node_modules不要上傳到github上
+
+```
+git init
+git remote add origin <url>
+git add .
+git commit -m 'add'
+git push origin master
+```
