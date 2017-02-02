@@ -88,4 +88,47 @@ views點擊=>action => reducer => store =>回傳state給views
 </html>
 ```
 
+####Action
 
+為一個函數返回一個物件，裡面至少會包含type
+
+```
+function addTodo(text) {
+  return {
+    type: ADD_TODO,
+    text: 'hihi'
+  }
+}
+```
+
+####Reducer
+
+Reducer為一個function裡面通常是寫入switch然後判斷剛才發出action的type，決定要做哪一種對應的switch case處理
+
+```
+function todoApp(state = initialState, action) {
+  switch (action.type) {
+    case ADD_TODO:
+      return Object.assign({}, state, {
+        todos: [
+          ...state.todos,
+          {
+            text: action.text,
+            completed: false
+          }
+        ]
+      })
+    default:
+      return state
+  }
+}
+```
+
+上面的例子是，把原本的store中的state的todos陣列加入一筆新的資料
+
+```
+
+var todos = [
+{text:'hihi',completed: false},{text:'hihi',completed: false}]
+
+```
