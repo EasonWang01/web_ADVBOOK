@@ -12,8 +12,14 @@ npm install --save redux react-redux react-router-redux redux-logger
 
 之後我們執行，然後看著程式碼進行講解
 
+client.js
 
-2.
+1.使用Provider包住，之後元件使用connect即可獲得Redux store
+
+syncHistoryWithStore
+
+
+
 
 #操作非同步動作(Async)
 例如:
