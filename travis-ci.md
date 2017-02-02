@@ -33,7 +33,7 @@ exports.test1 = (num) => {
 }
 ```
 
-之後新增test資料夾
+5.之後新增test資料夾
 
 裡面放入test.js
 
@@ -56,5 +56,19 @@ describe('10 + number', function(){
         done();
     })
 })
+```
+
+6.然後新增`.travis.yml`
+
+```
+language: node_js
+node_js:
+- stable
+cache:
+  directories:
+  - node_modules
+branches:
+  only:
+  - master
 ```
 
