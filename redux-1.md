@@ -129,8 +129,7 @@ function todoApp(state = initialState, action) {
 假設
 ```
 var state = {
-todos : [{text:'hihi',completed: false},{text:'okok',completed: false}]
-
+  todos : [{text:'hihi',completed: false},{text:'okok',completed: false}]
 }
 
 ```
