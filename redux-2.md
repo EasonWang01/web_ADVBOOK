@@ -12,7 +12,7 @@ npm install --save redux react-redux react-router-redux redux-logger
 
 之後我們執行，然後看著程式碼進行講解
 
-client.js
+####client.js
 
 ```
 1.使用Provider包住router，之後元件使用connect即可獲得Redux store
@@ -20,7 +20,7 @@ client.js
 2.syncHistoryWithStore讓瀏覽器的location同步到store中
 ```
 
-元件中
+####元件中
 
 ```
 1.使用connect把Redux的store與元件結合
@@ -35,9 +35,42 @@ export default connect((state) => state ,{ FilterTodo })(FliterLink)
 //如果connect第二個參數沒寫，則dispatch會加入到this.props中即可使用上行所述去發出action
 ```
 
+####store
+1.
+```
+let finalCreateStore = compose(
+	applyMiddleware(thunk,logger())
+	)(createStore)
+//用來加入一些middleware
+	
+	
+```
+2.
+```
+let initialState = {
+	visbility:'SHOW_ALL',
+	todos:[{
+		id:0,
+		completed: false,
+		text:'initial for demo'
+	}]
+}
 
 
+function configureStore(initialState){
+	return finalCreateStore(reducer,initialState)
+}
 
+//把初始的state與reducer做結合
+```
+3.
+```
+let store = configureStore(initialState)
+
+export default store
+
+//最後輸出store
+```
 #操作非同步動作(Async)
 例如:
 >我們今天有一個按鈕，點擊後發出action去跟server要資料，回傳資料後再觸發一個action去更新state
