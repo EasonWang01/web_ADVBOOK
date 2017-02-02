@@ -126,9 +126,35 @@ function todoApp(state = initialState, action) {
 
 上面的例子是，把原本的store中的state的todos陣列加入一筆新的資料
 
+假設
+```
+var state = {
+todos : [{text:'hihi',completed: false},{text:'okok',completed: false}]
+
+}
+
 ```
 
-var todos = [
-{text:'hihi',completed: false},{text:'hihi',completed: false}]
+我們可用
+
+```
+console.log(...state.todos)
+```
+
+之後
+
+
+```
+var final = Object.assign({}, state, {
+        todos: [
+          ...state.todos,
+          {
+            text: 'yaya',
+            completed: false
+          }
+        ]
+      })
+
+console.log(final);
 
 ```
