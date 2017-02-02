@@ -19,6 +19,12 @@ npm install should --save-dev
 should的API可參考
 http://shouldjs.github.io/#assertion-above
 
+4.於package.json將script改為如下
+
+```
+ "test": "./node_modules/.bin/mocha"
+```
+
 我們新增一個index.js
 
 ```
@@ -28,4 +34,27 @@ exports.test1 = (num) => {
 ```
 
 之後新增test資料夾
+
+裡面放入test.js
+
+```
+var should = require('should');
+var testFile = require('../index.js');
+var assert = require('assert');
+
+console.log(testFile.test1());
+
+describe('10 + number', function(){
+    it('should = 20', function(done){
+        var total = testFile.test1(10);
+        total.should.equal(20);  
+        done();
+    })
+    it('should >= 20', function(done){
+        var total = testFile.test1(20);
+        total.should.be.above(20);  
+        done();
+    })
+})
+```
 
