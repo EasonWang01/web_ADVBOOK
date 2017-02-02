@@ -62,6 +62,14 @@ test.js?cihofew
 test1.jpg?123123dfwef
 ```
 
-所以只要每次我們返回的東西?號後面不一樣，則client端瀏覽器會自動重新下載該資源
+#prefetch
+
+```
+<link rel="prefetch" href="image.png">
+```
+預先存取資源並先存入快取
+
 
 #CDN
+
+CDN(Content delivery network)內容傳遞網路
