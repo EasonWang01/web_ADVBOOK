@@ -17,3 +17,11 @@ https://aws.amazon.com/
 
 3.點選左上方的Services選單之後選擇EC2
 
+4.點選Launch Instance
+
+5.我們這裡選擇Ubuntu Server的選項
+
+6.ssh連線
+
+7.安裝nginx
+
