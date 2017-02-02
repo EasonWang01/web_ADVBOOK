@@ -72,5 +72,20 @@ strSQL = "SELECT * FROM users;"
 
 https://zh.wikipedia.org/wiki/SQL%E8%B3%87%E6%96%99%E9%9A%B1%E7%A2%BC%E6%94%BB%E6%93%8A
 
+## #CSRF(Cross-site request forgery) 
+
+偽造用戶請求像網站發出惡意請求
+
+防範方式:
+
+server 在render畫面時會給出 csrfhash，並隱藏在表單中，之後client端提交，此csrf會跟著送到server並且進行比對
+
+```
+<form method="POST" action="/upload?_csrf={{ csrfhash }}" enctype="multipart/form-data">
+  title: <input name="title" />
+  file: <input name="file" type="file" />
+  <button type="submit">上传</button>
+</form>
+```
 
 
