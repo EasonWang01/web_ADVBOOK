@@ -58,7 +58,14 @@ describe('10 + number', function(){
 })
 ```
 
-6.然後新增`.travis.yml`
+然後在專案目錄輸入Mocha即可
+
+他會自動去找專案內的test資料夾內的檔案執行
+
+
+#Travis CI
+
+1.新增`.travis.yml`
 
 ```
 language: node_js
@@ -72,3 +79,4 @@ branches:
   - master
 ```
 
+#
