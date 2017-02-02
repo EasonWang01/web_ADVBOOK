@@ -105,3 +105,21 @@ git push origin master
 點選右上方的紅色按鈕`sync account`
 
 找到剛上傳的專案，把他的開關打開
+
+4.到剛才程式專案的index.js加入
+
+```
+exports.test2 = (num) => {
+  return true;
+}
+```
+
+5.再次上傳
+
+```
+git add .
+git commit -m 'add'
+git push origin master
+```
+
+6.回到travis網頁點選重新整理，之後點選剛才專案，即可看到他自動跑測試
