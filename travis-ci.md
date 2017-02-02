@@ -96,3 +96,12 @@ git add .
 git commit -m 'add'
 git push origin master
 ```
+
+3.進入https://travis-ci.org/
+
+使用github帳號登入
+然後點選右上方你的頭像，進入profile
+
+點選右上方的紅色按鈕`sync account`
+
+找到剛上傳的專案，把他的開關打開
