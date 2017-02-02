@@ -32,4 +32,5 @@
 * [結合Node.js與React.js搭建論壇網站1](node.jsreact.js1.md)
 * [快取與緩存](cache.md)
 * [Web安全機制](security.md)
+* [部署](deploy.md)
 
