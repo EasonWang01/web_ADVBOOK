@@ -19,9 +19,18 @@ https://aws.amazon.com/
 
 4.點選Launch Instance
 
-5.我們這裡選擇Ubuntu Server的選項
+5.我們這裡選擇Ubuntu Server的選項，之後點選右下方next，可把容量設為30G，然後security Group 開啟80 PORT
 
-6.ssh連線
+6.創建新的Key，之後使用此private key連線
+>如果告知WARNING: UNPROTECTED PRIVATE KEY FILE!，可使用
+chmod 0600 [private key file] 即可
 
-7.安裝nginx
+7.之後開啟terminal使用ssh連線，指令類似如下
 
+```
+ssh -i ~/Downloads/pem1.pem  ubuntu@ec2-13-112-175-93.ap-northeast-1.compute.amazonaws.com
+```
+
+第一次登入需輸入`yes`
+
+8.安裝nginx
