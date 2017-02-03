@@ -1,3 +1,7 @@
+
+##安裝
+https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu
+
 此篇環境以Ubuntu為範例
 
 因為jenkins是java寫的，所以要先安裝java環境
@@ -81,3 +85,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Build完後點左側的`Workspace`即可發現我們的bitbucket的repo順利被拉近jenkins裡面
 
 ![](/assets/螢幕快照 2017-02-03 上午10.41.38.png)
+
+3.
+
+如何讓每次在bitbucket 進行commit時讓jenkins自動build呢？
+
