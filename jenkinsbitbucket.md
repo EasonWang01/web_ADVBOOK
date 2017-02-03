@@ -111,6 +111,17 @@ EX:`http://13.112.175.93:8080/bitbucket-hook/`
 
 接著我們到configure的Build區塊點選左下的`Add build step`選單，選擇`execute shell`，之後在裡面輸入我們想執行的shell script即可，以後每次jenkins觸發build時都會執行
 
+
+5.
+
+我們要在jenkins build 時去觸發 自動部署的動作，這裡我們的做法是在execute shell內寫上ssh到web server機器，之後ssh進入後再去執行動作
+
+類似如下圖
+
+![](/assets/螢幕快照 2017-02-04 上午1.16.47.png)
+
+
+
 ####可能問題
 
 1.`no tty present and no askpass program specified`
