@@ -77,3 +77,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 >注意build之前先確定該repo不是空的
 
 之後我們點選左方的`Build Now`
+
+Build完後點左側的`Workspace`即可發現我們的bitbucket的repo順利被拉近jenkins裡面
+
+![](/assets/螢幕快照 2017-02-03 上午10.41.38.png)
