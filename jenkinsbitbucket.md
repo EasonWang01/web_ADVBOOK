@@ -36,3 +36,9 @@ sudo apt-get update
 
 sudo apt-get install jenkins
 ```
+
+### #4.設定jenkins
+
+剛才安裝好後jenkins服務會自動執行，我們直接到`<EC2的IP>:8080`即可
+
+ex:`http://13.112.175.93:8080/`
