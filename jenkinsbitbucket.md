@@ -122,7 +122,7 @@ EX:`http://13.112.175.93:8080/bitbucket-hook/`
 
 
 
-####可能問題
+####從jenkins 寫script SSH到別台機器時可能問題
 
 1.`no tty present and no askpass program specified`
 https://gist.github.com/hayderimran7/9246dd195f785cf4783d
