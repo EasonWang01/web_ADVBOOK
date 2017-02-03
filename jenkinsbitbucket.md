@@ -14,5 +14,25 @@ sudo apt-get update
 sudo apt-get install openjdk-7-jre  
 ```
 
-### #1.安裝JDK
+### #2.安裝JDK
 
+```
+sudo apt-get install openjdk-7-jdk
+```
+之後可輸入
+```
+java -version
+```
+查看是否正確安裝java
+
+### #3.安裝jenkins
+
+```
+wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+sudo apt-get update
+
+sudo apt-get install jenkins
+```
