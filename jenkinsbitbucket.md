@@ -132,6 +132,7 @@ http://www.51testing.com/html/38/225738-234384.html
 
 3.`Load key "/home/ubuntu/test2.pem": Permission denied
 Permission denied (publickey).`
+
 輸入`sudo chmod 777 /home/ubuntu/test2.pem`
 
 
