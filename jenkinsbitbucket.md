@@ -53,3 +53,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
 隨即會顯示該密碼
+
+之後把它貼到jenkins網頁上點選繼續即可
+
+再來點選左邊的`install suggest plugin`安裝推薦的plugin
