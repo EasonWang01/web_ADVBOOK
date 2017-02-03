@@ -109,7 +109,7 @@ EX:`http://13.112.175.93:8080/bitbucket-hook/`
 
 4.
 
-接著我們到configure的Build區塊點選左下的`Add build step`選單，選擇`execute shell`，之後在裡面輸入我們想執行的shell script即可
+接著我們到configure的Build區塊點選左下的`Add build step`選單，選擇`execute shell`，之後在裡面輸入我們想執行的shell script即可，以後每次jenkins觸發build時都會執行
 
 ####可能問題
 
