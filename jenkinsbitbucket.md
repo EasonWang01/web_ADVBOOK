@@ -68,3 +68,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 輸入一個名稱後點選`free style job`之後按左下角ok
 
+之後下拉到`Source Code Management` 把後面加入我們在bitbucket新創立的repo的url 
+
+如果是private的repo記得點選Add 之後輸入你在該網站的帳號密碼
+
+![](/assets/螢幕快照 2017-02-03 上午10.26.00.png)
