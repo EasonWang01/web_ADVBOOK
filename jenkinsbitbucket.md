@@ -39,6 +39,8 @@ sudo apt-get install jenkins
 
 ### #4.設定jenkins
 
+1.
+
 剛才安裝好後jenkins服務會自動執行，我們直接到`<EC2的IP>:8080`即可
 
 ex:`http://13.112.175.93:8080/`
@@ -61,3 +63,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 如果安裝等太久可以直接按重新整理，之後會進入到設定管理者資料的部分
 
 設定完後即可點選`create new jobs `
+
+2.
+
+輸入一個名稱後點選`free style job`之後按左下角ok
+
