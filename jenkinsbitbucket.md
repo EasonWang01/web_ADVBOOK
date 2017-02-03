@@ -42,3 +42,14 @@ sudo apt-get install jenkins
 剛才安裝好後jenkins服務會自動執行，我們直接到`<EC2的IP>:8080`即可
 
 ex:`http://13.112.175.93:8080/`
+
+第一次進去他會要我們輸入一個管理者權限密碼，位置在
+`/var/lib/jenkins/secrets/initialAdminPassword`
+
+所以我們到terminal上輸入
+
+```
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+隨即會顯示該密碼
