@@ -39,7 +39,10 @@ ssh -i ~/Downloads/pem1.pem  ubuntu@ec2-13-112-175-93.ap-northeast-1.compute.ama
 1.`no tty present and no askpass program specified`
 https://gist.github.com/hayderimran7/9246dd195f785cf4783d
 
-2.`Load key "/home/ubuntu/test2.pem": Permission denied
+2.`Host key verification failed`
+http://www.51testing.com/html/38/225738-234384.html
+
+3.`Load key "/home/ubuntu/test2.pem": Permission denied
 Permission denied (publickey).`
 輸入`sudo chmod 777 /home/ubuntu/test2.pem`
 
