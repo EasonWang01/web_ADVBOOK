@@ -92,5 +92,5 @@ Build完後點左側的`Workspace`即可發現我們的bitbucket的repo順利被
 
 1.安裝bitbucket plugin
 
-點選左側回到dashboard -> 點選左側Manang Jenkins -> 點選中間拼圖形狀的`Manage plugin`
+點選左側回到dashboard -> 點選左側Manang Jenkins -> 點選中間拼圖形狀的`Manage plugin`->點選上方`Available的Tab`->在右上輸入框輸入`bitbucket`
 
