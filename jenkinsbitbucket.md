@@ -106,3 +106,23 @@ title隨意輸入，URL輸入如下
 EX:`http://13.112.175.93:8080/bitbucket-hook/`
 
 之後隨意更改我們剛才專案的程式碼，再次push到bitbucket即可看到jenkins的build被啟動了
+
+4.
+
+接著我們到configure的Build區塊點選左下的`Add build step`選單，選擇`execute shell`，之後在裡面輸入我們想執行的shell script即可
+
+####可能問題
+
+1.`no tty present and no askpass program specified`
+https://gist.github.com/hayderimran7/9246dd195f785cf4783d
+
+2.`Host key verification failed`
+http://www.51testing.com/html/38/225738-234384.html
+
+3.`Load key "/home/ubuntu/test2.pem": Permission denied
+Permission denied (publickey).`
+輸入`sudo chmod 777 /home/ubuntu/test2.pem`
+
+
+
+
