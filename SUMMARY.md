@@ -34,6 +34,6 @@
 * [Web安全機制](security.md)
 * [部署](deploy.md)
 * [自動化流程與搭建travis ci](travis-ci.md)
-* [團隊合作與Git flow](rer.md)
 * [結合jenkins與bitBucket](jenkinsbitbucket.md)
+* [團隊合作與Git flow](rer.md)
 
