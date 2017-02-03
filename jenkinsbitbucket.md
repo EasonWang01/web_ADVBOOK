@@ -57,3 +57,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 之後把它貼到jenkins網頁上點選繼續即可
 
 再來點選左邊的`install suggest plugin`安裝推薦的plugin
+
+如果安裝等太久可以直接按重新整理，之後會進入到設定管理者資料的部分
+
+設定完後即可點選`create new jobs `
