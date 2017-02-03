@@ -73,3 +73,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 如果是private的repo記得點選Add 之後輸入你在該網站的帳號密碼
 
 ![](/assets/螢幕快照 2017-02-03 上午10.26.00.png)
+
+>注意build之前先確定該repo不是空的
+
+之後我們點選左方的`Build Now`
