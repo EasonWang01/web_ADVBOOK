@@ -104,3 +104,5 @@ title隨意輸入，URL輸入如下
 ` JENKINS_URL/bitbucket-hook/ `
 
 EX:`http://13.112.175.93:8080/bitbucket-hook/`
+
+之後隨意更改我們剛才專案的程式碼，再次push到bitbucket即可看到jenkins的build被啟動了
