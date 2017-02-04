@@ -216,6 +216,8 @@ class Lion extends Cat {
 }
 ```
 
+之後輸入`Lion.prototype`
+
 ####export
 
 我們在寫Node.js時使用的require是屬於CommonJS體系
