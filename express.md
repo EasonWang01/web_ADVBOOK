@@ -486,7 +486,7 @@ app.use(session({
 }));
 ```
 
-####注意：如果講此選項設為true則重新整理網頁在你還沒設session會自動附加上去，所以建議為false
+####注意：如果此選項設為true則重新整理網頁在你還沒設session會自動附加上去，所以建議為false
 ```
 saveUninitialized:false
 ```
