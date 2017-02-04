@@ -13,34 +13,29 @@
 
 # 使用express
 
-1.創建一個目錄，再進到該目錄
-```
-mkdir expressExample
 
-cd expressExample
-```
-2.初始化
 ```
 npm init
 ```
-3.
+
 ```
 npm install express --save
 ```
-先創建一個index.js
+在index.js內寫入
 ```
 var express = require('express');
 var app = express();
+var port = 8000;
 
 app.use(express.static(__dirname + '/public'));/* 將預設路徑設在public*/
 
-app.listen(8080);
+app.listen(port,() => console.log(`listening on ${port}`));
 ```
 ##但下面這是什麼?
 ```
 app.use(express.static(__dirname + '/public'));
 ```
-##試著把你剛才創的index.js複製一個到public資料夾，之後在網址打上http://localhost:8080/index.js
+##試著把你剛test1.js複製一個到public資料夾，之後在網址打上http://localhost:8000/test1.js
 
 
 可以設定多個靜態目錄
@@ -50,7 +45,7 @@ app.use(express.static('img'));
 app.use(express.static('pdf'));
 ```
 
-4.我們在index.js 內加入下面，再執行看看
+4.我們在test1.js 內加入下面，再執行看看
 ```
 app.get('/', function (req, res) {
   res.send('Hello world!');
