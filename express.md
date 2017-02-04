@@ -186,6 +186,10 @@ module.exports = function (app) {
 };
 ```
 
+res.render後第二個參數物件為我們給到ejs上的變數
+
+之後ejs使用`<%= ... %>`渲染然後轉為html傳給client
+
 
 ##app.locals設定全局變數
 
