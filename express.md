@@ -199,14 +199,16 @@ app.locals可給所有render後的views使用
 
 而res.locals只有當次request生效
 ```
-app.locals({
-  title: 'Extended Express Example'
-});
+app.locals = {
+ test: 'Extended Express Example'
+};
 ```
 
+之後再test.ejs加上
 ```
-<%= title %>
+ <h1><%= test %></h1>
 ```
+
 
 #middleware
 
