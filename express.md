@@ -191,9 +191,6 @@ app.use('/user/:id', function (req, res, next) {
   next();
 });
 ```
-#注意
-
-(不要使用如下，因為有/hi,/as都會先跑過下面這行)
 
 ```
 
