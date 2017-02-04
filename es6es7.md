@@ -103,7 +103,7 @@ var promise = new Promise(function(resolve, reject) {
   if (/* 如first execute成功 */){
     resolve(value);//發出resolve
   } else {
-    reject(error);發出reject
+    reject(error);//發出reject
   }
 });
 ```
