@@ -209,4 +209,4 @@ app.locals = {
  <h1><%= test %></h1>
 ```
 
-後面的部分直接看專案的test1.js
+後面的部分直接看專案的test1.js(由於目前gitbook文章內容過長，輸入非常Lag)
