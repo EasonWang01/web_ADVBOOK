@@ -51,7 +51,7 @@ app.get('/', function (req, res) {
   res.send('Hello world!');
 });
 app.get('/hi', function (req, res) {
-  res.send('Hello world!');
+  res.send('hihi!');
 });
 ```
 ##每次修改完都要重新啟動server覺得很麻煩
@@ -59,11 +59,11 @@ app.get('/hi', function (req, res) {
 所以我們要安裝一個套件:forever
 
 ```
-npm install forever --save
+npm install forever -g
 ```
 開始監控
 ```
-forever --watch index.js
+forever --watch test1.js
 ```
 結束監控
 ```
@@ -116,10 +116,13 @@ app.get('/hi', function (req, res) {
 ```
 var express = require('express');
 var app = express();
+var port = 8000;
+
 var router = require('./routes/index.js')(app);
 app.use(express.static(__dirname + '/public'));/* 將預設路徑設在public*/
 
-app.listen(8080);
+
+app.listen(port,() => console.log(`listening on ${port}`));
 ```
 這時我們試著把
 ```
@@ -131,6 +134,21 @@ var router = require('./routes')(app);
 發現還是可以，原因是require如果指定為資料夾，他會預設去找下面的index檔案
 
 express 是一個架構在http上的框架
+
+##模板引擎
+
+用於讓頁面與data分離的方式，在這裡我們要展示server side render data所以使用`EJS`當我們的範例
+
+```
+npm install ejs --save
+```
+
+
+如果出現can't find ejs 重新輸入`npm install express`或是`npm install ejs -g`即可
+
+原因:引入ejs是express源碼寫的`this.engine = engines[ext] || (engines[ext] = require(ext.slice(1)).__express);`所以他只會找和express同層目錄下的ejs
+
+
 
 ##app.locals設定全局變數
 
