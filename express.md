@@ -467,7 +467,7 @@ app.use(express.static(__dirname + '/public/'));
 ###1.使用session
 
 
-session有兩種，一種是brower的，關閉及消失．一種是會把cookie拿來server驗證的session
+session有兩種，一種是browser的session storage，關閉及消失．一種是會把cookie拿來server驗證的session
 
 以下介紹第二種
 
