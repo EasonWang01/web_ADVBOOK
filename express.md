@@ -144,10 +144,47 @@ npm install ejs --save
 ```
 
 
-如果出現can't find ejs 重新輸入`npm install express`或是`npm install ejs -g`即可
 
-原因:引入ejs是express源碼寫的`this.engine = engines[ext] || (engines[ext] = require(ext.slice(1)).__express);`所以他只會找和express同層目錄下的ejs
+>如果出現can't find ejs 重新輸入`npm install express`或是`npm install ejs -g`即可，原因:引入ejs是express源碼寫的`this.engine = engines[ext] || (engines[ext] = require(ext.slice(1)).__express);`所以他只會找和express同層目錄下的ejs
 
+接著新增views資料夾
+裡面放入test1.ejs
+```
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <h1><%= title %></h1>
+  <h1><%= message %></h1>
+</body>
+</html>
+
+```
+
+test1.js改為
+```
+var express = require('express');
+var app = express();
+var port = 8000;
+
+app.set('view engine', 'ejs');
+var router = require('./routes')(app);
+app.use(express.static(__dirname + '/public'));/* 將預設路徑設在public*/
+
+
+app.listen(port,() => console.log(`listening on ${port}`));
+```
+
+routes裡面的index.js改為
+```
+module.exports = function (app) {
+  app.get('/', function (req, res) {
+    res.render('test1', { title: 'Hello', message: 'Hello there!'});
+  });
+};
+```
 
 
 ##app.locals設定全局變數
