@@ -218,15 +218,7 @@ function IamMiddleware(req, res, next) {
   next();
 }
 ```
-有哪些種類?
-```
-應用程式層次的中介軟體
-路由器層次的中介軟體
-錯誤處理中介軟體
-內建中介軟體
-外部中介軟體
-```
-應用程式層次的中介軟體，將下面code貼在我們的index.js看看
+將下面code貼在我們的index.js看看
 ```
 app.use(function (req, res, next) {
   console.log('現在時間:', Date.now());
