@@ -336,39 +336,6 @@ require('./routes/index.js')(app);//引用router檔案，傳入express實例為�
 ```
 Express 支援下列的 HTTP路由方法：get、 post、put、head、delete、options、 trace、copy、lock、mkcol、move、purge、propfind、proppatch、unlock、report、mkactivity、checkout、merge、m-search、notify、subscribe、unsubscribe、patch、search， connect。
 
-
-可使用，app.all來接受所有方法
-
-和app.use類似，但app.use必須放在你要用到的東西前面
-```
-app.all('/', function (req, res, next) {
-  console.log('all method');
-  next(); 
-});
-```
-區別
-```
-app.use:
-
-1.inject middlware to your front controller configuring for instance: header, cookies, sessions, etc.
-
-2.must be written before app[http_method] otherwise there will be not executed.
-
-3.only one callback
-
-4.比app.all先執行
------------------------------------------
-app.all:
-
-for configuring routes' controllers,"all" means it applies on all http methods.
-
-several callback
-```
-#錯誤處理middleware
-錯誤處理中介軟體函數的定義方式，與其他中介軟體函數相同，差別在於錯誤處理函數的參數是四個，而非三個，而錯誤處理通常在其他 app.use() 和路由呼叫之後，最後才定義錯誤處理中介軟體。
-
-
-
 #外部middleware
 
 較常見為
@@ -387,19 +354,15 @@ var bodyParser = require('body-parser')
  
 var app = express()
  
-// create application/json parser 
 var jsonParser = bodyParser.json()
  
-// create application/x-www-form-urlencoded parser 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
  
-// POST /login gets urlencoded bodies 
 app.post('/login', urlencodedParser, function (req, res) {
   if (!req.body) return res.sendStatus(400)
   res.send('welcome, ' + req.body.username)
 })
  
-// POST /api/users gets JSON bodies 
 app.post('/api/users', jsonParser, function (req, res) {
   if (!req.body) return res.sendStatus(400)
   // create user in req.body 
@@ -408,6 +371,9 @@ app.post('/api/users', jsonParser, function (req, res) {
 但如果post的編碼類型是multipart/form-data呢?(ex:上傳檔案)
 ```
 使用multer middleware
+
+https://github.com/expressjs/multer
+
 ```
 simple middle寫法
 ```
