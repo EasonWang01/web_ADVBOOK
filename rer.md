@@ -151,3 +151,20 @@ app.listen(port,() => console.log(`listening on ${port}`));
 
 #Git flow
 
+
+Git flow 算是我們在管理git branch中的一種實踐
+
+作者有提供一個相關工具，但也可以選擇不使用
+https://github.com/nvie/gitflow
+
+流程主要為下面
+
+```
+主要分支
+master branch: 將會永遠保持在 production-ready 狀態，所以每次要merge上來要確保是可以正常執行的
+develop branch: 下次準備發佈release的開發中狀態
+
+Feature branch: 有任何新功能要開發都從 develop 分支出來，完成後 merge 回去 develop
+Release branch: 準備要 release 發佈前的版本，從 develop 分支出來，完成後將會 merge 回 master 和 develop
+Hotfix branch: 等不及 release 版本就必須馬上修改 master 上線的情況，將會從 master 分支出來，完成後 merge 回 master 和 develop
+```
