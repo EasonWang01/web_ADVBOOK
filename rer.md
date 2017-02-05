@@ -148,3 +148,6 @@ app.listen(port,() => console.log(`listening on ${port}`));
 最後試著push到bitbucket即可看到telegram出現訊息
 
 ![](/assets/螢幕快照 2017-02-05 下午12.57.53.png)
+
+#Git flow
+
