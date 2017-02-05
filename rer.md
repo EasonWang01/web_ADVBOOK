@@ -37,3 +37,32 @@ ex:
 >注意:如果ngrok重新啟動都會產生不同的url所以webhook的url也要更改
 
 如果你是用EC2等虛擬主機或其他public IP則可以直接放入你的ip地址可以不用使用ngrok的服務
+
+
+
+因為剛才的程式碼每次hook post過來的東西會包含以前舊的commit但我們只要新的，所以可改為
+
+```
+
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var util = require('util');
+var app = express();
+var port = 8000;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.post('/payload', (req, res) => {
+ console.log(util.inspect(req.body.push.changes[0].new, {depth: null}));
+})
+
+
+app.listen(port,() => console.log(`listening on ${port}`));
+
+
+```
+
+之後把終端機的object複製到瀏覽器的devtool中，可以比較方便去觀察
+
+![](/assets/螢幕快照 2017-02-05 下午12.09.21.png)
