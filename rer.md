@@ -66,3 +66,72 @@ app.listen(port,() => console.log(`listening on ${port}`));
 之後把終端機的object複製到瀏覽器的devtool中，可以比較方便去觀察
 
 ![](/assets/螢幕快照 2017-02-05 下午12.09.21.png)
+
+#結合telegram Bot
+
+先到https://web.telegram.org 申請帳號
+
+之後再左側搜尋框輸入`botFather`
+
+然後跟他對話，一開始先輸入`/start`，然後輸入`/newbot`
+
+再來輸入我們的bot名稱，以及bot帳號
+
+>注意帳號不可重複，但有時雖然沒重複還是會出現錯誤
+
+此時重新開啟telegram或是稍等一下再次輸入即可
+
+成功後會出現類似如下，並給我們一個token
+
+```
+Done! Congratulations on your new bot. You will find it at t.me/kjjkbot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands. By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it. Just make sure the bot is fully operational before you do this.
+
+Use this token to access the HTTP API:.....
+```
+
+####使用Node.js與telegram bot溝通
+
+之後我們使用`npm install node-telegram-bot-api --save`
+
+然後貼上以下程式碼
+
+```
+var express = require('express');
+var bodyParser = require('body-parser');
+var util = require('util');
+var app = express();
+var port = 8000;
+
+var TelegramBot = require('node-telegram-bot-api');
+var token = '改為你的token';
+//括號裡面的內容需要改為在第5步獲得的Token
+var bot = new TelegramBot(token, {polling: true});
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.post('/payload', (req, res) => {
+  var obj = req.body.push.changes[0].new;
+  msgPayload = `${obj.target.author.raw} push 到 ${obj.name} 分支，查看該次commit: ${obj.links.html.href}`
+  bot.sendMessage(324090896, msgPayload); 
+})
+
+//Bot
+bot.onText(/hihi/, function (msg) {
+    var chatId = msg.chat.id; //用戶的ID
+    var resp = '你好'; //括號裡面的為回應內容，可以隨意更改
+    console.log(chatId);
+    bot.sendMessage(chatId, resp); //發送訊息的function
+});
+
+
+app.listen(port,() => console.log(`listening on ${port}`));
+
+
+```
+
+記得先把token改為你的，然後執行程式
+
+接著到telegram左上選單，點選`new group`
