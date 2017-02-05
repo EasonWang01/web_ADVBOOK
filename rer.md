@@ -27,3 +27,9 @@ ex:
 ```
 ~/downloads/ngrok http 8000
 ```
+
+之後執行後終端機會產生兩組url分別是http與https的，我們把他加入bitbucket的webhook，並且在產生的url路徑後面加入`/payload`因為我們之後server要接post的路徑是`/payload`
+
+![](/assets/螢幕快照 2017-02-05 上午11.38.42.png)
+
+然後啟動我們剛才寫的server 之後隨意push到bitbucket該repository上即可看到server的log
