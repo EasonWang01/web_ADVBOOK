@@ -120,7 +120,7 @@ app.post('/payload', (req, res) => {
 
 //Bot
 bot.onText(/hihi/, function (msg) {
-    var chatId = msg.chat.id; //用戶的ID
+    var chatId = msg.chat.id; //房間ID
     var resp = '你好'; //括號裡面的為回應內容，可以隨意更改
     console.log(chatId);
     bot.sendMessage(chatId, resp); //發送訊息的function
@@ -134,4 +134,17 @@ app.listen(port,() => console.log(`listening on ${port}`));
 
 記得先把token改為你的，然後執行程式
 
-接著到telegram左上選單，點選`new group`
+接著到telegram左上選單，點選`new group`，在輸入框輸入剛才的bot 帳號(username)
+
+然後與這個bot對話，輸入`hihi`
+
+看一下terminal的console，應該會出現一串數字，此為msg.chat.id
+
+把它貼到上面`app.post('/payload')`中的`bot.sendMessage('', msgPayload); 
+`
+
+把第一個參數改為這串數字
+
+最後試著push到bitbucket即可看到telegram出現訊息
+
+![](/assets/螢幕快照 2017-02-05 下午12.57.53.png)
