@@ -84,7 +84,7 @@ server 在render畫面時會給出 csrfhash，並隱藏在表單中，之後clie
 <form method="POST" action="/upload?_csrf={{ csrfhash }}" enctype="multipart/form-data">
   title: <input name="title" />
   file: <input name="file" type="file" />
-  <button type="submit">上传</button>
+  <button type="submit">上傳</button>
 </form>
 ```
 
