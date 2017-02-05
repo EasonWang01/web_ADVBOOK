@@ -32,6 +32,7 @@
 * [結合Node.js與React.js搭建論壇網站1](node.jsreact.js1.md)
 * [快取與緩存](cache.md)
 * [Web安全機制](security.md)
+* [單元測試](test.md)
 * [部署](deploy.md)
 * [自動化流程與搭建travis ci](travis-ci.md)
 * [結合jenkins與bitBucket](jenkinsbitbucket.md)
