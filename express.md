@@ -21,7 +21,7 @@ npm init
 ```
 npm install express --save
 ```
-在index.js內寫入
+在test1.js內寫入
 ```
 var express = require('express');
 var app = express();
