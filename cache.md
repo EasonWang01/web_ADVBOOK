@@ -7,7 +7,7 @@
 
 2.而我們也可以利用Redis或memcached來做簡單文字資料的存儲，或是直接把資料存在記憶體中，之後可以快速取用，這兩種都是比直接存在大型資料庫如`MySQL`快速
 
-存在記憶體的方式可參考https://www.npmjs.com/package/node-cache
+存取記憶體的方式可參考https://www.npmjs.com/package/node-cache
 
 ##HTTP Header 識別快取
 
