@@ -33,3 +33,7 @@ ex:
 ![](/assets/螢幕快照 2017-02-05 上午11.38.42.png)
 
 然後啟動我們剛才寫的server 之後隨意push到bitbucket該repository上即可看到server的log
+
+>注意:如果ngrok重新啟動都會產生不同的url所以webhook的url也要更改
+
+如果你是用EC2等虛擬主機或其他public IP則可以直接放入你的ip地址可以不用使用ngrok的服務
