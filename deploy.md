@@ -181,15 +181,41 @@ sudo apt install redis-server
 
 ##4.設定nginx reverse proxy
 
+安裝
+
+```
+apt-get install nginx  
+```
+
+設定
+
+```
+ sudo vim /etc/nginx/sites-available/default
+```
+
+將location設為
+
+```
+location / {
+    proxy_pass http://localhost:3001;
+  }
+```
 
 
-重啟指令
+然後重新啟動nginx
 
 ```
 sudo nginx -s stop && sudo nginx
 ```
 
+最後使用pm2執行程式
 
+```
+pm2 start ./dist/server/server.js
+```
 
+之後即可到我們的ip查看
+
+http://13.112.175.93/
 
 ##5.加入https，使用Let's encrypt
