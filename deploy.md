@@ -40,7 +40,8 @@ ssh -i ~/Downloads/pem1.pem  ubuntu@ec2-13-112-175-93.ap-northeast-1.compute.ama
 ```
 sudo apt-get install nginx 
 ```
-
+之後到我們server 的ip即可看到畫面
+ex:`http://13.112.175.93/`
 
 ##9.啟動Node.js server 使用pm2模組
 
