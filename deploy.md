@@ -35,7 +35,7 @@ ssh -i ~/Downloads/pem1.pem  ubuntu@ec2-13-112-175-93.ap-northeast-1.compute.ama
 
 
 
-##8.安裝nginx
+##8.安裝nginx與Node.js
 
 ```
 sudo apt-get install nginx 
@@ -43,7 +43,45 @@ sudo apt-get install nginx
 之後到我們server 的ip即可看到畫面
 ex:`http://13.112.175.93/`
 
-##9.啟動Node.js server 使用pm2模組
+
+之後安裝node.js
+
+```
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+```
+然後
+```
+sudo apt install -y nodejs
+```
+
+
+
+##9.使用babel與webpack轉碼之後啟動Node.js server 使用pm2模組
+
+首先我們輸入
+```
+git clone https://Easonwang01@bitbucket.org/Easonwang01/node.js-with-react.js_.git
+```
+之後cd 到目錄
+
+因為我們要在nginx下再架一個nodejs server
+
+所以第一步先把server side 的code 用到es6的先轉好，才不會出錯
+
+
+先sudo npm install babel-cli -g
+
+`babel lib -d dist --presets es2015,stage-2 --copy-files`
+
+之後把client的code build一份bundle.js
+```
+在webpack.config.js同層使用`sudo webpack`
+```
+記得把hmr等plugin拿掉，然後把server.js用到webpack的也拿掉
+
+之後把bundle.js放到`express.static`的目錄下即可
+
+
 
 ##10.設定nginx reverse proxy
 
