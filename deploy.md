@@ -35,9 +35,11 @@ ssh -i ~/Downloads/pem1.pem  ubuntu@ec2-13-112-175-93.ap-northeast-1.compute.ama
 
 
 
-
-
 ##8.安裝nginx
+
+```
+sudo apt-get install nginx 
+```
 
 
 ##9.啟動Node.js server 使用pm2模組

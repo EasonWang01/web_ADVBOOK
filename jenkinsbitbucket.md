@@ -1,3 +1,7 @@
+如果nginx啟動中可參考此篇https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu
+
+將jenkins使用proxy轉到其他port或是把nginx暫停，否則兩個都是80port會無法啟動
+
 
 ##安裝
 https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu
