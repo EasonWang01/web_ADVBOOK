@@ -163,6 +163,11 @@ sudo webpack
 
 之後把bundle.js放到`express.static`的目錄下即可(這邊因為webpack輸出時已經放到dist中的client所以不用更動)
 
+再來安裝pm2
+
+```
+sudo npm install pm2 -g
+```
 
 
 ##4.設定nginx reverse proxy
