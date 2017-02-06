@@ -66,7 +66,27 @@ git clone https://Easonwang01@bitbucket.org/Easonwang01/node.js-with-react.js_.g
 
 因為我們要在nginx下再架一個nodejs server
 
-所以第一步先把server side 的code 用到es6的先轉好，才不會出錯
+
+
+所以先把server.js開發時用到的webpack部分拿掉
+```
+sudo vim ./src/server/server.js
+```
+
+server.js 刪掉下面幾行
+```
+var config = require('../../webpack.config.js');
+var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+var compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, {noInfo:true,publicPath: config.output.publicPath}));
+app.use(webpackHotMiddleware(compiler));
+```
+
+
+
+第二步是要把server side 的code 用到es6的先轉好，才不會出錯
 
 
 先`sudo npm install babel-cli -g`
@@ -136,10 +156,12 @@ sudo npm install webpack -g
 ```
 sudo webpack
 ```
+上面的指令輸入完需等待約20秒，請先不要按退出
 
-然後把server.js用到webpack的也拿掉
 
-之後把bundle.js放到`express.static`的目錄下即可
+
+
+之後把bundle.js放到`express.static`的目錄下即可(這邊因為webpack輸出時已經放到dist中的client所以不用更動)
 
 
 
