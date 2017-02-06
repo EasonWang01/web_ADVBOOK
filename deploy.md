@@ -112,13 +112,11 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app:[
-    './src/client/client.js'
-  ],
+    app: './src/client/client.js'
 },
 
   output: {
-    path: require("path").resolve("./src/dist"),
+    path: require("path").resolve("./dist/client/"),
     filename: 'bundle.js',
     publicPath: '/'
   },
@@ -168,6 +166,16 @@ sudo webpack
 ```
 sudo npm install pm2 -g
 ```
+
+然後安裝Redis環境
+
+```
+sudo apt install redis-server
+```
+
+之後到aws 的 security group的 inbound 開啟3001 port
+
+![](/assets/螢幕快照 2017-02-06 下午2.02.39.png)
 
 
 ##4.設定nginx reverse proxy
