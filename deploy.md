@@ -226,7 +226,7 @@ http://13.112.175.93/
 
 #### 1.以下用AWS EC2 與Goddy為例
 
-致電godaddy後他們的客服都不太能解決問題，一開始我看網路上教導說使用AWS Route53服務，但注意，此不包含在Free tire 需另外收費，但還是稍微講解route53的dns設定，當初參考此篇(https://www.quora.com/How-do-I-route-my-GoDaddy-domain-name-to-my-Amazon-EC2-web-server) 的第一個回答，但他的回答還少了兩點，就是還要再route53加上兩筆A record 指向你的example.com和www.example.com，才算完成．
+致電godaddy後他們的客服都不太能解決問題，網路部分文章教導說使用AWS Route53服務，但注意，此不包含在Free tire 需另外收費，但還是稍微講解route53的dns設定，當初參考此篇(https://www.quora.com/How-do-I-route-my-GoDaddy-domain-name-to-my-Amazon-EC2-web-server) 的第一個回答，但他的回答還少了兩點，就是還要再route53加上兩筆A record 指向你的example.com和www.example.com，才算完成．
 
 > 但要如何用免費的EC2不用route53指向我們在godaddy買的網域呢？
 
