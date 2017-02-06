@@ -35,7 +35,7 @@ ssh -i ~/Downloads/pem1.pem  ubuntu@ec2-13-112-175-93.ap-northeast-1.compute.ama
 
 
 
-##8.安裝nginx與Node.js
+##2.安裝nginx與Node.js
 
 ```
 sudo apt-get install nginx 
@@ -56,7 +56,7 @@ sudo apt install -y nodejs
 
 
 
-##9.使用babel與webpack轉碼之後啟動Node.js server 使用pm2模組
+##3.使用babel與webpack轉碼之後啟動Node.js server 使用pm2模組
 
 首先我們輸入
 ```
@@ -69,22 +69,76 @@ git clone https://Easonwang01@bitbucket.org/Easonwang01/node.js-with-react.js_.g
 所以第一步先把server side 的code 用到es6的先轉好，才不會出錯
 
 
-先sudo npm install babel-cli -g
+先`sudo npm install babel-cli -g`
 
-`babel lib -d dist --presets es2015,stage-2 --copy-files`
+然後`npm install`
 
-之後把client的code build一份bundle.js
+之後輸入
+
 ```
-在webpack.config.js同層使用`sudo webpack`
+babel src -d dist --presets es2015,stage-2 --copy-files
 ```
-記得把hmr等plugin拿掉，然後把server.js用到webpack的也拿掉
+
+可發現多出了一個dist資料夾，這個是把node.js的一些ES6以上code做轉碼
+
+
+記得把hmr等plugin拿掉
+```
+sudo vim ./webpack.config.js
+```
+把檔案改為
+```
+var webpack = require('webpack');
+
+module.exports = {
+  entry: {
+    app:[
+    './src/client/client.js'
+  ],
+},
+
+  output: {
+    path: require("path").resolve("./src/dist"),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: ['/node_modules/','/src/server/','/src/client',],
+        query: {
+          presets: ['react', 'es2015','stage-0'],
+          cacheDirectory: true
+        },
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      }
+    ]
+  }
+}
+
+```
+
+
+最後把client的code build一份bundle.js，在webpack.config.js同層使用
+```
+sudo webpack
+```
+，然後把server.js用到webpack的也拿掉
 
 之後把bundle.js放到`express.static`的目錄下即可
 
 
 
-##10.設定nginx reverse proxy
+##4.設定nginx reverse proxy
 
 
 
-##11.加入https，使用Let's encrypt
+##5.加入https，使用Let's encrypt
