@@ -1,7 +1,7 @@
 # 使用MongoDB
 
 ```
-Mongo資料庫 > collection >document
+Mongo資料庫 > collection > document
 
 SQL資料庫   >   資料表   > 資料列
 ```
@@ -121,8 +121,8 @@ Relation DataBase                         MongoDB
 資料(Record/Row)                           Document
 欄位(Column)                               Field
 主索引(PK)                                 _id
-function                                   function ( )
-stored procedure                           mapreduce
+function                                  function ( )
+stored procedure                          mapreduce
 ```
 
 1.先根據官方範例在MongoLab引入一個範例collection名為apple,而裡面的document如下
