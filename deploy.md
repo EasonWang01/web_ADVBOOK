@@ -177,7 +177,7 @@ sudo apt install redis-server
 
 ![](/assets/螢幕快照 2017-02-06 下午2.02.39.png)
 
->這時通常可直接執行程式然後到port測試，但有時必須使用reverse proxy才能連到程式
+>這時通常可直接執行Node.js程式然後到IP對應的port測試，但有時必須使用reverse proxy才能連到程式
 
 ##4.設定nginx reverse proxy
 
