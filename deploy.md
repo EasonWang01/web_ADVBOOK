@@ -128,10 +128,16 @@ module.exports = {
 
 
 最後把client的code build一份bundle.js，在webpack.config.js同層使用
+
+```
+sudo npm install webpack -g
+```
+雖然有些建議不要用sudo安裝模組，但目前先這樣安裝沒關係
 ```
 sudo webpack
 ```
-，然後把server.js用到webpack的也拿掉
+
+然後把server.js用到webpack的也拿掉
 
 之後把bundle.js放到`express.static`的目錄下即可
 
