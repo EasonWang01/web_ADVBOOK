@@ -196,7 +196,7 @@ var cursor = db.collection('apple').find({ "borough": "Bronx" });
 ```
 
 舉例:  
-假設有個inventory collection裡面有三個collection如下\`
+假設有個inventory collection裡面有三個資料`
 
 ```
 { _id: 5, type: "food", item: "aaa", ratings: [ 5, 8, 9 ] }
