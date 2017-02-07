@@ -75,6 +75,8 @@ npm install  -g (使用後可在cmd的任何路徑輸入package名稱執行，�
 >Mac 使用 require global package 可用
 export NODE_PATH=/usr/local/lib/node_modules
 
+>Mac 在terminal操作global安裝的package可使用  
+npm config set prefix /usr/local
 
 
 
