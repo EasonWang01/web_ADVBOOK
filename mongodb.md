@@ -146,7 +146,10 @@ stored procedure                          mapreduce
   ],
   "name": "Morris Park Bake Shop",
   "restaurant_id": "30075445"
-},
+}
+```
+
+```
 {
   "address": {
      "building": "1007",
