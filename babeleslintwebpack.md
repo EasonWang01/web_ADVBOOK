@@ -136,9 +136,9 @@ npm install -g eslint
 ```
 看到上面的rules的數字，對照下表，以上面為例，意思是對所有出現quotes(引號)的地方要使用double(兩個引號)，強制性為1(只產生警告訊息)
 ```
-0 - Disable the rule
-1 - Warn about the rule
-2 - Throw error about the rule
+0 - Disable the rule   取消規則
+1 - Warn about the rule   警告
+2 - Throw error about the rule   產生錯誤
 ```
 ##其他rules可參考官網
 http://eslint.org/docs/rules/
