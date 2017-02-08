@@ -26,14 +26,6 @@ app.use('*', function(req, res, next) {
 
 將上面這段加到code的最上面即可
 
-# ＃工作流程
-
-1.一般會使用如上方式寫nodejs api然後寫swagger editor的規格文件yaml然後貼到你自己host的swagger ui的yaml上
-
-要接api的人即可去你的host網址看
-
-2.或是使用swaggerhub直接線上編輯並可產生只可看的swagger ui
-
 
 # #開始編寫yaml語言
 
@@ -66,41 +58,6 @@ paths:
 
 再來我們會開始往paths裡面寫api
 
-#### #寫paths的步驟
-
-1.路徑 `/test`
-
-2.動詞 `get,post...`
-
-3.四劍客 `summary description parameters responses`
-
-4.在parameters下寫參數
-```
- -  name: pageSize
-   in: query
-   description: Number of persons returned
-   type: integer
-```
-
-5.在responses下寫response code  `200,304...`
-
-6.每個response code下有回傳的東西
-```
-description: A Person
-schema:
-   required:
-     - username
-         properties:
-           firstName:
-             type: string
-           lastName:
-             type: string
-           username:
-             type: string
-```  
-
-
-#基本上我們寫這樣就夠了
 
 GET 簡單範本
 ```
@@ -119,6 +76,9 @@ GET 簡單範本
         "200":
           description: Success     
 ```
+
+
+>parameters 的 in 可放的參數  "query", "header", "path", "formData" or "body".
 
 >在express中使用req.params取得url中使http://localhost:3000/getUser/123
 
