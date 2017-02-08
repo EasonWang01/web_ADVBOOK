@@ -355,7 +355,7 @@ index.html
 當我們的環境是Production時，裡面的程式碼不會執行，所以可以增加速度
 
 
-
+但是在webpack bundle後無法去取得，我們必須先寫DefinePlugin
 
 
 
