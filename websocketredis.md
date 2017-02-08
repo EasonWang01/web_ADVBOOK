@@ -209,43 +209,7 @@ server和client都一樣的用法
 ---
 #簡單範例
 server.js
-```
-export const socketio = (io, axios, config1) => {
-
-io.on('connection', function(socket){
-	console.log('a user connected');
-
-	//房間
-	socket.on('mainPage',() => {
-		socket.join('mainPage',() => {
-		  console.log('join main okok')
-			socket.leave('chatPage', () => {
-				console.log('leave chat');
-			})
-		});
-	})
-	socket.on('chatPage',() => {
-		socket.join('chatPage',() => {
-		  console.log('join chat')
-			socket.leave('mainPage', () => {
-				console.log('leave main')
-			});
-		});
-	})
-
-
-  //事件
-  socket.on('chat',(res) => {
-    console.log(res);
-    socket.broadcast.to('chatPage').emit('chat',{data: res});
-    socket.emit('chat',{data: res})
-  })
  
- 
-});
-}
-
-```
 
 ```
 var app = require('express')();
