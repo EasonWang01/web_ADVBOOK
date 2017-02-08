@@ -345,6 +345,20 @@ index.html
 如此來手動引用js檔案，記得要寫在bundle.js之前
 
 ####4.使用 DefinePlugin
+
+`NODE_ENV=production node bundle.js`
+
+可以設定你的執行環境，當要真正產生production時, module會把一些在dev環境下的code check拿掉，來增加執行速度 
+
+以React的 react.min.js 為範例. 在其 `./node_modules/react/lib`中, 會看到如 `process.env.NODE_ENV !== 'production'`的程式碼. 
+
+當我們的環境是Production時，裡面的程式碼不會執行，所以可以增加速度
+
+
+
+
+
+
 ```
 module.exports = {
   //...
@@ -359,13 +373,6 @@ module.exports = {
   //...
 }
 ```
-可以設定你的執行環境，當要真正產生production時, module會把一些在dev環境下的code check拿掉，來增加執行速度 
-
-以React的 react.min.js 為範例. 在其 `./node_modules/react/lib`中, 會看到如 `process.env.NODE_ENV !== 'production'`的程式碼. 
-
-當我們的環境是Production時，裡面的程式碼不會執行，所以可以增加速度
-
-
 
 
  
