@@ -38,7 +38,7 @@ https://mlab.com/home
 
 可參考[http://www.codedata.com.tw/database/mongodb-tutorial-1-setting-up-cloud-env/](http://www.codedata.com.tw/database/mongodb-tutorial-1-setting-up-cloud-env/)
 
-# 如何用Node.js連線到MongoLab?
+# 如何用Node.js連線到mLab?
 
 > 注意：使用mLab註冊帳號後要去新增使用者，之後連線的url中的dbuser是你之後新增的使用者名稱跟密碼，不是輸入帳號
 
