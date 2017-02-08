@@ -240,21 +240,8 @@ io.on('connection', function(socket){
     socket.broadcast.to('chatPage').emit('chat',{data: res});
     socket.emit('chat',{data: res})
   })
-
-	socket.on('postArticle', function(){
-		axios.get(`${config1.origin}/getArticle`)
-			.then(function(response){
-				socket.broadcast.to('mainPage').emit('addArticle', response.data);//broadcast傳給所有人除了自己
-				socket.emit('addArticle', response.data);//加上傳給自己的socket
-         //socket.broadcast.to(id).emit('my message', msg);
-			}).
-			catch(err => {
-				console.log(err);
-			})
-	});
-	socket.on('chat', (data) => {
-		console.log(data)
-	})
+ 
+ 
 });
 }
 
