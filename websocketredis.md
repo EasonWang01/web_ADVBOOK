@@ -247,6 +247,75 @@ io.on('connection', function(socket){
 
 ```
 
+```
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('chat', function(msg){
+    console.log('message: ' + msg);
+    socket.broadcast.to('mainPage').emit('message',msg);//傳給所有人除了自己
+    socket.emit('message',msg);
+  });
+
+    socket.on('mainPage',() => {
+      socket.join('mainPage',() => {
+        console.log('join main okok');
+      });
+  })
+
+    socket.on('chatPage',() => {
+      socket.join('chatPage',() => {
+        console.log('join chat okok');
+      });
+  })
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
+```
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websocket Test</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      function clickBtn() {
+        socket.emit('chat',document.getElementById('thisInput').value);
+      }
+      //接收事件
+      socket.on('message',function(data) {
+        document.getElementById('received').innerHTML = data;
+      })
+
+      function clickBtn1() {
+        socket.emit('mainPage');
+      }
+      function clickBtn2() {
+        socket.emit('chatPage');
+      }
+    </script>
+</head>
+<body>
+   <input id="thisInput"> </input>
+     <button onclick="clickBtn()">點我</button> 
+     <button onclick="clickBtn1()">room1</button> 
+     <button onclick="clickBtn2()">room2</button> 
+   <div id="received"></div>
+</body>
+</html>
+```
+
 ###安全機制之token
 
 client端
