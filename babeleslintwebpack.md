@@ -143,19 +143,6 @@ npm install -g eslint
 ##其他rules可參考官網
 http://eslint.org/docs/rules/
 
-3.使用parser去解析ES6
-```
-npm install babel-eslint
-```
-之後在.eslintrc.json加上
-```
-{
-  "parser": "babel-eslint",
-  "rules": {
-    ...
-  }
-}
-```
 #如何執行?
 ```
 eslint 檔案名稱.js
