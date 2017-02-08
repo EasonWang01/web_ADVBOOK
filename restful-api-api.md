@@ -64,7 +64,7 @@ GET 簡單範本
   /getUser:
     # This is a HTTP operation
     get:
-      description: |
+      description: 
         取得使用者，使用query方法
       parameters:
         - name: id
