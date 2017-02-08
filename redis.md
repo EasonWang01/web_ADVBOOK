@@ -122,7 +122,7 @@ https://redis.readthedocs.io/en/2.4/list.html
 const redis = require("redis");
 const Redisclient = redis.createClient();
 
-export default () => {
+exports.connect = () => {
 
   Redisclient.on("ready", function (err) {
       console.log("Ready");
@@ -137,8 +137,8 @@ exports.Redisclient = Redisclient;
 ```
 
 ```
-import { Redisclient } from './redis';
-import Redis from './redis';
+var Redis = require('./test1').connect;
+var Redisclient = require('./test1').Redisclient;
 Redis();
 
 const payload = [{a:12,b:13},{a:12,b:13},{a:12,b:13}];
