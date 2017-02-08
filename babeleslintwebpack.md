@@ -148,6 +148,11 @@ http://eslint.org/docs/rules/
 eslint 檔案名稱.js
 ```
 
+#也可使用別人寫好的lint
+
+
+https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
+
 #安裝編輯器的插件
 在插件搜尋eslint即可
 
