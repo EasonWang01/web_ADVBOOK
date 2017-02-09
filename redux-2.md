@@ -27,7 +27,7 @@ npm install --save redux react-redux react-router-redux redux-logger
 
 export default connect((state) => state ,{ FilterTodo })(FliterLink)
 
-//第一個參數，等同為把等個store的state訂閱了，如果store發生改變則此元件也會更新
+//第一個參數，等同為把整個store的state訂閱了，如果store發生改變則此元件也會更新
 //如果改為(state) => state.apple  則只會訂閱有關store中apple的部分，只有store 的apple更新了才會更新組件
 
 //第二個參數是把action 轉為可以dispatch出去的function，之後即可使用this.props.FilterTodo即個發出action
