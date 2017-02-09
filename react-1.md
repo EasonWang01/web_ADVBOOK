@@ -199,7 +199,14 @@ ReactDOM.render(
 <h1>hello</h1>
 ```
 
-你可能會看過`getInitialState`但在ES6可直接寫為如上即可
+你可能會看過`getInitialState`但在ES6可直接寫為
+
+```
+this.state = {
+.....
+};
+```
+即可
 
 而設定state可用`setState()`
 
