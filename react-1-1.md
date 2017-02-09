@@ -117,8 +117,9 @@ module.exports = {
 
 什麼是source map
 
-可以看chrome dev tool 裡的setting即有此選項
-[http://www.ruanyifeng.com/blog/2013/01/javascript\_source\_map.html](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
+![](/assets/螢幕快照 2017-02-09 上午9.59.33.png)
+
+
 
 5.在client資料夾中新增client.js
 
