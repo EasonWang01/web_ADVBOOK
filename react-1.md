@@ -30,16 +30,22 @@ ReactDOM.render(<HelloMessage name="apple"/>, document.getElementById('root'));
 
 基本React 元件構造
 ```
-class baseComponent extends React.Component{
+import React,{Component} from 'react';
+
+class BaseComponent extends Component{
 
   constructor(props){
     super(props);
   }
 
 }
+
+export default BaseComponent
 ```
 
 ####2.HTML與JSX
+
+http://magic.reactjs.net/htmltojsx.htm
 
 以前我們將HTML和JS分開寫，但React將頁面的畫面和邏輯全寫在JS內，而這個JS名稱為JSX，下面為JSX和HTML的簡單轉換對照圖
 
@@ -53,7 +59,7 @@ HTML
 ```
 
 ```javascript
-class baseComponent extends Component{
+class BaseComponent extends Component{
 
   render() {
     return (
