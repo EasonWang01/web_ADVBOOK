@@ -87,13 +87,12 @@ import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
 let initialState = {
-visbility:'SHOW_ALL',
-todos:[{
-id:0,
-completed: false,
-text:'initial for demo'
-
-}]
+  visbility:'SHOW_ALL',
+  todos:[{
+    id:0,
+    completed: false,
+    text:'initial for demo'
+  }]
 }
 
 
@@ -116,19 +115,18 @@ export default store
 
 例如:
 ```
-FilterTodo:(filter)=>{
-return({
-type:'SET_VISBILITY_FILTER',
-filter:filter
-
-})
+FilterTodo:(filter) => {
+  return({
+    type:'SET_VISBILITY_FILTER',
+    filter:filter
+  })
 },
 ///上面是一般的action，下面是thunk的action
 
-con:()=>{
-return (dispatch,getState)=>{
-console.log(getState())
-}
+con:() => {
+  return (dispatch, getState)=>{
+    console.log(getState())
+  }
 }
 ```
 
