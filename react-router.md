@@ -21,7 +21,7 @@ ReactDOM.render((
 
 再改為下面看看
 
-App.js
+Client.js
 ```
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -217,7 +217,7 @@ render((
 
 將hash history改為browser history
 
-App.js
+Client.js
 ```
 import { Router, Route, browserHistory  } from 'react-router'
 
@@ -225,18 +225,7 @@ import { Router, Route, browserHistory  } from 'react-router'
 ```
 <Router history={browserHistory}>
 ```
-之後點選link發現url後不再出現`#`，但點選後這時按F5，發現出現了`Cannot get`
 
-只要把server.js
-
-改為
-
-```
-app.get('*', function (req, res) {
-    res.sendFile(path.resolve('client/index.html'));
-});
-```
-即可
 
 參考:
 https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md#configuring-your-server
