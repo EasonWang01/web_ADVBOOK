@@ -242,7 +242,7 @@ ReactDOM.render(
 
 ####下面介紹React.js兩個常用的生命週期方法
 
-1.`componentDidMount`方法，用途為在元件載入到頁面後所要執行的函式，類似於jquery中的`$( document ).ready()`方法
+1.`componentDidMount`方法，用途為在元件載入到頁面後所要執行的函式，類似於jquery中的`$(document).ready()`方法
 
 2.`componentWillMount`方法，會在元件渲染到頁面前執行 
 
