@@ -56,8 +56,3 @@ props.articles 來自Main.js中的mapStateToProp
 4.signup 後使用nodemailer 傳送郵件
 
 5.我的文章頁面可修改文章(MyArticle.js)
-
-
-
-
-)
