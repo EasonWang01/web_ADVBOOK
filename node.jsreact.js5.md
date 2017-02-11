@@ -7,7 +7,7 @@
 
 
 
-####FB OAuth
+####1.FB OAuth
 
 我們先到他的API網站
 https://developers.facebook.com/docs/facebook-login/web
@@ -22,11 +22,11 @@ https://developers.facebook.com/docs/facebook-login/web
 ![](/assets/螢幕快照 2017-02-11 下午11.16.40.png)
 
 
-####搜尋文章
+####2.搜尋文章
 
 我們在Main.js放入搜尋框
 
-```
+```javascript
 <TextField
   style={{position: 'absolute', top: '50px', left: '15%'}}
   hintText="搜尋文章..."
@@ -36,7 +36,7 @@ https://developers.facebook.com/docs/facebook-login/web
 ```
 
 觸發
-```
+```javascript
   searchArticle(e) {
     if (e.target.value.length < 1){ //如果輸入框空白
       axios.get('/getArticle')
@@ -62,7 +62,7 @@ https://developers.facebook.com/docs/facebook-login/web
 
 api.js:81
 
-```
+```javascript
 app.get('/articles/title/:title', (req,res) => {
 	console.log(req.params.title)
 	Post.find({title: req.params.title})
