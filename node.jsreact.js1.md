@@ -25,6 +25,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 #第一部分
 
+>稍後記得把範例的mLab URL改為你自己的
+
 先從單元上點選按鈕下載這次的課程範例
 
 這一部分講解有關以下三個部分
