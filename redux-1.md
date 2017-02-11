@@ -14,7 +14,6 @@ views點擊=>action => reducer => store =>回傳state給views
 
 新增test1.html
 
-在terminal輸入`open test1.html`
 #簡單範例
 ```
 <!DOCTYPE html>
