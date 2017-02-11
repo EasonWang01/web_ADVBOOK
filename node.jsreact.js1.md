@@ -25,9 +25,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 #第一部分
 
+先從單元上點選按鈕下載這次的課程範例
+
 >稍後記得把範例的mLab URL與帳號密碼改為你自己的
 
-先從單元上點選按鈕下載這次的課程範例
+![](/assets/螢幕快照 2017-02-11 下午4.09.53.png)
 
 這一部分講解有關以下三個部分
 
