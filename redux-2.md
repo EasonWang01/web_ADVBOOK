@@ -130,6 +130,20 @@ con:() => {
 }
 ```
 
+我們可以把action加上如下
+```
+	con:() => {
+		return (dispatch, getState) => {
+			console.log('現在的Store是');
+			console.log(getState());
+		}
+  }
+```
+之後TodoList.js加入
+```
+ <button onClick={() => this.props.dispatch(action.con())}  />
+```
+
 
 #Redux Devtools
 
