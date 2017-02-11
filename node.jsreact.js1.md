@@ -150,3 +150,17 @@ ReactDOM.render(
 )
 
 ```
+
+相關結構
+```
+/server ---  server.js => api.js => DB.js => index.js
+
+/containers --- App.js => Header.js => Main.js
+
+Navbar.js
+
+/util --- Menu.js => SimpleDialog.js
+
+/components --- Login.js => Register.js
+
+```
