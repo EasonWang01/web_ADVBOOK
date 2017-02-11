@@ -173,3 +173,10 @@ export default store
 
 3.開啟網頁即可看到chrome extension的redux devtools亮起，即可點選開啟
 
+--試著發出一些action然後點選最下方第七個時鐘圖案，即可看到他可以重播我們做過的action
+
+--也可點選chart去做查看
+
+--可點上方的做過的action的JUMP按鈕，之後可到當時的情況，但JUMP過去後不可再做改變，也就是點選畫面會沒反應，必須再JUMP回最新的action才能繼續對畫面做點選(原因是設計者要讓我們可以觀看過去但不可更改，否則後續的流程都會亂掉)
+
+![](/assets/螢幕快照 2017-02-11 上午9.56.31.png)
