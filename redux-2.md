@@ -19,6 +19,9 @@ npm install --save redux react-redux react-router-redux redux-logger
 
 2.syncHistoryWithStore讓瀏覽器的location同步到store中
 ```
+![](/assets/螢幕快照 2017-02-11 上午9.49.41.png)
+
+![](/assets/螢幕快照 2017-02-11 上午9.49.48.png)
 
 ####元件中
 
