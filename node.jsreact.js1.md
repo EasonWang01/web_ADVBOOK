@@ -24,11 +24,3 @@ import RaisedButton from 'material-ui/RaisedButton';
 可直接點選`<>`橫條部分即會出現程式碼範例，拉到頁面最下方會顯示該元件可使用的所有`props`
 
 
-#首先
-
-我們先完成後端API server部分，再來處理我們的前端部分
-
-先到如下網址下載
-https://bitbucket.org/Easonwang01/node.js-with-react.js_/downloads
-
-這是我們後端與Redux的部分
