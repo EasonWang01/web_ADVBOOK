@@ -149,6 +149,8 @@ con:() => {
 
 1.到chrome extension 下載Redux Devtools
 
+https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=zh-TW
+
 2.在程式的store.js中改為如下
 ```
 let finalCreateStore = compose(
