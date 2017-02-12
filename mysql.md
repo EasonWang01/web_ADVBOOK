@@ -23,19 +23,10 @@ D:\MYSQL\Bin>mysql -u root -p admin
 
 ####Mac
 
-因為在Mac安裝他會預設產生一個隨機root密碼，所以時常會不知道安裝好後如何登入
-
-我們先到官網下載dmg http://dev.mysql.com/downloads/mysql/
-
-之後安裝好後把預設密碼記下來
-
-![](/assets/螢幕快照 2017-02-12 下午4.09.35.png)
-
-加入mysql指令到系統環境變數
-
 ```
-export PATH=/usr/local/mysql/bin:$PATH
+homebrew install mysql
 ```
+
 
 #與Node.js連線
 
