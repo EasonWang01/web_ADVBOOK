@@ -74,8 +74,8 @@ api.js:81
 
 ```javascript
 app.get('/articles/title/:title', (req,res) => {
-	console.log(req.params.title)
-	Post.find({title: req.params.title})
+  let re = new RegExp(req.params.title, "g");
+	Post.find({title: re })
 	.then(data => {
   	 res.end(JSON.stringify(data))
 	})
