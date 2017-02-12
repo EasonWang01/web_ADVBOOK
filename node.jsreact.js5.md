@@ -14,13 +14,22 @@ https://developers.facebook.com/docs/facebook-login/web
 
 點選右上方選單之後新增應用程式，新增完後再次點擊選單並進入該應用程式控制主頁
 
-然後進入設定把`應用程式網域`與`網站網址`更改
+1.然後進入設定把`應用程式網域`與`網站網址`更改
 ![](/assets/螢幕快照 2017-02-11 下午11.19.44.png)
 
-然後把`應用程式編號`複製並貼到App.js的SDK中
+2.然後把`應用程式編號`複製並貼到App.js的SDK中
 
 ![](/assets/螢幕快照 2017-02-11 下午11.16.40.png)
 
+3.以及貼到Header.js 的`FB.init`的`appId`
+
+![](/assets/螢幕快照 2017-02-12 上午11.54.26.png)
+
+4.App.js:20  (加入FB SDK)
+
+5.Header.js:46 (初始化與發出登入request)
+
+6.api.js:120 (寫上FBLogin API)
 
 ####2.搜尋文章
 
