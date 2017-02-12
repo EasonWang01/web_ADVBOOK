@@ -1,6 +1,9 @@
 # 使用MySQL
 
 #使用線上服務
+ 免費信箱
+ https://10minutemail.com/10MinuteMail/index.html?dswid=-5419
+
 測試用免費mysql:https://www.freemysqlhosting.net/
 (預設一個資料庫，不可再增加或修改)
 
