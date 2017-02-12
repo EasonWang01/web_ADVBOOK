@@ -16,6 +16,11 @@ https://dev.mysql.com/downloads/installer/
 
 啟動相關命令:https://dev.mysql.com/doc/refman/5.7/en/windows-start-command-line.html
 
+到安裝路徑的bin資料夾輸入
+```
+D:\MYSQL\Bin>mysql -u root -p admin
+```
+
 ####Mac
 
 因為在Mac安裝他會預設產生一個隨機root密碼，所以時常會不知道安裝好後如何登入
