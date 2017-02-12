@@ -18,17 +18,13 @@ https://dev.mysql.com/downloads/installer/
 
 ####Mac
 
-安裝:brew install mysql
+因為在Mac安裝他會預設產生一個隨機root密碼，所以時常會不知道安裝好後如何登入
 
-啟動相關命令
-```
-/usr/local/bin/mysql.server start
+我們先到官網下載dmg http://dev.mysql.com/downloads/mysql/
 
-/usr/local/bin/mysql.server restart
+之後安裝好後把預設密碼記下來
 
-/usr/local/bin/mysql.server stop
-```
-
+![](/assets/螢幕快照 2017-02-12 下午4.09.35.png)
 #與Node.js連線
 
 1.使用npm安裝mysql
