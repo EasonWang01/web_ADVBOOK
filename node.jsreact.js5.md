@@ -71,3 +71,31 @@ app.get('/articles/title/:title', (req,res) => {
 	})
 })
 ```
+
+
+####3.線上聊天室使用者欄位
+
+Chatroom.js:121
+```
+    socket.on('chatRoomUsers', (res) => {
+      if(this.state.users !== res.user) {
+        this.setState({ users: res.user });
+      };
+    })
+```
+
+Chatroom.js:161
+
+```
+     {      
+          Object.keys(users).map(function(objectKey, index) {
+              let name = users[objectKey].name;
+              let avatar = users[objectKey].avatar;
+              return (
+                <IconButton key={index} tooltip={name}>
+                  <Avatar src={avatar} />
+                </IconButton>
+              )
+          })
+        }
+```
