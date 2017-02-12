@@ -178,7 +178,7 @@ var query = connection.query("UPDATE articles SET title = ? WHERE id = 1","Hello
 使用?號
 
 ```
-var query = connection.query("UPDATE articles SET title = ? WHERE id = ?",["Hell",1],function (err, result) {
+var query = connection.query("UPDATE articles SET title = ? WHERE id = ?",["Hello",1],function (err, result) {
   if (err) {
     console.error(err);
     return;
@@ -201,7 +201,7 @@ var sql = "SELECT * FROM ?? WHERE ?? = ?";
 範例2
 
 ```
-connection.query("UPDATE ?? SET title = ? WHERE id = ?",["articles","Hell",1]
+connection.query("UPDATE ?? SET title = ? WHERE id = ?",["articles","Hello",1]
 ```
 
 # 使用escape，防止injection
