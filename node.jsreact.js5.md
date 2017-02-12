@@ -86,7 +86,7 @@ app.get('/articles/title/:title', (req,res) => {
 ####3.線上聊天室使用者欄位
 
 Chatroom.js:121
-```
+```javascript
     socket.on('chatRoomUsers', (res) => {
       if(this.state.users !== res.user) {
         this.setState({ users: res.user });
@@ -96,8 +96,8 @@ Chatroom.js:121
 
 Chatroom.js:161
 
-```
-     {      
+```javascript
+       {      
           Object.keys(users).map(function(objectKey, index) {
               let name = users[objectKey].name;
               let avatar = users[objectKey].avatar;
