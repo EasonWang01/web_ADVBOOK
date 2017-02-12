@@ -348,7 +348,7 @@ server {
   ssl_certificate  /usr/share/nginx/sslcrt/bundle.crt;        
   ssl_certificate_key /usr/share/nginx/sslcrt/private.key;     
   location / {          
-    proxy_pass http://localhost:3000;      
+    proxy_pass http://localhost:3001;      
   }}
 ```
 
