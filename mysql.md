@@ -1,8 +1,6 @@
 # 使用MySQL
 
 #使用線上服務
-臨時免費信箱:http://www.yopmail.com/zh/
-
 測試用免費mysql:https://www.freemysqlhosting.net/
 (預設一個資料庫，不可再增加或修改)
 
