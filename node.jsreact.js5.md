@@ -40,7 +40,7 @@ https://developers.facebook.com/docs/facebook-login/web
   style={{position: 'absolute', top: '50px', left: '15%'}}
   hintText="搜尋文章..."
   underlineStyle={{borderColor: '#EC407A'}}
-  onBlur={(e) => this.searchArticle(e)}
+  onChange={(e) => this.searchArticle(e)}
 />
 ```
 
@@ -52,7 +52,8 @@ https://developers.facebook.com/docs/facebook-login/web
       .then((res) => {
         console.log(res.data);
         this.setState({FilterArticles: res.data})
-      })     
+      })    
+      return 
     };
     if(e.target.value.length > 20) {
       sweetAlert('不可超過20字');
