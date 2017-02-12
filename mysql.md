@@ -117,7 +117,7 @@ connection.query('CREATE TABLE Food (' +
 ## insert column
 
 ```
-connection.query("ALTER table apple add column (code varchar(255))" ,function(err, result) {
+connection.query("ALTER table articles add column (code varchar(255))" ,function(err, result) {
     if (err) throw err;
 
     console.log(result.insertId);
