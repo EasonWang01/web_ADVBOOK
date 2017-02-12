@@ -25,6 +25,13 @@ https://dev.mysql.com/downloads/installer/
 之後安裝好後把預設密碼記下來
 
 ![](/assets/螢幕快照 2017-02-12 下午4.09.35.png)
+
+加入mysql指令到系統環境變數
+
+```
+export PATH=/usr/local/mysql/bin:$PATH
+```
+
 #與Node.js連線
 
 1.使用npm安裝mysql
