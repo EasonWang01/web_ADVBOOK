@@ -214,9 +214,8 @@ sudo nginx -s stop && sudo nginx
 pm2 start ./dist/server/server.js
 ```
 
-之後即可到我們的ip查看
+之後即可到我們的EC2 ip查看
 
-http://13.112.175.93/
 
 ##5.加入https，使用Let's encrypt
 
