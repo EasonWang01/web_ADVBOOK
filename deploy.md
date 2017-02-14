@@ -312,7 +312,9 @@ sudo bash -c 'cat certificate.crt ca_bundle.crt >> bundle.crt'
 
 ubuntu路徑如下
 
-`/etc/nginx/sites-available`
+```
+sudo vim /etc/nginx/sites-available/default
+```
 
 會有一個default檔案，用vim等文字編輯器開啟
 
