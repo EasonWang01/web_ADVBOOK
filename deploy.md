@@ -239,6 +239,25 @@ pm2 start ./dist/server/server.js
 
 #使用Let's encrypt
 
+注意!須先把reverse proxy關掉
+```
+location / {
+proxy_pass http://localhost:3001;
+proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection "upgrade";
+proxy_set_header Host $host;
+}
+```
+
+
+然後重新啟動nginx
+
+```
+sudo nginx -s stop && sudo nginx
+```
+
+
 1.先到此網站
 
 https://www.sslforfree.com
