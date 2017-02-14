@@ -282,10 +282,7 @@ https://www.sslforfree.com
 2.Create another folder in your domain under ".well-known" named "acme-challenge" if it does not already exist
 
 >3.Upload the downloaded files to the "acme-challenge" folder
-
-ubuntu路徑如下
-
-`/usr/share/nginx/`
+ 
 
 之後點擊下面連結測試，如果有下載下來即為成功
 
