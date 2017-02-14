@@ -347,9 +347,7 @@ server {
 之後
 
 ```
-1.sudo service nginx stop
-
-2.sudo nginx
+sudo nginx -s stop && sudo nginx
 ```
 ###注意
 
