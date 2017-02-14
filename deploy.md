@@ -242,11 +242,11 @@ pm2 start ./dist/server/server.js
 注意!須先把reverse proxy關掉
 ```
 location / {
-proxy_pass http://localhost:3001;
-proxy_http_version 1.1;
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection "upgrade";
-proxy_set_header Host $host;
+  proxy_pass http://localhost:3001;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection "upgrade";
+  proxy_set_header Host $host;
 }
 ```
 
