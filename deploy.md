@@ -256,6 +256,7 @@ proxy_set_header Host $host;
 ```
 sudo nginx -s stop && sudo nginx
 ```
+之後記得到AWS開啟`443`的`Security group`
 
 
 1.先到此網站
