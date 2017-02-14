@@ -1,4 +1,4 @@
-# #部署
+/var/www/html# #部署
 
 我們接下來要把前幾章實作的網站部署到AWS上，並用nginx當proxy
 
@@ -268,7 +268,7 @@ https://www.sslforfree.com
 
 3.點選Manual verfication
 
-4.之後把它給你的兩個檔案下載，之後放到你的server www目錄下
+4.之後把它給你的兩個檔案下載，之後放到`/var/www/html`目錄下
 
 建造一個資料夾`.well-known`然cd進入
 
