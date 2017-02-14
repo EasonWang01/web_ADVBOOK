@@ -392,5 +392,5 @@ server {
   }}
 ```
 
-
+>如果出現一些https 發往 http導致不安全的警告訊息可參考如下http://hao.jser.com/archive/8246/
 
