@@ -385,6 +385,10 @@ server {
 
 > 如果出現一些https 發往 http導致不安全的警告訊息可參考如下[http://hao.jser.com/archive/8246/](http://hao.jser.com/archive/8246/)
 >
+> https://developers.google.com/web/fundamentals/security/csp/
+
+
+
 > 如果臉書無法登入，可去把應用程式網域與網站網址設定更改即可
 
 
