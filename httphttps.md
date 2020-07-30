@@ -1,6 +1,6 @@
-# HTTP,HTTPS
+# HTTP, HTTPS
 
-## HTTP,HTTPS
+## HTTP, HTTPS
 
 HTTP是TCP的上層協定，設計HTTP最初的目的是為了提供一種發布和接收HTML頁面的方法。通過HTTP或者HTTPS協定請求的資源由統一資源識別元（Uniform Resource Identifiers，URI）來標識，也就是我們俗稱的網址
 
