@@ -1,20 +1,20 @@
-# #Restful簡介
+# RESTful API 與 API 文件撰寫
 
+## \#Restful簡介
 
-一種設計API的風格，而非標準
-https://zh.wikipedia.org/wiki/REST
+一種設計API的風格，而非標準 [https://zh.wikipedia.org/wiki/REST](https://zh.wikipedia.org/wiki/REST)
 
-# \#swagger簡介
+## \#swagger簡介
 
 一個把API說明清楚的方式
 
 swagger有三個服務，editor,codegen,swagger ui
 
-# 使用swagger editor 並開啟localhost cors
+## 使用swagger editor 並開啟localhost cors
 
 因沒開啟的話，位於遠端網頁的 swagger editor 無法發送測試
 
-```
+```text
 app.use('*', function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
@@ -26,17 +26,17 @@ app.use('*', function(req, res, next) {
 
 將上面這段加到code的最上面即可
 
+## \#開始編寫yaml語言
 
-# #開始編寫yaml語言
+> yaml子項目會後退空兩格，陣列使用`-`表示
 
->yaml子項目會後退空兩格，陣列使用`-`表示
-
-先到http://editor.swagger.io/#/
+先到[http://editor.swagger.io/\#/](http://editor.swagger.io/#/)
 
 可以看到範例，接著我們把它清空，開始編寫自己的版本
 
 最基本的型態
-```
+
+```text
 swagger: '2.0'
 
 info:
@@ -49,18 +49,18 @@ schemes:
 host: localhost:3000
 basePath: /
 
-paths: 
-  
+paths:
 ```
+
 其中最上面指的是使用swagger的版本，目前固定是2.0.0
 
 中間部分等於是指定API server的位置，意思為http:localhost:3000/
 
 再來我們會開始往paths裡面寫api
 
-
 GET 簡單範本
-```
+
+```text
   /getUser:
     # This is a HTTP operation
     get:
@@ -74,20 +74,20 @@ GET 簡單範本
           type: string       
       responses:
         "200":
-          description: Success     
+          description: Success
 ```
 
-
->parameters 的 in 可放的參數  "query", "header", "path", "formData" or "body".
-
->在express中使用req.params取得url中使http://localhost:3000/getUser/123
-
->使用req.query取得http://localhost:3000/getUser?id=123
+> parameters 的 in 可放的參數 "query", "header", "path", "formData" or "body".
+>
+> 在express中使用req.params取得url中使[http://localhost:3000/getUser/123](http://localhost:3000/getUser/123)
+>
+> 使用req.query取得[http://localhost:3000/getUser?id=123](http://localhost:3000/getUser?id=123)
 
 GET 方法的完整範例
 
 server.js
-```
+
+```text
 var express = require('express')
 var app = express()
 
@@ -128,8 +128,8 @@ app.listen(3000, function () {
 ```
 
 yaml
-```
 
+```text
 swagger: '2.0'
 
 host: localhost:3000
@@ -149,7 +149,7 @@ paths:
       responses:
         "200":
           description: Success
-                  
+
   /getArticle/{id}:
     # This is a HTTP operation
     get:
@@ -181,37 +181,34 @@ paths:
           type: string       
       responses:
         "200":
-          description: Success                                    
-                  
-                  
-                  
-                  
+          description: Success
 ```
-  
-Post 
 
->你可能看過$ref: '#/definitions/test1'，之後把test1另外定義，但個人感覺此種寫法比較分散，於是此處不用此種寫法
+Post
 
-#注意:修改yaml後記得把`Try this operation`重新開啟才會更新
+> 你可能看過$ref: '\#/definitions/test1'，之後把test1另外定義，但個人感覺此種寫法比較分散，於是此處不用此種寫法
+
+## 注意:修改yaml後記得把`Try this operation`重新開啟才會更新
 
 先定義post type
 
-```
+```text
 consumes:
   - application/x-www-form-urlencoded
+```
 
-```
 或是
-```
+
+```text
 consumes:
   - multipart/form-data
 ```
 
---------
 路由
-```
+
+```text
   /register:         
-  
+
     post:
       description: add a new user
       # movie info to be stored
@@ -230,12 +227,12 @@ consumes:
           required: true
       responses:
         "200":
-          description: Success        
+          description: Success
 ```
 
 server.js
 
-```
+```text
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
@@ -289,7 +286,8 @@ app.listen(3000, function () {
 最後加上PUT與DELETE方法
 
 server.js
-```
+
+```text
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
@@ -356,8 +354,7 @@ app.listen(3000, function () {
 
 yaml
 
-```
-
+```text
 swagger: '2.0'
 
 host: localhost:3000
@@ -378,7 +375,7 @@ paths:
       responses:
         "200":
           description: Success
-                  
+
   /getArticle/{id}:
     # This is a HTTP operation
     get:
@@ -412,7 +409,7 @@ paths:
         "200":
           description: Success  
   /register:         
-  
+
     post:
       description: add a new user
       # movie info to be stored
@@ -432,9 +429,9 @@ paths:
       responses:
         "200":
           description: Success        
-                  
+
   /user:         
-  
+
     put:
       description: 更新個人資料
       # movie info to be stored
@@ -477,8 +474,6 @@ paths:
           required: true
       responses:
         "200":
-          description: Success                      
-                  
-                                    
-                  
+          description: Success
 ```
+

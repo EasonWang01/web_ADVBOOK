@@ -1,12 +1,16 @@
-# Redux
+# Redux 基本概念1
 
-#概念
-views點擊=>action => reducer => store =>回傳state給views
+## Redux
+
+## 概念
+
+views點擊=&gt;action =&gt; reducer =&gt; store =&gt;回傳state給views
 
 1.state統一由store保存，任何更新state都要告知store
 
 2.讓views得到store中state的方法
-```
+
+```text
 1.使用connect讓最上層元件取得Provider中的store，再用props傳下去
 
 2.使用store.getState
@@ -14,8 +18,9 @@ views點擊=>action => reducer => store =>回傳state給views
 
 新增test1.html
 
-#簡單範例
-```
+## 簡單範例
+
+```text
 <!DOCTYPE html>
 <html>
   <head>
@@ -86,11 +91,11 @@ views點擊=>action => reducer => store =>回傳state給views
 </html>
 ```
 
-####Action
+### Action
 
 為一個函數返回一個物件，裡面至少會包含type
 
-```
+```text
 function addTodo(text) {
   return {
     type: ADD_TODO,
@@ -99,11 +104,11 @@ function addTodo(text) {
 }
 ```
 
-####Reducer
+### Reducer
 
 Reducer為一個function裡面通常是寫入switch然後判斷剛才發出action的type，決定要做哪一種對應的switch case處理
 
-```
+```text
 function todoApp(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
@@ -125,23 +130,22 @@ function todoApp(state = initialState, action) {
 上面的例子是，把原本的store中的state的todos陣列加入一筆新的資料
 
 假設
-```
+
+```text
 var state = {
   todos : [{text:'hihi',completed: false},{text:'okok',completed: false}]
 }
-
 ```
 
 我們可用
 
-```
+```text
 console.log(...state.todos)
 ```
 
 之後
 
-
-```
+```text
 var final = Object.assign({}, state, {
         todos: [
           ...state.todos,
@@ -153,5 +157,5 @@ var final = Object.assign({}, state, {
       })
 
 console.log(final);
-
 ```
+

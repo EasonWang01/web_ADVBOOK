@@ -1,10 +1,12 @@
-# #自動化流程Jenkins CI與搭建Travis CI
+# 自動化流程與搭建travis ci
 
-#Travis CI
+## \#自動化流程Jenkins CI與搭建Travis CI
+
+## Travis CI
 
 1.在剛才單元測試專案新增`.travis.yml`
 
-```
+```text
 language: node_js
 node_js:
 - stable
@@ -20,13 +22,13 @@ branches:
 
 新增`.gitignore`
 
-```
+```text
 node_modules
 ```
 
-讓node_modules不要上傳到github上
+讓node\_modules不要上傳到github上
 
-```
+```text
 git init
 git remote add origin <url>
 git add .
@@ -34,10 +36,9 @@ git commit -m 'add'
 git push origin master
 ```
 
-3.進入https://travis-ci.org/
+3.進入[https://travis-ci.org/](https://travis-ci.org/)
 
-使用github帳號登入
-然後點選右上方你的頭像，進入profile
+使用github帳號登入 然後點選右上方你的頭像，進入profile
 
 點選右上方的紅色按鈕`sync account`
 
@@ -45,7 +46,7 @@ git push origin master
 
 4.到剛才程式專案的index.js加入
 
-```
+```text
 exports.test2 = (num) => {
   return true;
 }
@@ -53,10 +54,11 @@ exports.test2 = (num) => {
 
 5.再次上傳
 
-```
+```text
 git add .
 git commit -m 'add'
 git push origin master
 ```
 
 6.回到travis網頁點選重新整理，之後點選剛才專案，即可看到他自動跑測試
+

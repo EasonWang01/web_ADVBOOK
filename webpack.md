@@ -1,31 +1,34 @@
-# #Webpack
+# Webpack
+
+## \#Webpack
 
 目前有出第二版也就是webpack2，但目前性能與社群比較起來還是暫時先用一會比較適當，所以以下教學將以官方教學介紹webpack
 
-# 附錄0-Webpack
+## 附錄0-Webpack
 
 其官方敘述:
->A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows to load parts for the application on demand. Through "loaders" modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff
+
+> A bundler for javascript and friends. Packs many modules into a few bundled assets. Code Splitting allows to load parts for the application on demand. Through "loaders" modules can be CommonJs, AMD, ES6 modules, CSS, Images, JSON, Coffeescript, LESS, ... and your custom stuff
 
 以前用過Browserfy、gulp、grunt等工具的話可以迅速理解他的概念
 
+## 開始使用
 
-#開始使用
-
-打開終端機，輸入
-`npm install webpack -g`
-![](0245.png)
+打開終端機，輸入 `npm install webpack -g` ![](https://github.com/easonwang01/class/tree/60d3d5888ae99ccc704fd4c1f21d595053744acd/0245.png)
 
 下面我們以官方的範例，讓大家了解webpack基本功能
 
-###1.創造如下檔案
+### 1.創造如下檔案
 
 entry.js
-```
+
+```text
 document.write("It works.");
 ```
+
 index.html
-```
+
+```text
 <html>
     <head>
         <meta charset="utf-8">
@@ -35,18 +38,20 @@ index.html
     </body>
 </html>
 ```
-之後在終端機輸入`cd  你創建的資料夾`
 
-(讓終端機路徑進入的你資料夾內)
+之後在終端機輸入`cd 你創建的資料夾`
+
+\(讓終端機路徑進入的你資料夾內\)
 
 接著輸入
 
-` webpack ./entry.js bundle.js`
+`webpack ./entry.js bundle.js`
 
 上面指令的用途為把你的entry.js檔案打包為bundle.js
 
 成功輸入指令後會看到如下
-```
+
+```text
 Version: webpack 1.12.11
 Time: 51ms
     Asset     Size  Chunks             Chunk Names
@@ -59,49 +64,64 @@ chunk    {0} bundle.js (main) 28 bytes [rendered]
 
 以上即是我們第一個用webpack打包的程式
 
-###2.創建第二個js檔案
+### 2.創建第二個js檔案
+
 於同一個資料夾下新增content.js檔案
-```
+
+```text
 module.exports = "It works from content.js.";
 ```
+
 再來，將原先entry.js改為
-```
+
+```text
 document.write(require("./content.js"));
 ```
+
 之後一樣輸入於終端機輸入
-```
+
+```text
  webpack ./entry.js bundle.js
 ```
+
 打開index.html可以發現，畫面顯示出content.js的內容
 
->這個範例用途為，讓我們了解webpack的模組化js檔案功能
+> 這個範例用途為，讓我們了解webpack的模組化js檔案功能
 
-###3.使用Loader
+### 3.使用Loader
+
 因為webpack原生只能處理js檔案，所以想處理其他檔案時，我們必須安裝對應的Loader。
 
 下面為css-loader的範例
 
 我們先來安裝load，安裝方式為在終端機使用npm安裝
-```
+
+```text
 npm install css-loader style-loader
 ```
-這裡沒有於結尾處加上`-g` 所以他會在我們的資料夾產生node_module資料夾，裡面放入我們用npm所安裝的東西 
+
+這裡沒有於結尾處加上`-g` 所以他會在我們的資料夾產生node\_module資料夾，裡面放入我們用npm所安裝的東西
 
 安裝好後我們新增一個css檔案
 
 style.css
-```
+
+```text
 body {
     background: yellow;
 }
 ```
+
 接著更新entry.js檔案
-```
+
+```text
 require("!style!css!./style.css");
 document.write(require("./content.js"));
 ```
+
 接著一樣輸入
-```
+
+```text
  webpack ./entry.js bundle.js
 ```
 
@@ -114,16 +134,19 @@ document.write(require("./content.js"));
 所以我們可以把它寫在command
 
 將entry.js改為
-```
+
+```text
 require("./style.css");
 document.write(require("./content.js"));
 ```
+
 這次使用下面的指令compile
-```
+
+```text
 webpack ./entry.js bundle.js --module-bind 'css=style!css'
 ```
 
-###4.webpack.config.js
+### 4.webpack.config.js
 
 通常許多模組都會有一個config file，而webpack也有
 
@@ -131,7 +154,7 @@ webpack ./entry.js bundle.js --module-bind 'css=style!css'
 
 下面我們新增一個檔案，名稱為webpack.config.js
 
-```
+```text
 module.exports = {
     entry: "./entry.js",
     output: {
@@ -145,56 +168,62 @@ module.exports = {
     }
 };
 ```
+
 這時我們再compile一下，但只要輸入如下即可
 
-```
+```text
 webpack
 ```
 
+> webpack會自動去搜尋目錄下的webpack.config.js內的配置
 
->webpack會自動去搜尋目錄下的webpack.config.js內的配置
-
-###5.增加compile時畫面的豐富性
+### 5.增加compile時畫面的豐富性
 
 可以使用以下指令compile試試，會增加一個進度條，與顏色
-```
+
+```text
 webpack --progress --colors
 ```
 
 其他指令可輸入 webpack --help觀看
 
-###6.自動compile
+### 6.自動compile
+
 每當我們更改檔案後都要手動輸入compile指令，使用上較為麻煩，我們可以使用--watch，讓webpack發現檔案有改變時，自動幫我們compile
-```
+
+```text
 webpack --watch
 ```
 
-###7.使用webpack dev server
+### 7.使用webpack dev server
+
 我們先安裝，所以先在終端機輸入
-```
+
+```text
 npm install webpack-dev-server -g
 ```
+
 之後輸入
 
-```
+```text
 webpack-dev-server --progress --colors
 ```
 
 接著輸入網址
-```
+
+```text
 http://localhost:8080/webpack-dev-server/bundle
 ```
 
 即可看到如下畫面
 
-![](452.png)
+![](https://github.com/easonwang01/class/tree/60d3d5888ae99ccc704fd4c1f21d595053744acd/452.png)
 
 試著改變content.js檔案內文字，並按下儲存，隨即瀏覽器畫面也會跟著更改
 
+#### 如果想打包成多個檔案可以如下寫
 
-####如果想打包成多個檔案可以如下寫
-
-```
+```text
 var webpack = require("webpack");
 module.exports = {
     entry: { a: "./a", b: "./b" },
@@ -202,14 +231,13 @@ module.exports = {
 }
 ```
 
-
-#有關webpack loader介紹
+## 有關webpack loader介紹
 
 Loaders 意思簡單來說是，當webpack發現這些後綴名的檔案時，要用某種方式去解析它
 
 可看如下範例
 
-```
+```text
 {
  當遇到名稱為.ts檔案時，將它解析為typescript
   test: /\.ts/,
@@ -252,22 +280,24 @@ Loaders 意思簡單來說是，當webpack發現這些後綴名的檔案時，�
         presets: ['es2015', 'stage-0', 'react'],
       }
    //exclude可排除解析特定資料夾
-  
 ```
+
 最後所有經過解析的東西都會轉為字串，類似如下
-```
+
+```text
 export default 'body{font-size:12px}';
 ```
 
-#有關Webpack resolve
-```
+## 有關Webpack resolve
+
+```text
   resolve: {
         //從下面路徑開始找尋module
         root: 'E:/github/src', 
-        
+
         //文件後綴名宣告，之後使用require可省略後綴
         extensions: ['', '.js', '.json', '.scss'],
-        
+
         //路徑別名，之後引用可直接使用別名
         alias: {
             AppStore : 'js/stores/AppStores.js',//直接 require('AppStore') 即可
@@ -277,11 +307,11 @@ export default 'body{font-size:12px}';
     }
 ```
 
+## 有關Webpack plugin介紹
 
-#有關Webpack plugin介紹
+#### 1.CommonsChunkPlugin
 
-####1.CommonsChunkPlugin
-```
+```text
 var webpack = require("webpack");
 
 module.exports = {
@@ -299,25 +329,27 @@ module.exports = {
    // 第一個參數為entry 內的屬性名稱
    // 第二個參數是輸出檔案的名稱
 ```
+
 所以之後會打包為兩個檔案，一個為原本寫在Output中的檔案，另一個即為上述vendors.bundle.js。
 
 記得於entry中寫`vendor:[你要加入的module]`
 
 並於html中引用
 
-```
+```text
 <script src="vendor.bundle.js"></script>
 <script src="bundle.js"></script>
 ```
 
 這樣做的好處是，分離第三方套件與專案內部程式碼。由於專案內部程式碼會不斷做更新，而第三方套件通常不會修改，如果沒有與第三方套件分開打包的話，使用者在每一次更新後都必須下載第三方套件加上專案內部程式碼的一整包檔案，使專案運行起來的速度緩慢。
 
-####2.Extract-text-webpack-plugin 
+#### 2.Extract-text-webpack-plugin
 
-CSS 被 require() 時，webpack 會自動生成一個 `<style>` 標籤並加入到 html 的 `<head>` 中，但我們有時不希望css一同被打包，而希望其產生.css之後再用`<link>`方式引入。
+CSS 被 require\(\) 時，webpack 會自動生成一個 `<style>` 標籤並加入到 html 的 `<head>` 中，但我們有時不希望css一同被打包，而希望其產生.css之後再用`<link>`方式引入。
 
 可類似如下寫出
-```
+
+```text
     var webpack = require('webpack');
     var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
     var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -326,10 +358,12 @@ CSS 被 require() 時，webpack 會自動生成一個 `<style>` 標籤並加入�
         plugins: [commonsPlugin, new ExtractTextPlugin("[name].css")],
         entry: {
 ```
-####3.寫externals
+
+#### 3.寫externals
 
 用途也是解決打包後文件過大，載入變慢的問題，解法為將其隔離出bundle.js，而於index.html之內用script引用
-```
+
+```text
 module.exports = {
     externals: {
       'react': 'React' 
@@ -337,29 +371,29 @@ module.exports = {
     //...
 }
 ```
+
 index.html
-```
+
+```text
 <script src="react.min.js" />
 <script src="bundle.js" />
 ```
+
 如此來手動引用js檔案，記得要寫在bundle.js之前
 
-####4.使用 DefinePlugin
+#### 4.使用 DefinePlugin
 
 `NODE_ENV=production node bundle.js`
 
-可以設定你的執行環境，當要真正產生production時, module會把一些在dev環境下的code check拿掉，來增加執行速度 
+可以設定你的執行環境，當要真正產生production時, module會把一些在dev環境下的code check拿掉，來增加執行速度
 
-以React的 react.min.js 為範例. 在其 `./node_modules/react/lib`中, 會看到如 `process.env.NODE_ENV !== 'production'`的程式碼. 
+以React的 react.min.js 為範例. 在其 `./node_modules/react/lib`中, 會看到如 `process.env.NODE_ENV !== 'production'`的程式碼.
 
 當我們的環境是Production時，裡面的程式碼不會執行，所以可以增加速度
 
-
 但是在webpack bundle後無法去取得，我們必須先寫DefinePlugin
 
-
-
-```
+```text
 module.exports = {
   //...
   plugins:[
@@ -368,11 +402,9 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-   
+
   ]
   //...
 }
 ```
 
-
- 

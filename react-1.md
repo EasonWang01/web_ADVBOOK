@@ -1,10 +1,12 @@
+# React 基本概念1
+
 基礎
 
-打開如下網址
-http://codepen.io/gaearon/pen/ZpvBNJ
+打開如下網址 [http://codepen.io/gaearon/pen/ZpvBNJ](http://codepen.io/gaearon/pen/ZpvBNJ)
 
 試著把script的內容改為
-```
+
+```text
 var HelloMessage = React.createClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -16,7 +18,7 @@ ReactDOM.render(<HelloMessage name="hihi" />, document.getElementById('root'));
 
 也可以試著把script的內容改為（使用ES6）
 
-```
+```text
 class HelloMessage extends React.Component {
   render() {
     return <div>Hello {this.props.name}</div>;
@@ -24,12 +26,11 @@ class HelloMessage extends React.Component {
 }
 
 ReactDOM.render(<HelloMessage name="apple"/>, document.getElementById('root'));
-
 ```
-
 
 基本React 元件構造
-```
+
+```text
 import React,{Component} from 'react';
 
 class BaseComponent extends Component{
@@ -43,14 +44,15 @@ class BaseComponent extends Component{
 export default BaseComponent
 ```
 
-####2.HTML與JSX
+## 2.HTML與JSX
 
-http://magic.reactjs.net/htmltojsx.htm
+[http://magic.reactjs.net/htmltojsx.htm](http://magic.reactjs.net/htmltojsx.htm)
 
 以前我們將HTML和JS分開寫，但React將頁面的畫面和邏輯全寫在JS內，而這個JS名稱為JSX，下面為JSX和HTML的簡單轉換對照圖
 
 HTML
-```html
+
+```markup
 <div class="banana" style="border: 1px solid red">
   <label for="name">Enter your name: </label>
   <input type="text" id="name" />
@@ -77,12 +79,13 @@ class BaseComponent extends Component{
 
 1. style改為物件的寫法
 2. class改為className
-3. React的component名字字母須大寫(與一般HTML tag區別)
+3. React的component名字字母須大寫\(與一般HTML tag區別\)
 4. function直接寫 `functionName() { }`  即可
 
-####3.Component內傳遞data方式
+## 3.Component內傳遞data方式
 
 一個component指的是一個class，下面為最基本的ES6 React component構造
+
 ```javascript
 class TodoInput extends Component{
   render(){
@@ -93,6 +96,7 @@ class TodoInput extends Component{
   }
 }
 ```
+
 而傳遞方式在我們使用Redux等框架前，主要使用state和prop傳遞
 
 1. Props 主要為父元件傳遞下來的屬性
@@ -100,10 +104,11 @@ class TodoInput extends Component{
 
 簡單來說，props通常主要是用來父子間傳遞data用，而state是來記錄data目前的數值的，例如像server request後將data先存到state再改變畫面
 
-####props範例
+## props範例
 
 一個名為 Comment 的component
-```
+
+```text
 class Comment extends React.Component{
   render() {
     return (
@@ -117,8 +122,10 @@ class Comment extends React.Component{
   }
 };
 ```
+
 在父component呼叫
-```
+
+```text
 class CommentList extends React.Component{
   render() {
     return (
@@ -132,7 +139,7 @@ class CommentList extends React.Component{
 
 試著把剛才codepen改為如下
 
-```
+```text
 class Comment extends React.Component{
   render() {
     return (
@@ -160,7 +167,8 @@ ReactDOM.render(<CommentList />, document.getElementById('root'));
 ```
 
 而最後會產生如下
-```
+
+```text
 <div className="comment">
   <h2 className="commentAuthor">
   yicheng
@@ -168,11 +176,12 @@ ReactDOM.render(<CommentList />, document.getElementById('root'));
   Just do it
 </div>
 ```
-####State範例
+
+## State範例
 
 接著把codepen改為
 
-```
+```text
 class CommentBox extends React.Component {
   constructor() {
     super();
@@ -194,25 +203,28 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+
 將產生如下
-```
+
+```text
 <h1>hello</h1>
 ```
 
 你可能會看過`getInitialState`但在ES6可直接寫為
 
-```
+```text
 this.state = {
 .....
 };
 ```
+
 即可
 
 而設定state可用`setState()`
 
 把codepen改為如下，點擊按鈕改變state
 
-```
+```text
 class CommentBox extends React.Component {
   constructor() {
     super();
@@ -239,14 +251,13 @@ ReactDOM.render(
 );
 ```
 
-
-####下面介紹React.js兩個常用的生命週期方法
+## 下面介紹React.js兩個常用的生命週期方法
 
 1.`componentDidMount`方法，用途為在元件載入到頁面後所要執行的函式，類似於jquery中的`$(document).ready()`方法
 
-2.`componentWillMount`方法，會在元件渲染到頁面前執行 
+2.`componentWillMount`方法，會在元件渲染到頁面前執行
 
-```
+```text
 class CommentBox extends React.Component {
   constructor() {
     super();
@@ -277,7 +288,7 @@ ReactDOM.render(
 
 其他生命週期方法還包含
 
-```
+```text
 componentWillReceiveProps()
 shouldComponentUpdate()
 componentWillUpdate()
@@ -285,15 +296,13 @@ componentDidUpdate()
 componentWillUnmount()
 ```
 
-
-
-
-####PropTypes 
+## PropTypes
 
 功能:用來檢查型別
 
 貼上下面程式碼，然後開啟console，之後把`title="123"` 刪除
-```
+
+```text
 class Header extends React.Component {
     constructor(props) {
       super(props);
@@ -314,15 +323,13 @@ ReactDOM.render(
   <Header title="123" />,
   document.getElementById('root')
 );
-
 ```
 
-
-####Refs
+## Refs
 
 功能：用來取得DOM並且進行操作
 
-```
+```text
 class Header extends React.Component {
     constructor(props) {
       super(props);
@@ -341,5 +348,5 @@ ReactDOM.render(
   <Header title="123" />,
   document.getElementById('root')
 );
-
 ```
+

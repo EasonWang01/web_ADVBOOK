@@ -1,16 +1,16 @@
-#TCP,UDP,HTTP,HTTPS
+# TCP, UDP
 
-網路七層協議
-https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B
+## TCP, UDP, HTTP, HTTPS
+
+網路七層協議 [https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B](https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B)
 
 TCP的特色在於傳輸資料時，會有握手的過程，以確保雙方身份，所以花的時間多一點。
 
-而UDP的特色在於傳輸資料時，不需要驗
-證資料，不保證正確性，發送端不知道數據是否會正確接收，所以速度較快速
+而UDP的特色在於傳輸資料時，不需要驗 證資料，不保證正確性，發送端不知道數據是否會正確接收，所以速度較快速
 
 一般瀏覽網頁時使用的協議是HTTP與HTTPS，其主要是基於TCP，為TCP往上之發展
 
-#Node.js中的TCP
+## Node.js中的TCP
 
 在node.js主要使用`net`這個核心模組來提供TCP的相關功能，
 
@@ -18,7 +18,7 @@ TCP的特色在於傳輸資料時，會有握手的過程，以確保雙方身�
 
 具有TCP中的TCP server與 TCP client的兩種類型
 
-####實作
+### 實作
 
 1.進入資料夾第10章中的TCP資料夾，執行test1.js來執行TCP server
 
@@ -28,7 +28,7 @@ TCP的特色在於傳輸資料時，會有握手的過程，以確保雙方身�
 
 將client test2.js改為如下
 
-```
+```text
 var net = require('net');
 
 var HOST = 'localhost';
@@ -58,13 +58,13 @@ client.on('close', function() {
 });
 ```
 
-#Node.js中的UDP
+## Node.js中的UDP
 
 主要使用名為`dgram`的核心模組
 
 全名為`UDP / Datagram Sockets`
 
-####實作
+### 實作
 
 1.進入資料夾第10章中的UDP資料夾，執行test1.js來執行UDP server
 
@@ -72,22 +72,25 @@ client.on('close', function() {
 
 3.實作UDP廣播機制
 
-UDP具有TCP所沒擁有的技能(廣播封包)，可以把封包廣播給區網內的每一台電腦
+UDP具有TCP所沒擁有的技能\(廣播封包\)，可以把封包廣播給區網內的每一台電腦
 
 使用廣播封包時，LAN 上面的每台電腦都會被迫處理這類封包
 
-####UDP廣播 (需要兩台以上電腦在同一個區網內才可測試)
-接收方(所有區網上其他電腦所架設的UDP server)
-```
+### UDP廣播 \(需要兩台以上電腦在同一個區網內才可測試\)
+
+接收方\(所有區網上其他電腦所架設的UDP server\)
+
+```text
 var udp = require("dgram");
 var socket = udp.createSocket('udp4',function(msg){
    console.log(msg.toString())
 });
 socket.bind(8080);
+```
 
-```
 廣播方client
-```
+
+```text
 var udp = require("dgram");
 var client = udp.createSocket("udp4",function(){});
 client.on("listening",function(){
@@ -96,16 +99,13 @@ client.on("listening",function(){
 process.stdin.on("data",function(data){
     client.send(data,0,data.length,8080,"255.255.255.255");
 });
-
 ```
 
-
-####但IPv6 不支援廣播，只支援群播（multicasting），所以可將程式碼改為如下
-
+### 但IPv6 不支援廣播，只支援群播（multicasting），所以可將程式碼改為如下
 
 server
 
-```
+```text
 var news = [
    "hello",
    "this is multicasting",
@@ -130,8 +130,10 @@ function broadcastNew() {
     //server.close();
 }
 ```
+
 client
-```
+
+```text
 var PORT = 8088;
 var HOST = '192.168.0.102';
 var dgram = require('dgram');
@@ -152,8 +154,8 @@ client.on('message', function (message, remote) {
 
 client.bind(PORT, HOST);
 ```
-以上參考至http://stackoverflow.com/questions/14130560/nodejs-udp-multicast-how-to
 
+以上參考至[http://stackoverflow.com/questions/14130560/nodejs-udp-multicast-how-to](http://stackoverflow.com/questions/14130560/nodejs-udp-multicast-how-to)
 
-可參考一篇不錯的文章:http://beej-zhtw.netdpi.net/07-advanced-technology/7-6-broadcast-packet-hello-world
+可參考一篇不錯的文章:[http://beej-zhtw.netdpi.net/07-advanced-technology/7-6-broadcast-packet-hello-world](http://beej-zhtw.netdpi.net/07-advanced-technology/7-6-broadcast-packet-hello-world)
 

@@ -1,4 +1,4 @@
-# 開始使用React 搭配 Webpack
+# React 基本概念1-1\(搭配webpack\)
 
 前一章我們使用codepen與babel的cdn來幫我們compile我們寫的ES6與React的JSX語法，但我們開發時通常會使用webpack結合babel與一些plugin來幫我們做compile
 
@@ -6,12 +6,11 @@
 
 `npm install webpack -g`
 
-`npm install nodemon -g`
-\(在更改程式時自動執行server，與forever類似，但forever遇到錯誤也不會停止\)
+`npm install nodemon -g` \(在更改程式時自動執行server，與forever類似，但forever遇到錯誤也不會停止\)
 
 1.裡面放入package.json
 
-```
+```text
 {
     "name": "react-learning",
     "version": "1.0.0",
@@ -43,7 +42,7 @@
 
 在根目錄下新建三個目錄
 
-```
+```text
   --client
   --components
   --server
@@ -52,7 +51,7 @@ package.json
 
 2.接著在server目錄下新增server.js
 
-```
+```text
 var express = require('express');
 var path = require('path');
 
@@ -74,7 +73,7 @@ app.listen(port, function(error) {
 
 3.在client資料夾內加入index.html
 
-```
+```text
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -91,7 +90,7 @@ app.listen(port, function(error) {
 
 4.新增webpack 配置文件webpack.config.js
 
-```
+```text
 module.exports = {
   devtool: 'inline-source-map',
   entry: ['./client/client.js'],
@@ -117,13 +116,11 @@ module.exports = {
 
 什麼是source map
 
-![](/assets/螢幕快照 2017-02-09 上午9.59.33.png)
-
-
+![](.gitbook/assets/螢幕快照%202017-02-09%20上午9.59.33.png)
 
 5.在client資料夾中新增client.js
 
-```
+```text
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App';
@@ -139,7 +136,7 @@ ReactDOM.render(
 
 此即為我們第一個react元件
 
-```
+```text
 import React, { Component } from 'react'
 
 class App extends Component {
@@ -151,16 +148,15 @@ class App extends Component {
 export default App
 ```
 
-之後輸入`webpack --config webpack.config.js`
-會自動產生dist資料夾，裡面包含bundle.js檔案，此為webpack打包後的東西
+之後輸入`webpack --config webpack.config.js` 會自動產生dist資料夾，裡面包含bundle.js檔案，此為webpack打包後的東西
 
 之後於terminal輸入，`npm run serve`\(寫在package.json中的scripts內\)
 
 執行伺服器，並打開瀏覽器輸入開啟`localhost:3000`
 
+### 下載React devtool
 
-####下載React devtool
-https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
+[https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 
 之後chrome devtool的tab會多一個`React`
 
@@ -168,37 +164,35 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 
 在package.json內加入
 
-1.不用重新整理網頁
-\(讓我們不用使用webpack-dev-server也有-hot的指令\)
+1.不用重新整理網頁 \(讓我們不用使用webpack-dev-server也有-hot的指令\)
 
-```
+```text
 "webpack-hot-middleware": "*"
 ```
 
 2.讓hot middleware知道react的class
 
-```
+```text
 "babel-preset-react-hmre": "*",
 ```
 
 以及讓webpack跑在我們架設的express server上
 
-```
+```text
 "webpack-dev-middleware": "*"
 ```
 
-使用指令 
+使用指令
 
-```
+```text
 npm install --save webpack-hot-middleware babel-preset-react-hmre webpack-dev-middleware
 ```
 
 來安裝以上三個package
 
-
 接著更改剛才server資料夾下的 server.js
 
-```
+```text
 var express = require('express');
 var path = require('path');
 var config = require('../webpack.config.js');
@@ -233,7 +227,7 @@ app.listen(port, function(error) {
 
 webpack.config.js
 
-```
+```text
 var webpack = require('webpack');
 
 module.exports = {
@@ -266,7 +260,7 @@ module.exports = {
 }
 ```
 
-現在執行
-`npm run serve`
+現在執行 `npm run serve`
 
 再去更改app.js內的字，可以看到不用重新啟動伺服器，也不用按網頁的重新整理，即可更新
+

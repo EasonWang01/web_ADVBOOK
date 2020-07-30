@@ -1,10 +1,12 @@
-# Prop
+# React 基本概念2
+
+## Prop
 
 即為HTML tag中的屬性
 
 1.新增一個元件為Proptest.js
 
-```
+```text
 import React, { Component } from 'react'
 
 class Proptest extends Component {
@@ -17,7 +19,7 @@ export default Proptest
 
 TextDisplay.js
 
-```
+```text
 import React, { Component } from 'react'
 import Proptest from './Proptest.js';
 
@@ -45,7 +47,7 @@ export default TextDisplay
 
 Proptest.js
 
-```
+```text
 import React, { Component } from 'react'
 
 class Proptest extends Component {
@@ -58,7 +60,7 @@ export default Proptest
 
 TextDisplay.js
 
-```
+```text
 import React, { Component } from 'react'
 import Proptest from './Proptest.js';
 
@@ -87,12 +89,11 @@ class TextDisplay extends Component {
 export default TextDisplay
 ```
 
-
-# 在元件內使用條件判斷
+## 在元件內使用條件判斷
 
 Proptest.js
 
-```
+```text
 import React, { Component } from 'react'
 
 class Proptest extends Component {
@@ -106,9 +107,10 @@ class Proptest extends Component {
 }
 export default Proptest
 ```
+
 TextDisplay.js
 
-```
+```text
 import React, { Component } from 'react'
 import Proptest from './Proptest.js';
 
@@ -142,12 +144,11 @@ class TextDisplay extends Component {
 export default TextDisplay
 ```
 
-
-#使用AJAX
+## 使用AJAX
 
 1.先在server.js加上app.get的路徑
 
-```
+```text
 var express = require('express');
 var path = require('path');
 var config = require('../webpack.config.js');
@@ -184,7 +185,7 @@ app.listen(port, function(error) {
 
 2.TextDisplay.js
 
-```
+```text
 import React, { Component } from 'react'
 import Proptest from './Proptest.js';
 import axios from 'axios';
@@ -217,13 +218,13 @@ class TextDisplay extends Component {
 export default TextDisplay
 ```
 
-#Stateless component
+## Stateless component
 
-之前我們寫元件都是使用class寫法
-React.js官方說明使用以下方式將比使用class寫法具有更好的效能
+之前我們寫元件都是使用class寫法 React.js官方說明使用以下方式將比使用class寫法具有更好的效能
 
 Proptest.js
-```
+
+```text
 import React, { Component } from 'react'
 
 const Proptest = (props) => (
@@ -235,7 +236,7 @@ export default Proptest
 
 TextDisplay.js
 
-```
+```text
 import React, { Component } from 'react'
 import Proptest from './Proptest.js';
 import axios from 'axios';
@@ -263,4 +264,5 @@ export default TextDisplay
 
 其為一個簡單的function具有參數，而在父元件寫入的同名props使用`props.名字`存取
 
->但stateless component不能使用生命週期以及ref
+> 但stateless component不能使用生命週期以及ref
+
