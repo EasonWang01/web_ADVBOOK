@@ -1,10 +1,10 @@
 # Node.js安裝與NPM使用
 
-## 1.安裝Node.js
+## \#1.安裝Node.js
 
 [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
-## 2.測試是否安裝成功
+## \#2.測試是否安裝成功
 
 1.開啟terminal 輸入node
 
@@ -24,7 +24,7 @@ hello();
 
 輸入node class
 
-## 3.使用NPM
+## \#3.使用NPM
 
 1.安裝Node.js時自動會安裝NPM
 
