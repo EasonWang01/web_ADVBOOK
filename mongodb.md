@@ -2,7 +2,7 @@
 
 ## 使用MongoDB
 
-```text
+```
 Mongo資料庫 > collection > document
 
 SQL資料庫   >   資料表   > 資料列
@@ -12,7 +12,7 @@ SQL資料庫   >   資料表   > 資料列
 
 !!注意，MongoLab於2016二月底改名為mLab，連結的資料庫路徑也改了
 
-```text
+```
 https://mlab.com/home
 ```
 
@@ -28,13 +28,13 @@ https://mlab.com/home
 
 ### 如何測試剛創好的資料庫?
 
-使用Robomongo [https://robomongo.org/](https://robomongo.org/)
+使用Robomongo [https://robomongo.org/](https://robomongo.org)
 
 點選Download，選最下面的免費選項下載
 
 1.下載完後開啟，先點選左上方的create
 
-2.設定一下相關database url、port、username、password\(database的，不是你帳戶的\)
+2.設定一下相關database url、port、username、password(database的，不是你帳戶的)
 
 3.點選左下Test，如成功即可點選save，並進行connect
 
@@ -46,11 +46,11 @@ https://mlab.com/home
 
 先使用npm 安裝
 
-```text
+```
 npm install mongodb
 ```
 
-```text
+```
 var mongo = require('mongodb');
 var Server = mongo.Server;
 var Db = mongo.Db;
@@ -58,14 +58,14 @@ var Db = mongo.Db;
 
 設定server及資料庫
 
-```text
+```
 var server = new Server('ds013898.mlab.com',13898, {auto_reconnect : true});
 var db = new Db('forclass', server);
 ```
 
-填入database中user帳號及密碼\(不是MongoLab的登入帳密\)
+填入database中user帳號及密碼(不是MongoLab的登入帳密)
 
-```text
+```
 db.open(function(err, client) {
     client.authenticate('forclass1', 'test123', function(err, success) {
         if(success){
@@ -80,7 +80,7 @@ db.open(function(err, client) {
 
 完成後如下，啟動server後如在terminal中出現connect success 即表示成功連線
 
-```text
+```
 var express = require('express');
 
 ////
@@ -115,7 +115,7 @@ app.listen(8080);
 
 ## 開始操作資料庫
 
-```text
+```
 Relation DataBase                         MongoDB
 ------------------------------------------------------------
 資料庫(Database)                           DataBase
@@ -129,7 +129,7 @@ stored procedure                          mapreduce
 
 1.先根據官方範例在MongoLab引入一個範例collection名為apple,而裡面的document如下
 
-```text
+```
 {
   "address": {
      "building": "1007",
@@ -151,7 +151,7 @@ stored procedure                          mapreduce
 }
 ```
 
-```text
+```
 {
   "address": {
      "building": "1007",
@@ -175,7 +175,7 @@ stored procedure                          mapreduce
 
 接著回到index.js將code改成如下，應可看到query 出整個collection內容
 
-```text
+```
 var express = require('express');
 
 ////
@@ -213,38 +213,38 @@ var app = express();
 app.listen(8080);
 ```
 
-2.如果在find\(\)，裡面放入參數，會query出所有符合的document
+2.如果在find()，裡面放入參數，會query出所有符合的document
 
-```text
+```
 var cursor = db.collection('apple').find({ "borough": "Bronx" });
 ```
 
-舉例:  
+舉例:\
 假設有個inventory collection裡面有三個資料\`
 
-```text
+```
 { _id: 5, type: "food", item: "aaa", ratings: [ 5, 8, 9 ] }
 { _id: 6, type: "food", item: "bbb", ratings: [ 5, 9 ] }
 { _id: 7, type: "food", item: "ccc", ratings: [ 9, 5, 8 ] }
 ```
 
-執行 db.inventory.find\( { ratings: \[ 5, 8, 9 \] } \)
+執行 db.inventory.find( { ratings: \[ 5, 8, 9 ] } )
 
 將返回
 
-```text
+```
 { "_id" : 5, "type" : "food", "item" : "aaa", "ratings" : [ 5, 8, 9 ] }
 ```
 
 ### 移除document
 
-```text
+```
 var cursor = db.collection('apple').remove({});
 ```
 
 ### 新增document
 
-```text
+```
 var cursor = db.collection('apple').insert({
     title: 'web課程', 
     description: 'test ',
@@ -261,7 +261,7 @@ var cursor = db.collection('apple').insert({
 
 先輸入三組document
 
-```text
+```
 db.open(function(err, client) {
     client.authenticate('forclass1', 'test123', function(err, success) {
         if(success){
@@ -302,7 +302,7 @@ db.open(function(err, client) {
 
 接著改成查詢的code如下
 
-```text
+```
 db.open(function(err, client) {
     client.authenticate('forclass1', 'test123', function(err, success) {
         if(success){
@@ -332,7 +332,7 @@ db.open(function(err, client) {
 
 ### 使用type操作
 
-```text
+```
 db.open(function(err, client) {
     client.authenticate('forclass1', 'test123', function(err, success) {
         if(success){
@@ -354,7 +354,7 @@ db.open(function(err, client) {
 
 type的值，數字對照表
 
-```text
+```
 Double    1     
 String    2     
 Object    3     
@@ -373,38 +373,38 @@ Timestamp    17
 64-bit integer    18
 ```
 
-## 使用limit\(\)
+## 使用limit()
 
 如果為參數1代表讀到一個document，如果為五代表讀前五個document
 
-```text
+```
 var cursor = db.collection('apple').find().limit(1);
 ```
 
-## 使用skip\(\)
+## 使用skip()
 
 與limit相反，跳過skip參數個document，都是從前面往後數
 
-```text
+```
 var cursor = db.collection('apple').find().skip(2);
 ```
 
-## 使用sort\(\)
+## 使用sort()
 
 根據name的值去排列，而不是根據document的index順序
 
-```text
+```
 var cursor = db.collection('apple').find().sort({"likes":-1})
 ```
 
-## 比較這兩個Find\(\)
+## 比較這兩個Find()
 
-```text
+```
 var cursor = db.collection('apple').find({},{likes:1, _id: 0});
 var cursor = db.collection('apple').find({likes : {$gt : 100}},{likes:1, _id: 0});
 ```
 
-發現find\(\)的第一個參數代表:我們要從哪個地方去找東西
+發現find()的第一個參數代表:我們要從哪個地方去找東西
 
 第二個參數代表:從那個地方要找那些東西出來
 
@@ -418,15 +418,15 @@ var cursor = db.collection('apple').find({likes : {$gt : 100}},{likes:1, _id: 0}
 
 英文:官方doc:
 
-[https://docs.mongodb.org/manual/reference/method/db.collection.createIndex/\#db.collection.createIndex](https://docs.mongodb.org/manual/reference/method/db.collection.createIndex/#db.collection.createIndex)
+[https://docs.mongodb.org/manual/reference/method/db.collection.createIndex/#db.collection.createIndex](https://docs.mongodb.org/manual/reference/method/db.collection.createIndex/#db.collection.createIndex)
 
 英文:官方github.io:
 
-[http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html\#findOne](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findOne)
+[http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findOne](http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findOne)
 
 ### 如果是下載到local端啟用
 
-```text
+```
 1.先到你的Mongo資料庫下bin的外面創建資料夾
    2.cd到bin裡面把路徑複製
    3.使用admin開起cmd在cd到剛複製的路徑
@@ -436,7 +436,7 @@ var cursor = db.collection('apple').find({likes : {$gt : 100}},{likes:1, _id: 0}
 
 1.建造database
 
-```text
+```
 use 資料庫名稱  //如不存在即會創建新的
 ```
 
@@ -444,13 +444,13 @@ ps:用Robomongo執行以上指令如發現沒出現，需要點選新連線，�
 
 2.建造collection
 
-```text
+```
 db.createCollection("apple")
 ```
 
 ## Node.js 連接
 
-```text
+```
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
@@ -467,16 +467,20 @@ MongoClient.connect(url, function(err, db) {
 
 ## Mongo有新增的連接方法，參考下面文章
 
-主要是寫關於require\('mongodb'\).Db和require\('mongodb'\).MongoClient的區別  
-\(其告知MongoClient為較新的方法，推薦使用\)
+主要是寫關於require('mongodb').Db和require('mongodb').MongoClient的區別\
+(其告知MongoClient為較新的方法，推薦使用)
 
 [http://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html](http://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html)
 
 ## 使用Mongoose
 
+> 如出現連線字串後加入/\<db name> 出現 auth error 請參考以下模板連線方式：
+>
+> [https://github.com/EasonWang01/Nodejs-server-API-boilerplate](https://github.com/EasonWang01/Nodejs-server-API-boilerplate)
+
 介紹
 
-```text
+```
 Schema  ：  描述數據結構
 
 Model   ：  由Schema生成的模型
@@ -486,17 +490,17 @@ Entity  ：  由Model創建的實體
 
 開始使用
 
-1.
+1\.
 
-```text
+```
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://user:pass@host:port/dbs');
 ```
 
-\(可點選mLab的tools標籤，看相關連線資料\)  
+(可點選mLab的tools標籤，看相關連線資料)\
 如何抓取連線時的錯誤
 
-```text
+```
 mongoose.connect('mongodb://forclass1:test123@ds013898.mlab.com:13898/forclass',function(err){
     if(err){throw err};
 });
@@ -504,7 +508,7 @@ mongoose.connect('mongodb://forclass1:test123@ds013898.mlab.com:13898/forclass',
 
 如何抓取正確連線到資料庫的訊息
 
-```text
+```
 db.once('open', function() {
   console.log("connect mongo")
 });
@@ -512,13 +516,13 @@ db.once('open', function() {
 
 如何抓取連線後執行時的錯誤
 
-```text
+```
 db.on('error', console.error.bind(console, 'connection error:'));
 ```
 
 完整
 
-```text
+```
 var mongoose = require("mongoose");
 mongoose.connect('mongodb://forclass1:test123@ds013898.mlab.com:13898/forclass',function(err){
     if(err){throw err};
@@ -530,15 +534,15 @@ db.once('open', function() {
 });
 ```
 
-\(存入資料時如collection名稱不存在則會自動建立\)
+(存入資料時如collection名稱不存在則會自動建立)
 
-2.
+2\.
 
-定義model\(這裡省略先定義schema，直接定義在MODEL內\)
+定義model(這裡省略先定義schema，直接定義在MODEL內)
 
 第一個參數為collection的名稱
 
-```text
+```
 var Cat = mongoose.model('Cat', {
   name: String,
   friends: [String],
@@ -546,16 +550,16 @@ var Cat = mongoose.model('Cat', {
 });
 ```
 
-3.存入資料\(產生實體\)
+3.存入資料(產生實體)
 
-```text
+```
 var kitty = new Cat({ name: 'Zildjian', friends: ['tom', 'jerry']});
 kitty.age = 3;
 ```
 
 4.使用save才真的存入
 
-```text
+```
 kitty.save(function (err) {
   if (err) // ...
   console.log('meow');
@@ -566,7 +570,7 @@ ps:如果存入資料的欄位不在schema內則不會存入
 
 ps:如省略某些欄位沒寫，則不會顯示，亦可正常存入
 
-```text
+```
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://forclass1:test123@ds013898.mlab.com:13898/forclass');
 
@@ -594,7 +598,7 @@ kitty.save(function (err) {
 
 ## 使用Promise
 
-```text
+```
 var User = mongoose.model('ac', new mongoose.Schema({
     name:{type: String, unique: true},
     password:String
@@ -609,7 +613,7 @@ list.save()
 
 ## 查詢資料
 
-```text
+```
 var Cat = mongoose.model('Cat', {
   name: String,
   friends: [String],
@@ -625,7 +629,7 @@ Cat.find({},function(err,doc){
 
 但如果改成下面呢?
 
-```text
+```
 var Cat = mongoose.model('Cat', {});
 Cat.find({},function(err,doc){
 
@@ -637,23 +641,23 @@ Cat.find({},function(err,doc){
 
 #### 其他查找方法和原生相似
 
-```text
+```
 Cat.find({},{_id:1},function(err,doc){
 
     console.log(doc);
 });
 ```
 
-find\(\)
+find()
 
 1.第一個參數為要搜尋哪些document
 
-2.第二個參數為要顯示document內的那些資料\(1代表要，0代表不要\)
+2.第二個參數為要顯示document內的那些資料(1代表要，0代表不要)
 
-3.第三個參數為一個function\(err,doc\)  
+3.第三個參數為一個function(err,doc)\
 ，讀取到的資料會顯示在doc這
 
-```text
+```
 var find = Cat.find({},{time:1,_id:0},function(err,doc){
 res.render("home",{text:doc});
 
@@ -662,7 +666,7 @@ res.render("home",{text:doc});
 
 ### 我們也可先定義Schema在把他compile到model內
 
-```text
+```
 var kittySchema = mongoose.Schema({
     name: String
 });
@@ -674,7 +678,7 @@ var Kitten = mongoose.model('cats', kittySchema);
 
 但記得使用methods函式指定方法的話，要放在model實例化之前
 
-```text
+```
 kittySchema.methods.speak = function () {
   var greeting = this.name
     ? "Meow name is " + this.name
@@ -685,7 +689,7 @@ kittySchema.methods.speak = function () {
 
 完整版
 
-```text
+```
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://forclass1:test123@ds013898.mlab.com:13898/forclass');
 
@@ -710,4 +714,3 @@ var Kitten = mongoose.model('cats', kittySchema);
 var fluffy = new Kitten({ name: 'fluffy' });
 fluffy.speak(); // "Meow name is fluffy"
 ```
-
