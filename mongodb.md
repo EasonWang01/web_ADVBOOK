@@ -474,6 +474,10 @@ MongoClient.connect(url, function(err, db) {
 
 ## 使用Mongoose
 
+> mongoose query 的物件沒辦法直接修改，要用 lean() 後才可修改，且 lean 可增加許多 query 效能
+
+[https://stackoverflow.com/a/68553745/4622645](https://stackoverflow.com/a/68553745/4622645)
+
 > 如出現連線字串後加入/\<db name> 出現 auth error 請參考以下模板連線方式：
 >
 > [https://github.com/EasonWang01/Nodejs-server-API-boilerplate](https://github.com/EasonWang01/Nodejs-server-API-boilerplate)
