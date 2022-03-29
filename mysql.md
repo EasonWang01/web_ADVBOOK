@@ -6,7 +6,7 @@
 
 免費信箱 [https://10minutemail.com/10MinuteMail/index.html?dswid=-5419](https://10minutemail.com/10MinuteMail/index.html?dswid=-5419)
 
-測試用免費mysql:[https://www.freemysqlhosting.net/](https://www.freemysqlhosting.net/) \(預設一個資料庫，不可再增加或修改\)
+測試用免費mysql:[https://www.freemysqlhosting.net/](https://www.freemysqlhosting.net) (預設一個資料庫，不可再增加或修改)
 
 > 記得，如果請申請過freemysqlhosting後，想再申請一個帳號記得先把網站的cookie刪除，因目前沒刪除直接重新註冊會產生收不到密碼信件的Bug
 
@@ -20,13 +20,13 @@
 
 到安裝路徑的bin資料夾輸入
 
-```text
+```
 D:\MYSQL\Bin>mysql -u root -p admin
 ```
 
 **Mac**
 
-```text
+```
 homebrew install mysql
 ```
 
@@ -34,13 +34,13 @@ homebrew install mysql
 
 1.使用npm安裝mysql
 
-```text
+```
 npm install mysql --save
 ```
 
 2.測試連線
 
-```text
+```
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -65,7 +65,7 @@ connection.connect(function(err) {
 
 ### CREATE TABLE
 
-```text
+```
 connection.query('CREATE TABLE Food (' +             
                 'Food_id int,'+
                 'Food_name VARCHAR(100),'+
@@ -86,9 +86,9 @@ connection.query('CREATE TABLE Food (' +
 
 #### 或是
 
-使用ES6 的新字元串````` ，可跨行連接字段
+使用ES6 的新字元串`` ` `` ，可跨行連接字段
 
-```text
+```
 var a = (`CREATE TABLE articles (
   id     INT PRIMARY KEY AUTO_INCREMENT,
   author VARCHAR(100) NOT NULL,
@@ -109,7 +109,7 @@ var query = connection.query(a, function (err, result) {
 
 ### insert column
 
-```text
+```
 connection.query("ALTER table articles add column (code varchar(255))" ,function(err, result) {
     if (err) throw err;
 
@@ -119,7 +119,7 @@ connection.query("ALTER table articles add column (code varchar(255))" ,function
 
 ### insert row
 
-```text
+```
 var article = {
   author: 'eason',
   title: 'HI',
@@ -137,7 +137,7 @@ var query = connection.query('insert into articles set ?', article, function (er
 
 ### Read data
 
-```text
+```
 connection.query('SELECT * FROM articles',function(err,rows){
   if(err) throw err;
 
@@ -147,7 +147,7 @@ connection.query('SELECT * FROM articles',function(err,rows){
 
 使用?號
 
-```text
+```
 connection.query('SELECT * FROM ??',"articles",function(err,rows){
   if(err) throw err;
 
@@ -157,7 +157,7 @@ connection.query('SELECT * FROM ??',"articles",function(err,rows){
 
 ## UPDATE
 
-```text
+```
 var query = connection.query("UPDATE articles SET title = ? ","Hello M",function (err, result) {
   if (err) {
     console.error(err);
@@ -169,7 +169,7 @@ var query = connection.query("UPDATE articles SET title = ? ","Hello M",function
 
 加上where，限制要更新的row
 
-```text
+```
 var query = connection.query("UPDATE articles SET title = ? WHERE id = 1","Hello MyS",function (err, result) {
   if (err) {
     console.error(err);
@@ -181,7 +181,7 @@ var query = connection.query("UPDATE articles SET title = ? WHERE id = 1","Hello
 
 使用?號
 
-```text
+```
 var query = connection.query("UPDATE articles SET title = ? WHERE id = ?",["Hello",1],function (err, result) {
   if (err) {
     console.error(err);
@@ -193,20 +193,20 @@ var query = connection.query("UPDATE articles SET title = ? WHERE id = ?",["Hell
 
 ### 有關? 與??
 
-```text
+```
 指定name時用`??`
 指定value用`?`
 ```
 
 範例1
 
-```text
+```
 var sql = "SELECT * FROM ?? WHERE ?? = ?";
 ```
 
 範例2
 
-```text
+```
 connection.query("UPDATE ?? SET title = ? WHERE id = ?",["articles","Hello",1]
 ```
 
@@ -216,7 +216,7 @@ connection.query("UPDATE ?? SET title = ? WHERE id = ?",["articles","Hello",1]
 
 可達到的效果
 
-```text
+```
 Numbers are left untouched
 Booleans are converted to true / false
 Date objects are converted to 'YYYY-mm-dd HH:ii:ss' strings
@@ -231,9 +231,9 @@ NaN / Infinity are left as-is. MySQL does not support these, and trying to inser
 
 ### 1.
 
-escape\(\)
+escape()
 
-```text
+```
 var userId = 'some user provided value';
 var sql    = 'SELECT * FROM users WHERE id = ' + connection.escape(userId);
 connection.query(sql, function(err, results) {
@@ -243,7 +243,7 @@ connection.query(sql, function(err, results) {
 
 跟`?`作用相同
 
-```text
+```
 connection.query('SELECT * FROM users WHERE id = ?', [userId], function(err, results) {
   // ... 
 });
@@ -251,9 +251,9 @@ connection.query('SELECT * FROM users WHERE id = ?', [userId], function(err, res
 
 ### 如果要excape的是name
 
-使用escapeId\(\)
+使用escapeId()
 
-```text
+```
 var a = 'articles';
 var sql    = 'SELECT * FROM' + connection.escapeId(a)+ 'WHERE id = 1' ;
 connection.query(sql, function(err, results) {
@@ -267,9 +267,9 @@ connection.query(sql, function(err, results) {
 
 使用`??`一樣效果
 
-\(`??`是給mysql module 內的function解析的，所以他不是變數，不用字串包住前後\)
+(`??`是給mysql module 內的function解析的，所以他不是變數，不用字串包住前後)
 
-```text
+```
 var sql    = 'SELECT * FROM ?? WHERE id = 1' ;
 connection.query(sql,"articles" ,function(err, results) {
    if (err) {
@@ -280,9 +280,9 @@ connection.query(sql,"articles" ,function(err, results) {
 });
 ```
 
-## insert資料時傳回該筆insert id\(主鍵\)
+## insert資料時傳回該筆insert id(主鍵)
 
-```text
+```
 connection.query('INSERT INTO articles SET ?', {author:'test',title: 'test',body:'test'}, function(err, result) {
   if (err) throw err;
 
@@ -292,35 +292,33 @@ connection.query('INSERT INTO articles SET ?', {author:'test',title: 'test',body
 
 ### 複習sql語法
 
-1. 資料表查詢
+1.  資料表查詢
 
-   SELECT `欄位` FROM `資料表`;
+    SELECT `欄位` FROM `資料表`;
 
-   一般用法： SELECT \* FROM `table` ;
+    一般用法： SELECT \* FROM `table` ;
 
-   翻譯：選擇table這個資料表所有欄位的資料\(就是全選啦!!\)
+    翻譯：選擇table這個資料表所有欄位的資料(就是全選啦!!)
 
-   備註：星號代表所有欄位，在sql語法、指令中星號代表全部
+    備註：星號代表所有欄位，在sql語法、指令中星號代表全部
+2.  資料表查詢 + 排序
 
-2. 資料表查詢 + 排序
+    SELECT `欄位` FROM `資料表` ORDER BY `特定欄位` DESC ;
 
-   SELECT `欄位` FROM `資料表` ORDER BY `特定欄位` DESC ;
+    一般用法： SELECT `id`,`name` FROM `table` ORDER BY `特定欄位` DESC ;
 
-   一般用法： SELECT `id`,`name` FROM `table` ORDER BY `特定欄位` DESC ;
+    翻譯： 選取table資料表內的 id 和 name 這兩個欄位，並根據id這欄位做降冪排序(由高而低、由大到小、由z到a)
 
-   翻譯： 選取table資料表內的 id 和 name 這兩個欄位，並根據id這欄位做降冪排序\(由高而低、由大到小、由z到a\)
+    備註：ASC則是(由低而高、由小到大、由a到z)，與DESC相反
+3.  資料表查詢 + 查詢條件
 
-   備註：ASC則是\(由低而高、由小到大、由a到z\)，與DESC相反
+    SELECT `欄位` FROM `資料表` WHERE `特定欄位` = 數字 ;
 
-3. 資料表查詢 + 查詢條件
+    一般用法： SELECT \* FROM `table` WHERE `id` = 363 ;
 
-   SELECT `欄位` FROM `資料表` WHERE `特定欄位` = 數字 ;
+    翻譯： 在table資料表內的尋找 id 欄位的內容是 363 且將 所有欄位的資料都取出來
 
-   一般用法： SELECT \* FROM `table` WHERE `id` = 363 ;
-
-   翻譯： 在table資料表內的尋找 id 欄位的內容是 363 且將 所有欄位的資料都取出來
-
-```text
+```
 SELECT  `欄位` FROM `資料表` WHERE  `特定欄位` LIKE  字串 ;
 
 一般用法： SELECT  `id`,`name`  FROM `table` WHERE  `name` LIKE  'admin' ;
@@ -366,13 +364,13 @@ UPDATE `資料表` SET `欄位2` = '資料2'  WHERE `欄位1` = '資料1'  ;
 
 ## 使用完記得關閉
 
-```text
+```
 connection.end();
 ```
 
 參考至:
 
-[https://www.npmjs.com/package/mysql\#getting-the-id-of-an-inserted-row](https://www.npmjs.com/package/mysql#getting-the-id-of-an-inserted-row)
+[https://www.npmjs.com/package/mysql#getting-the-id-of-an-inserted-row](https://www.npmjs.com/package/mysql#getting-the-id-of-an-inserted-row)
 
 [http://www.sitepoint.com/using-node-mysql-javascript-client/](http://www.sitepoint.com/using-node-mysql-javascript-client/)
 
@@ -382,13 +380,13 @@ connection.end();
 
 停止
 
-```text
+```
 /etc/init.d/apache2 start
 ```
 
 開啟
 
-```text
+```
 sudo /etc/init.d/apache2 start
 ```
 
@@ -396,7 +394,6 @@ sudo /etc/init.d/apache2 start
 
 如在terminal輸入mysql後告知沒有權限，可輸入以下
 
-```text
+```
 mysql -u root -p
 ```
-
