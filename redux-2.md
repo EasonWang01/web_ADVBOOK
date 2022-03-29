@@ -8,7 +8,7 @@
 
 之後安裝使用redux所需要的模組
 
-```
+```text
 npm install --save redux react-redux react-router-redux redux-logger
 ```
 
@@ -16,19 +16,19 @@ npm install --save redux react-redux react-router-redux redux-logger
 
 #### client.js
 
-```
+```text
 1.使用Provider包住router，之後元件使用connect即可獲得Redux store
 
 2.syncHistoryWithStore讓瀏覽器的location同步到store中
 ```
 
-![](<.gitbook/assets/螢幕快照 2017-02-11 上午9.49.41.png>)
+![](.gitbook/assets/螢幕快照%202017-02-11%20上午9.49.41.png)
 
-![](<.gitbook/assets/螢幕快照 2017-02-11 上午9.49.48.png>)
+![](.gitbook/assets/螢幕快照%202017-02-11%20上午9.49.48.png)
 
 #### 元件中
 
-```
+```text
 1.使用connect把Redux的store與元件結合
 
 export default connect((state) => state ,{ FilterTodo })(FliterLink)
@@ -43,18 +43,18 @@ export default connect((state) => state ,{ FilterTodo })(FliterLink)
 
 #### store
 
-1\.
+1.
 
-```
+```text
 let finalCreateStore = compose(
     applyMiddleware(thunk,logger())
     )(createStore)
 //用來加入一些middleware
 ```
 
-2\.
+2.
 
-```
+```text
 let initialState = {
     visbility:'SHOW_ALL',
     todos:[{
@@ -72,9 +72,9 @@ function configureStore(initialState){
 //把初始的state與reducer做結合
 ```
 
-3\.
+3.
 
-```
+```text
 let store = configureStore(initialState)
 
 export default store
@@ -82,7 +82,7 @@ export default store
 //最後輸出store
 ```
 
-## 操作非同步動作(Async)
+## 操作非同步動作\(Async\)
 
 例如:
 
@@ -94,7 +94,7 @@ export default store
 
 將store.js改為
 
-```
+```text
 import {applyMiddleware,compose,createStore} from "redux"
 import reducer from './reducer'
 import logger from 'redux-logger'
@@ -130,7 +130,7 @@ export default store
 
 例如:
 
-```
+```text
 FilterTodo:(filter) => {
   return({
     type:'SET_VISBILITY_FILTER',
@@ -148,7 +148,7 @@ con:() => {
 
 我們可以把action加上如下
 
-```
+```text
     con:() => {
         return (dispatch, getState) => {
             console.log('現在的Store是');
@@ -159,7 +159,7 @@ con:() => {
 
 之後TodoList.js加入
 
-```
+```text
  <button onClick={() => this.props.dispatch(action.con())}  />
 ```
 
@@ -171,7 +171,7 @@ con:() => {
 
 2.在程式的store.js中改為如下
 
-```
+```text
 let finalCreateStore = compose(
 applyMiddleware(thunk,logger()),window.devToolsExtension ? window.devToolsExtension() : f => f
 )(createStore)
@@ -188,10 +188,11 @@ export default store
 
 3.開啟網頁即可看到chrome extension的redux devtools亮起，即可點選開啟
 
-\--試著發出一些action然後點選最下方第七個時鐘圖案，即可看到他可以重播我們做過的action
+--試著發出一些action然後點選最下方第七個時鐘圖案，即可看到他可以重播我們做過的action
 
-\--也可點選chart去做查看
+--也可點選chart去做查看
 
-\--可點上方的做過的action的JUMP按鈕，之後可到當時的情況，但JUMP過去後不可再做改變，也就是點選畫面會沒反應，必須再JUMP回最新的action才能繼續對畫面做點選(原因是設計者要讓我們可以觀看過去但不可更改，否則後續的流程都會亂掉)
+--可點上方的做過的action的JUMP按鈕，之後可到當時的情況，但JUMP過去後不可再做改變，也就是點選畫面會沒反應，必須再JUMP回最新的action才能繼續對畫面做點選\(原因是設計者要讓我們可以觀看過去但不可更改，否則後續的流程都會亂掉\)
 
-![](<.gitbook/assets/螢幕快照 2017-02-11 上午9.56.31.png>)
+![](.gitbook/assets/螢幕快照%202017-02-11%20上午9.56.31.png)
+

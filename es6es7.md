@@ -10,15 +10,15 @@
 
 ## ES6
 
-[https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_2015\_support\_in\_Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_2015\_support\_in\_Mozilla)
+[https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_2015\_support\_in\_Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla)
 
 全名為`ECMAScript 6.0`或稱`ECMAScript 2015`
 
-#### #const
+#### \#const
 
 用來定義常數，定義後不可更改
 
-```
+```text
 const a = 12;
 
 然後輸入
@@ -26,11 +26,11 @@ a = 13;
 將會產生錯誤
 ```
 
-#### #let
+#### \#let
 
 一般變數的作用域是以function來區分，在同層function的同名變數如果重複給值，則會覆蓋前項，包含在if內，但如果if的同名變數是用let宣告，則不會影響到if外的變數
 
-```
+```text
 function letTest() {
   let x = 1;
   if (true) {
@@ -43,21 +43,21 @@ function letTest() {
 
 let的作用範圍會被侷限在if內，而不會改到外面的同名變數
 
-#### #spread syntax
+#### \#spread syntax
 
 功能:把Array，以逗點分隔當成多個值
 
-```
+```text
 function myFunction(x, y, z) { console.log(x) }
 var args = [0, 1, 2];
 myFunction(...args); //相同於myFunction(1,2,3)
 ```
 
-#### #Destructuring assignment(解構賦值)
+#### \#Destructuring assignment\(解構賦值\)
 
 功能:對應兩個Array或Object並把同名的值附上
 
-```
+```text
 var o = {p: 42, q: true};
 var {p: foo, q: bar} = o;
 
@@ -65,11 +65,11 @@ console.log(foo); // 42
 console.log(bar); // true
 ```
 
-```
+```text
 let obj = {x: 1, y: 2}; let {x, y} = obj; // x = 1, y = 2
 ```
 
-```
+```text
 var a, b;
 
 [a, b] = [1, 2];
@@ -77,34 +77,34 @@ console.log(a); // 1
 console.log(b); // 2
 ```
 
-#### #Arrow function
+#### \#Arrow function
 
 功能:簡化匿名function寫法，但會失去this屬性
 
-```
+```text
 //以前寫法
 setTimeout(function(){ console.log('okok'),500});
 //箭頭寫法
 setTimeout(() => console.log('okok'),500);
 ```
 
-#### #Object.assign()
+#### \#Object.assign\(\)
 
 功能:結合兩個物件
 
-```
+```text
 var obj = { a: 1 };
 var copy = Object.assign({b: 12}, obj);
 console.log(copy);
 ```
 
-#### #Promise
+#### \#Promise
 
 1.new Promise傳入一個函數，該函數擁有兩個參數
 
-2.這兩個參數均為函數，分別為resolve()和reject()
+2.這兩個參數均為函數，分別為resolve\(\)和reject\(\)
 
-```
+```text
 var promise = new Promise(function(resolve, reject) {
   //first execute 
 
@@ -116,11 +116,11 @@ var promise = new Promise(function(resolve, reject) {
 });
 ```
 
-4.使用resolve()代表成功，使用reject()代表first execute 部分沒成功，是否成功是由我們自己去判定寫邏輯
+4.使用resolve\(\)代表成功，使用reject\(\)代表first execute 部分沒成功，是否成功是由我們自己去判定寫邏輯
 
 5.promise生成後可用then，執行成功或失敗鎖要執行的東西
 
-```
+```text
 promise.then(function(value) {
   // success//接收到resolve後會執行
 }, function(value) {
@@ -132,7 +132,7 @@ promise.then(function(value) {
 
 貼上以下範例，之後把改變`value = 1+2`即可看到console的改變
 
-```
+```text
 var promise = new Promise(function(resolve, reject) {
 //first execute
 var value = 1+1;
@@ -152,11 +152,11 @@ promise
 })
 ```
 
-#### #Promise.all
+#### \#Promise.all
 
 把許多promise的函式組成一個Array放入Promise.all內，當裡面每個都`resolve`或其中一個被`reject`時才會執行後面的then方法
 
-```
+```text
 Promise.all([promises...])
 .then(function (posts) {
   // ...
@@ -165,9 +165,9 @@ Promise.all([promises...])
 });
 ```
 
-#### #for of
+#### \#for of
 
-```
+```text
 let iterable = [10, 20, 30];
 
 for (let value of iterable) {
@@ -176,13 +176,13 @@ for (let value of iterable) {
 }
 ```
 
-#### #Generator
+#### \#Generator
 
 功能:也是用來處理異步函式，讓他順序執行 不一樣的地方在於function後的星號，和`yield`
 
-1\.
+1.
 
-```
+```text
 function* Fruit() {
   yield 'apple';
   yield 'banana';
@@ -192,9 +192,9 @@ function* Fruit() {
 var a = Fruit();
 ```
 
-之後輸入a.next();
+之後輸入a.next\(\);
 
-#### #class
+#### \#class
 
 說明:即為一般物件導向程式的class寫法，以前是用prototype的方法來寫繼承，有class後即可使用extend
 
@@ -208,7 +208,7 @@ var a = Fruit();
 
 5.使用super存取父帶方法`super.IamParentMethod()`
 
-```
+```text
 class Cat { 
   constructor(name) { 
     this.name = name;
@@ -235,13 +235,13 @@ class Lion extends Cat {
 
 但在ES6我們不使用require而使用import
 
-(兩者亦可混合使用，參照webpack章節)
+\(兩者亦可混合使用，參照webpack章節\)
 
 ### 下面先介紹export用法
 
 export用來輸出單個變數或function
 
-```
+```text
 export var fruit = 'apple';
 export var person = 'John';
 
@@ -252,7 +252,7 @@ export function multiply (x, y) {
 
 也可寫成如下
 
-```
+```text
 var fruit = 'apple';
 var person = 'John';
 
@@ -261,7 +261,7 @@ export {fruit,person,multiply};
 
 可用as改變import時的名字
 
-```
+```text
 export {fruit as f,person as p,multiply as m};
 ```
 
@@ -271,19 +271,19 @@ export {fruit as f,person as p,multiply as m};
 
 ### 再來講import
 
-```
+```text
 import {fruit, person, multiply} from './list.js';
 ```
 
 也可用as改變引入後的名稱
 
-```
+```text
 import {fruit as f, person as p, multiply as m} from './list.js';
 ```
 
 也可一次載入
 
-```
+```text
 import * as list from './list.js';
 ```
 
@@ -293,7 +293,7 @@ import * as list from './list.js';
 
 a.js
 
-```
+```text
 export default function () {
   console.log('I'm banana');
 }
@@ -301,14 +301,14 @@ export default function () {
 
 b.js
 
-```
+```text
 import customName from './a.js';//可自行指定名稱
 customName(); // 'I'm banana'
 ```
 
 我們在React通常會如下寫
 
-```
+```text
 // Component1.js
 export default class { ... }
 
@@ -318,15 +318,15 @@ import Component1 from './Component1.js'
 
 ## ES7
 
-[https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_Next\_support\_in\_Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_Next\_support\_in\_Mozilla)
+[https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_Next\_support\_in\_Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_Next_support_in_Mozilla)
 
 全名為`ECMAScript 7.0`或稱`ECMAScript 2016`
 
-#### #Rest parameters destructuring
+#### \#Rest parameters destructuring
 
 功能:動態指定參數個數
 
-```
+```text
 function fun1(...theArgs) {
 console.log(theArgs.length);
 }
@@ -336,11 +336,11 @@ fun1(5); // 1
 fun1(5, 6, 7); // 3
 ```
 
-#### #Array.includes
+#### \#Array.includes
 
 功能: 取得Array中是否包含某一個元素
 
-```
+```text
 var a = [1, 2, 3];
 a.includes(2); // true 
 a.includes(4); // false
@@ -348,19 +348,19 @@ a.includes(4); // false
 
 ## ES8
 
-[https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_Next\_support\_in\_Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_Next\_support\_in\_Mozilla)
+[https://developer.mozilla.org/en-US/docs/Web/JavaScript/New\_in\_JavaScript/ECMAScript\_Next\_support\_in\_Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_Next_support_in_Mozilla)
 
 全名為`ECMAScript 8.0`或稱`ECMAScript 2017`
 
 > Async與Await為ES8特性，但時常被誤以為是ES7
 
-#### #Async與Await
+#### \#Async與Await
 
 可以簡單地在任何function前加上async字樣，之後把裡面會需要異步的function前加上await即可
 
-後面用then()即可去進行步驟控制
+後面用then\(\)即可去進行步驟控制
 
-```
+```text
 async function getTrace () {  
     pageContent = await fetch('www.google.com', {
       method: 'get'
@@ -375,31 +375,31 @@ getTrace()
   })
 ```
 
-#### #padEnd
+#### \#padEnd
 
 功能：將字串補足位數至與第一個參數相同
 
-```
+```text
 'abc'.padEnd(10);         // "abc       "
 'abc'.padEnd(10, "foo");  // "abcfoofoof"
 'abc'.padEnd(6,"123456"); // "abc123"
 ```
 
-#### #padStart
+#### \#padStart
 
 功能：將字串補足位數至與第一個參數相同，但方向為從頭開始
 
-```
+```text
 'abc'.padStart(10);         // "       abc"
 'abc'.padStart(10, "foo");  // "foofoofabc"
 'abc'.padStart(6,"123465"); // "123abc"
 ```
 
-#### #Object.values
+#### \#Object.values
 
 功能:取得所有物件中的值，以Array表示
 
-```
+```text
 var obj = { foo: "bar", baz: 42 };
 console.log(Object.values(obj)); // ['bar', 42]
 
@@ -408,11 +408,11 @@ var obj = { 0: 'a', 1: 'b', 2: 'c' };
 console.log(Object.values(obj)); // ['a', 'b', 'c']
 ```
 
-#### #Object.entries
+#### \#Object.entries
 
 功能:把物件中的key和value每組分別組成一個Array
 
-```
+```text
 var obj = { foo: "bar", baz: 42 };
 console.log(Object.entries(obj)); // [ ['foo', 'bar'], ['baz', 42] ]
 
@@ -420,3 +420,4 @@ console.log(Object.entries(obj)); // [ ['foo', 'bar'], ['baz', 42] ]
 var obj = { 0: 'a', 1: 'b', 2: 'c' };
 console.log(Object.entries(obj)); // [ ['0', 'a'], ['1', 'b'], ['2', 'c'] ]
 ```
+
