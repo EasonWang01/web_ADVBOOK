@@ -1,8 +1,6 @@
 # 部署
 
-/var/www/html# #部署
-
-我們接下來要把前幾章實作的網站部署到AWS上，並用nginx當proxy
+> 我們接下來要把前幾章實作的網站部署到AWS上，並用nginx當proxy
 
 ### 1.使用AWS
 
