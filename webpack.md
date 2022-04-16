@@ -1,7 +1,5 @@
 # Webpack
 
-## \#Webpack
-
 目前有出第二版也就是webpack2，但目前性能與社群比較起來還是暫時先用一會比較適當，所以以下教學將以官方教學介紹webpack
 
 ## 附錄0-Webpack
@@ -22,13 +20,13 @@
 
 entry.js
 
-```text
+```
 document.write("It works.");
 ```
 
 index.html
 
-```text
+```
 <html>
     <head>
         <meta charset="utf-8">
@@ -41,7 +39,7 @@ index.html
 
 之後在終端機輸入`cd 你創建的資料夾`
 
-\(讓終端機路徑進入的你資料夾內\)
+(讓終端機路徑進入的你資料夾內)
 
 接著輸入
 
@@ -51,7 +49,7 @@ index.html
 
 成功輸入指令後會看到如下
 
-```text
+```
 Version: webpack 1.12.11
 Time: 51ms
     Asset     Size  Chunks             Chunk Names
@@ -68,19 +66,19 @@ chunk    {0} bundle.js (main) 28 bytes [rendered]
 
 於同一個資料夾下新增content.js檔案
 
-```text
+```
 module.exports = "It works from content.js.";
 ```
 
 再來，將原先entry.js改為
 
-```text
+```
 document.write(require("./content.js"));
 ```
 
 之後一樣輸入於終端機輸入
 
-```text
+```
  webpack ./entry.js bundle.js
 ```
 
@@ -96,7 +94,7 @@ document.write(require("./content.js"));
 
 我們先來安裝load，安裝方式為在終端機使用npm安裝
 
-```text
+```
 npm install css-loader style-loader
 ```
 
@@ -106,7 +104,7 @@ npm install css-loader style-loader
 
 style.css
 
-```text
+```
 body {
     background: yellow;
 }
@@ -114,14 +112,14 @@ body {
 
 接著更新entry.js檔案
 
-```text
+```
 require("!style!css!./style.css");
 document.write(require("./content.js"));
 ```
 
 接著一樣輸入
 
-```text
+```
  webpack ./entry.js bundle.js
 ```
 
@@ -135,14 +133,14 @@ document.write(require("./content.js"));
 
 將entry.js改為
 
-```text
+```
 require("./style.css");
 document.write(require("./content.js"));
 ```
 
 這次使用下面的指令compile
 
-```text
+```
 webpack ./entry.js bundle.js --module-bind 'css=style!css'
 ```
 
@@ -154,7 +152,7 @@ webpack ./entry.js bundle.js --module-bind 'css=style!css'
 
 下面我們新增一個檔案，名稱為webpack.config.js
 
-```text
+```
 module.exports = {
     entry: "./entry.js",
     output: {
@@ -171,7 +169,7 @@ module.exports = {
 
 這時我們再compile一下，但只要輸入如下即可
 
-```text
+```
 webpack
 ```
 
@@ -181,7 +179,7 @@ webpack
 
 可以使用以下指令compile試試，會增加一個進度條，與顏色
 
-```text
+```
 webpack --progress --colors
 ```
 
@@ -191,7 +189,7 @@ webpack --progress --colors
 
 每當我們更改檔案後都要手動輸入compile指令，使用上較為麻煩，我們可以使用--watch，讓webpack發現檔案有改變時，自動幫我們compile
 
-```text
+```
 webpack --watch
 ```
 
@@ -199,19 +197,19 @@ webpack --watch
 
 我們先安裝，所以先在終端機輸入
 
-```text
+```
 npm install webpack-dev-server -g
 ```
 
 之後輸入
 
-```text
+```
 webpack-dev-server --progress --colors
 ```
 
 接著輸入網址
 
-```text
+```
 http://localhost:8080/webpack-dev-server/bundle
 ```
 
@@ -223,7 +221,7 @@ http://localhost:8080/webpack-dev-server/bundle
 
 #### 如果想打包成多個檔案可以如下寫
 
-```text
+```
 var webpack = require("webpack");
 module.exports = {
     entry: { a: "./a", b: "./b" },
@@ -237,7 +235,7 @@ Loaders 意思簡單來說是，當webpack發現這些後綴名的檔案時，�
 
 可看如下範例
 
-```text
+```
 {
  當遇到名稱為.ts檔案時，將它解析為typescript
   test: /\.ts/,
@@ -284,13 +282,13 @@ Loaders 意思簡單來說是，當webpack發現這些後綴名的檔案時，�
 
 最後所有經過解析的東西都會轉為字串，類似如下
 
-```text
+```
 export default 'body{font-size:12px}';
 ```
 
 ## 有關Webpack resolve
 
-```text
+```
   resolve: {
         //從下面路徑開始找尋module
         root: 'E:/github/src', 
@@ -311,7 +309,7 @@ export default 'body{font-size:12px}';
 
 #### 1.CommonsChunkPlugin
 
-```text
+```
 var webpack = require("webpack");
 
 module.exports = {
@@ -336,7 +334,7 @@ module.exports = {
 
 並於html中引用
 
-```text
+```
 <script src="vendor.bundle.js"></script>
 <script src="bundle.js"></script>
 ```
@@ -345,11 +343,11 @@ module.exports = {
 
 #### 2.Extract-text-webpack-plugin
 
-CSS 被 require\(\) 時，webpack 會自動生成一個 `<style>` 標籤並加入到 html 的 `<head>` 中，但我們有時不希望css一同被打包，而希望其產生.css之後再用`<link>`方式引入。
+CSS 被 require() 時，webpack 會自動生成一個 `<style>` 標籤並加入到 html 的 `<head>` 中，但我們有時不希望css一同被打包，而希望其產生.css之後再用`<link>`方式引入。
 
 可類似如下寫出
 
-```text
+```
     var webpack = require('webpack');
     var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
     var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -363,7 +361,7 @@ CSS 被 require\(\) 時，webpack 會自動生成一個 `<style>` 標籤並加�
 
 用途也是解決打包後文件過大，載入變慢的問題，解法為將其隔離出bundle.js，而於index.html之內用script引用
 
-```text
+```
 module.exports = {
     externals: {
       'react': 'React' 
@@ -374,7 +372,7 @@ module.exports = {
 
 index.html
 
-```text
+```
 <script src="react.min.js" />
 <script src="bundle.js" />
 ```
@@ -393,7 +391,7 @@ index.html
 
 但是在webpack bundle後無法去取得，我們必須先寫DefinePlugin
 
-```text
+```
 module.exports = {
   //...
   plugins:[
@@ -407,4 +405,3 @@ module.exports = {
   //...
 }
 ```
-

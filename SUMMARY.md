@@ -18,7 +18,7 @@
 * [MySQL](mysql.md)
 * [MongoDB](mongodb.md)
 * [RESTful API 與 API 文件撰寫](restful-api-api.md)
-* [使用Babel,ESLint](babeleslintwebpack.md)
+* [使用Babel, ESLint](babeleslintwebpack.md)
 * [Webpack](webpack.md)
 * [WebSocket](websocketredis.md)
 * [Redis](redis.md)

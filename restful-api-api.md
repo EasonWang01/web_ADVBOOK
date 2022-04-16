@@ -1,10 +1,10 @@
 # RESTful API 與 API 文件撰寫
 
-## \#Restful簡介
+## Restful簡介
 
 一種設計API的風格，而非標準 [https://zh.wikipedia.org/wiki/REST](https://zh.wikipedia.org/wiki/REST)
 
-## \#swagger簡介
+## swagger簡介
 
 一個把API說明清楚的方式
 
@@ -14,7 +14,7 @@ swagger有三個服務，editor,codegen,swagger ui
 
 因沒開啟的話，位於遠端網頁的 swagger editor 無法發送測試
 
-```text
+```
 app.use('*', function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
@@ -26,17 +26,17 @@ app.use('*', function(req, res, next) {
 
 將上面這段加到code的最上面即可
 
-## \#開始編寫yaml語言
+## 開始編寫yaml語言
 
 > yaml子項目會後退空兩格，陣列使用`-`表示
 
-先到[http://editor.swagger.io/\#/](http://editor.swagger.io/#/)
+先到[http://editor.swagger.io/#/](http://editor.swagger.io/#/)
 
 可以看到範例，接著我們把它清空，開始編寫自己的版本
 
 最基本的型態
 
-```text
+```
 swagger: '2.0'
 
 info:
@@ -60,7 +60,7 @@ paths:
 
 GET 簡單範本
 
-```text
+```
   /getUser:
     # This is a HTTP operation
     get:
@@ -87,7 +87,7 @@ GET 方法的完整範例
 
 server.js
 
-```text
+```
 var express = require('express')
 var app = express()
 
@@ -129,7 +129,7 @@ app.listen(3000, function () {
 
 yaml
 
-```text
+```
 swagger: '2.0'
 
 host: localhost:3000
@@ -186,27 +186,27 @@ paths:
 
 Post
 
-> 你可能看過$ref: '\#/definitions/test1'，之後把test1另外定義，但個人感覺此種寫法比較分散，於是此處不用此種寫法
+> 你可能看過$ref: '#/definitions/test1'，之後把test1另外定義，但個人感覺此種寫法比較分散，於是此處不用此種寫法
 
 ## 注意:修改yaml後記得把`Try this operation`重新開啟才會更新
 
 先定義post type
 
-```text
+```
 consumes:
   - application/x-www-form-urlencoded
 ```
 
 或是
 
-```text
+```
 consumes:
   - multipart/form-data
 ```
 
 路由
 
-```text
+```
   /register:         
 
     post:
@@ -232,7 +232,7 @@ consumes:
 
 server.js
 
-```text
+```
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
@@ -287,7 +287,7 @@ app.listen(3000, function () {
 
 server.js
 
-```text
+```
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
@@ -354,7 +354,7 @@ app.listen(3000, function () {
 
 yaml
 
-```text
+```
 swagger: '2.0'
 
 host: localhost:3000
@@ -476,4 +476,3 @@ paths:
         "200":
           description: Success
 ```
-
