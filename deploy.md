@@ -6,7 +6,7 @@
 
 AWS 的free Tire有12個月的免費方案，我們將使用此方案
 
-[https://aws.amazon.com/](https://aws.amazon.com)
+[https://aws.amazon.com/](https://aws.amazon.com/)
 
 1.之後點選右上角的`sign in`
 

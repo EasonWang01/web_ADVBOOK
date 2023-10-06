@@ -28,7 +28,7 @@ https://mlab.com/home
 
 ### 如何測試剛創好的資料庫?
 
-使用Robomongo [https://robomongo.org/](https://robomongo.org)
+使用Robomongo [https://robomongo.org/](https://robomongo.org/)
 
 點選Download，選最下面的免費選項下載
 

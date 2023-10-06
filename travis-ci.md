@@ -36,7 +36,7 @@ git commit -m 'add'
 git push origin master
 ```
 
-3.進入[https://travis-ci.org/](https://travis-ci.org)
+3.進入[https://travis-ci.org/](https://travis-ci.org/)
 
 使用github帳號登入 然後點選右上方你的頭像，進入profile
 
